@@ -21,10 +21,12 @@ set encoding=utf-8    " Set default encoding to UTF-8
 set noswapfile
 set history=1000
 set backup                  " Backups are nice ...
+set backupdir=~/.vim/back
 if has('persistent_undo')
   set undofile              " So is persistent undo ...
   set undolevels=1000       " Maximum number of changes that can be undone
   set undoreload=10000      " Maximum number lines to save for undo on a buffer reload
+  set undodir=~/.vim/undo
 endif
 
 " UI

@@ -1,48 +1,49 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+autoload -U colors && colors
+setopt PROMPT_SUBST
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="candy"
+GIT_PROMPT_PREFIX="$fg[green]["
+GIT_PROMPT_SUFFIX="$reset_color"
 
-CASE_SENSITIVE="true"
+# get the name of the branch we are on
+function git_prompt_info() {
+  local DIRTY_OR_CLEAN=''
+  local GIT_STATUS=''
 
-EXTENDED_HISTORY= "true"
+  GIT_STATUS=$(command git status -s --ignore-submodules=dirty 2> /dev/null | tail -n1)
 
-# Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+  if [[ -n $GIT_STATUS ]]; then
+    DIRTY_OR_CLEAN=" $fg[red]*$fg[green]]"
+  fi
 
-# Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-DISABLE_CORRECTION="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
-
-#make the git file finder not actually use git
-__git_files () {
-  _wanted files expl 'local files' _files
+  ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
+  ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+  echo "$GIT_PROMPT_PREFIX${ref#refs/heads/}$DIRTY_OR_CLEAN$GIT_PROMPT_SUFFIX"
 }
 
-source $ZSH/oh-my-zsh.sh
+PROMPT=$'%{$fg_bold[green]%}%n@%m %{$fg[blue]%}%D{[%I:%M:%S]} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%} $(git_prompt_info)\
+%{$fg[blue]%}->%{$fg_bold[blue]%} %{$reset_color%} '
 
-#override some of the oh-my-zsh stuff
-unsetopt append_history
-unsetopt inc_append_history
-unsetopt share_history
+# autocomplete
+unsetopt menu_complete   # do not autoselect the first completion entry
+unsetopt flowcontrol
+setopt auto_menu         # show completion menu on succesive tab press
+setopt complete_in_word
+setopt always_to_end
+
+# history
+if [ -z $HISTFILE ]; then
+  HISTFILE=$HOME/.zsh_history
+fi
+HISTSIZE=10000
+SAVEHIST=10000
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups # ignore duplication command history list
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+setopt share_history # share command history data
 
 os=$(uname)
 if [[ "$os" == 'Linux' ]]; then
@@ -51,8 +52,13 @@ elif [[ "$os" == 'Darwin' ]]; then
   alias sudoedit="sudo -e"
 fi
 
-#aliases
+#ls
 alias ls='ls -G'
-alias tree='nocorrect tree'
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+
+#other aliases
 alias nr=repl.history
 alias less='less -i'
+
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;32'
