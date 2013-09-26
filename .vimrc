@@ -81,7 +81,6 @@ if exists("g:enable_mvim_shift_arrow")
 endif
 
 if has("gui_macvim") && has("gui_running")
-  
   vmap <D-]> >gv                    " Map command-[ and command-] to indenting or outdenting while keeping the original selection in visual mode 
   vmap <D-[> <gv
 
@@ -106,7 +105,7 @@ if has("gui_macvim") && has("gui_running")
   vmap <D-j> ]egv
 
 else
-  
+
   vmap <A-]> >gv                    " Map command-[ and command-] to indenting or outdenting while keeping the original selection in visual mode
   vmap <A-[> <gv
 
@@ -118,12 +117,12 @@ else
 
   imap <A-]> <Esc>>>i
   imap <A-[> <Esc><<i
-  
+
   nmap <C-Up> [e                    " Bubble single lines
   nmap <C-Down> ]e
   nmap <C-k> [e
   nmap <C-j> ]e
-  
+
   vmap <C-Up> [egv                  " Bubble multiple lines 
   vmap <C-Down> ]egv
   vmap <C-k> [egv
@@ -193,6 +192,7 @@ nnoremap <silent> <leader>gr :Gread<CR>:GitGutter<CR>
 nnoremap <silent> <leader>gw :Gwrite<CR>:GitGutter<CR>
 nnoremap <silent> <leader>ge :Gedit<CR>
 nnoremap <silent> <leader>gg :GitGutterToggle<CR>
+map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 
 " Code
 Bundle 'scrooloose/syntastic'
@@ -275,3 +275,7 @@ Bundle "Shougo/vimshell.vim"
 
 " End Vundle encantation
 filetype plugin indent on
+
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+
