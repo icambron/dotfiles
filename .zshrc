@@ -2,7 +2,7 @@ autoload -U colors && colors
 setopt PROMPT_SUBST
 
 GIT_PROMPT_PREFIX="$fg[green]["
-GIT_PROMPT_SUFFIX="$reset_color"
+GIT_PROMPT_SUFFIX="]$reset_color"
 
 # get the name of the branch we are on
 function git_prompt_info() {
