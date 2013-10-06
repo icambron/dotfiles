@@ -37,5 +37,5 @@ elif [[ "$os" == 'Darwin' ]]; then
   export JAVA_HOME=$(/usr/libexec/java_home -v '1.6*')
 fi
 
-[[ -s "$HOME/.zshprivate" ]] && source "$HOME/.zshprivate"
+[[ -s "$HOME/.private/zshprivate" ]] && source "$HOME/private/.zshprivate"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

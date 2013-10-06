@@ -12,7 +12,7 @@ function git_prompt_info() {
   GIT_STATUS=$(command git status -s --ignore-submodules=dirty 2> /dev/null | tail -n1)
 
   if [[ -n $GIT_STATUS ]]; then
-    DIRTY_OR_CLEAN=" $fg[red]*$fg[green]]"
+    DIRTY_OR_CLEAN=" $fg[red]*$fg[green]"
   fi
 
   ref=$(command git symbolic-ref HEAD 2> /dev/null) || \

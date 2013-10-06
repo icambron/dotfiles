@@ -30,7 +30,6 @@ if has('persistent_undo')
 endif
 
 " UI
-syntax enable                   " Turn on syntax highlighting allowing local overrides
 set background=dark
 set number                      " Show line numbers
 set ruler                       " Show line and column number
@@ -177,6 +176,7 @@ endif
 set laststatus=2                       " not sure what this does, but it unconfuses airline
 Bundle 'bling/vim-airline'
 let g:airline_theme = 'powerlineish'
+let g:airline#extensions#tagbar#enabled = 0
 let g:airline_powerline_fonts = 1
 let g:airline_detect_whitespace = 0
 
@@ -261,6 +261,7 @@ Bundle 'slim-template/vim-slim'
 Bundle 'elzr/vim-json'
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
+autocmd BufRead,BufNewFile {*.coffee,Cakefile} setf coffee
 Bundle "jQuery"
 
 Bundle 'jnwhiteh/vim-golang'
@@ -272,6 +273,8 @@ Bundle 'chrisbra/csv.vim'
 
 "Shell
 Bundle "Shougo/vimshell.vim"
+
+syntax enable                   " Turn on syntax highlighting allowing local overrides
 
 " End Vundle encantation
 filetype plugin indent on
