@@ -227,14 +227,14 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 
 " Ack stuff
-if executable('ag')
-  Bundle 'mileszs/ack.vim'
-  let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
-elseif executable('ack-grep')
+if executable('ack-grep')
   let g:ackprg="ack-grep -H --nocolor --nogroup --column"
   Bundle 'mileszs/ack.vim'
 elseif executable('ack')
   Bundle 'mileszs/ack.vim'
+elseif executable('ag')
+  Bundle 'mileszs/ack.vim'
+  let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 endif
 
 " Colors
