@@ -4,7 +4,6 @@ export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/bin
 export PATH=$PATH:/sbin
 export PATH=$PATH:/opt/X11/bin
-export PATH=$PATH:/Users/isaac/.rvm/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/usr/local/share/npm/bin
 export PATH=$PATH:/usr/local/share/python
@@ -27,15 +26,14 @@ home='unknown'
 if [[ "$os" == 'Linux' ]]; then
   home='/home'
   if [ $(uname -m) == 'x86_64' ]; then
-    export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64
+    #export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64
   else
-    export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-i386
+    #export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-i386
   fi
 elif [[ "$os" == 'Darwin' ]]; then
   PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
   home='/Users'
-  export JAVA_HOME=$(/usr/libexec/java_home -v '1.6*')
+  #export JAVA_HOME=$(/usr/libexec/java_home -v '1.6*')
 fi
 
 [[ -s "$HOME/.private/zshprivate" ]] && source "$HOME/private/.zshprivate"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

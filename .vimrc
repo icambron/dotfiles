@@ -34,7 +34,7 @@ set background=dark
 set number                      " Show line numbers
 set ruler                       " Show line and column number
 set shortmess+=filmnrxoOtT      " Abbrev. of messages (avoids 'hit enter')
-set cursorline
+"set cursorline
 set showmatch
 
 set list                          " Show invisible characters
@@ -198,7 +198,7 @@ map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplete.vim'
 let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_at_startup = 0
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_auto_delimiter = 1
 let g:neocomplete#max_list = 15
@@ -227,25 +227,29 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 
 " Ack stuff
-if executable('ack-grep')
+if executable('ag')
+  Bundle 'mileszs/ack.vim'
+  let g:ackprg = 'ag -U --nogroup --nocolor --column --smart-case'
+elseif executable('ack-grep')
   let g:ackprg="ack-grep -H --nocolor --nogroup --column"
   Bundle 'mileszs/ack.vim'
 elseif executable('ack')
   Bundle 'mileszs/ack.vim'
-elseif executable('ag')
-  Bundle 'mileszs/ack.vim'
-  let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 endif
 
 " Colors
 Bundle 'rking/vim-detailed'
 Bundle 'chriskempson/vim-tomorrow-theme'
-colorscheme Tomorrow-Night-Bright
-autocmd BufEnter,BufNewFile {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme detailed
-autocmd BufLeave {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme Tomorrow-Night-Bright
+colorscheme detailed
+
+"Maybe change on-the-fly
+"colorscheme Tomorrow-Night-Bright
+"autocmd BufEnter,BufNewFile {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme detailed
+"autocmd BufLeave {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme Tomorrow-Night-Bright
 
 " Languages
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rvm'
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
@@ -257,6 +261,7 @@ Bundle 'groenewege/vim-less'
 Bundle 'amirh/HTML-AutoCloseTag'
 Bundle 'tpope/vim-haml'
 Bundle 'slim-template/vim-slim'
+autocmd BufRead,BufNewFile {*.slim} setf slim
 
 Bundle 'elzr/vim-json'
 Bundle 'pangloss/vim-javascript'
@@ -280,5 +285,3 @@ syntax enable                   " Turn on syntax highlighting allowing local ove
 filetype plugin indent on
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-
