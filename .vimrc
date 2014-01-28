@@ -240,7 +240,7 @@ endif
 " Colors
 Bundle 'rking/vim-detailed'
 Bundle 'chriskempson/vim-tomorrow-theme'
-colorscheme detailed
+colorscheme Tomorrow-Night-Bright
 
 "Maybe change on-the-fly
 "colorscheme Tomorrow-Night-Bright
@@ -275,6 +275,11 @@ Bundle 'tpope/vim-markdown'
 autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
 
 Bundle 'chrisbra/csv.vim'
+
+Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-fireplace'
+Bundle 'luochen1990/rainbow'
+let g:rainbow_active = 1
 
 "Shell
 Bundle "Shougo/vimshell.vim"

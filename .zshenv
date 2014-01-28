@@ -33,7 +33,7 @@ if [[ "$os" == 'Linux' ]]; then
 elif [[ "$os" == 'Darwin' ]]; then
   PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
   home='/Users'
-  #export JAVA_HOME=$(/usr/libexec/java_home -v '1.6*')
+  export JAVA_HOME=$(/usr/libexec/java_home -v '1.7*')
 fi
 
-[[ -s "$HOME/.private/zshprivate" ]] && source "$HOME/private/.zshprivate"
+[[ -s "$HOME/.zshprivate" ]] && source "$HOME/.zshprivate"
