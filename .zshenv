@@ -25,7 +25,7 @@ os=$(uname)
 home='unknown'
 if [[ "$os" == 'Linux' ]]; then
   home='/home'
-  if [ $(uname -m) == 'x86_64' ]; then
+  if [[ $(uname -m) == 'x86_64' ]]; then
     #export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64
   else
     #export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-i386
