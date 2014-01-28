@@ -196,27 +196,6 @@ map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 
 " Code
 Bundle 'scrooloose/syntastic'
-Bundle 'Shougo/neocomplete.vim'
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 0
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#enable_auto_delimiter = 1
-let g:neocomplete#max_list = 15
-let g:neocomplete#force_overwrite_completefunc = 1
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-
 if executable('ctags')
   Bundle 'majutsushi/tagbar'
 endif
