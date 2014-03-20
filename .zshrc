@@ -66,7 +66,11 @@ alias less='less -i'
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
+#chruby
+source /usr/local/share/chruby/chruby.sh
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # added by travis gem
 [ -f /Users/isaac/.travis/travis.sh ] && source /Users/isaac/.travis/travis.sh
+
