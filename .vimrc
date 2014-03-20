@@ -219,12 +219,10 @@ endif
 " Colors
 Bundle 'rking/vim-detailed'
 Bundle 'chriskempson/vim-tomorrow-theme'
-colorscheme Tomorrow-Night-Bright
 
-"Maybe change on-the-fly
-"colorscheme Tomorrow-Night-Bright
-"autocmd BufEnter,BufNewFile {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme detailed
-"autocmd BufLeave {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme Tomorrow-Night-Bright
+colorscheme Tomorrow-Night-Bright
+autocmd BufEnter,BufNewFile {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme detailed
+autocmd BufLeave {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme Tomorrow-Night-Bright
 
 " Languages
 Bundle 'tpope/vim-rails'
@@ -258,7 +256,7 @@ Bundle 'chrisbra/csv.vim'
 Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-fireplace'
 Bundle 'luochen1990/rainbow'
-let g:rainbow_active = 1
+let g:rainbow_active = 0
 
 "Shell
 Bundle "Shougo/vimshell.vim"
