@@ -208,7 +208,7 @@ let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -
 " Ack stuff
 if executable('ag')
   Bundle 'mileszs/ack.vim'
-  let g:ackprg = 'ag -U --nogroup --nocolor --column --smart-case'
+  let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 elseif executable('ack-grep')
   let g:ackprg="ack-grep -H --nocolor --nogroup --column"
   Bundle 'mileszs/ack.vim'
@@ -259,7 +259,11 @@ Bundle 'luochen1990/rainbow'
 let g:rainbow_active = 0
 
 "Shell
+Bundle 'Shougo/vimproc.vim'
 Bundle "Shougo/vimshell.vim"
+set shell=/bin/zsh
+let g:vimshell_user_prompt = '"[" . hostname() . "] [" . getcwd() . "]"'
+let g:vimshell_prompt = '-> '
 
 syntax enable                   " Turn on syntax highlighting allowing local overrides
 

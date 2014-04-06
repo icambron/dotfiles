@@ -32,6 +32,10 @@ setopt auto_menu         # show completion menu on succesive tab press
 setopt complete_in_word
 setopt always_to_end
 
+# don't complain when leaving jobs behind
+setopt nohup
+setopt nocheckjobs
+
 # history
 if [ -z $HISTFILE ]; then
   HISTFILE=$HOME/.zsh_history
@@ -68,9 +72,10 @@ export GREP_COLOR='1;32'
 
 #chruby
 source /usr/local/share/chruby/chruby.sh
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+chruby ruby-2.1
 
 # added by travis gem
 [ -f /Users/isaac/.travis/travis.sh ] && source /Users/isaac/.travis/travis.sh
 
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
