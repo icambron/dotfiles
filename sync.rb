@@ -7,4 +7,8 @@ Dir.open(".").each do |f|
   puts "Linking #{source} to #{destination}"
   File.delete destination if File.symlink? destination
   File.symlink source, destination
+
 end
+
+`vim +BundleInstall +qall`
+`cd .vim/bundle/vimproc.vim; make`
