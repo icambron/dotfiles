@@ -216,14 +216,6 @@ elseif executable('ack')
   Bundle 'mileszs/ack.vim'
 endif
 
-" Colors
-Bundle 'rking/vim-detailed'
-Bundle 'chriskempson/vim-tomorrow-theme'
-
-colorscheme Tomorrow-Night-Bright
-autocmd BufEnter,BufNewFile {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme detailed
-autocmd BufLeave {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme Tomorrow-Night-Bright
-
 " Languages
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rvm'
@@ -271,3 +263,14 @@ syntax enable                   " Turn on syntax highlighting allowing local ove
 filetype plugin indent on
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" Colors
+Bundle 'rking/vim-detailed'
+colorscheme detailed
+
+"Use tomorrow night everywhere, but switch to vim-detailed for ruby
+Bundle 'chriskempson/vim-tomorrow-theme'
+"colorscheme Tomorrow-Night-Bright
+"autocmd BufEnter,BufNewFile {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme detailed
+"autocmd BufLeave {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme Tomorrow-Night-Bright
+
