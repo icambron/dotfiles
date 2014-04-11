@@ -77,5 +77,6 @@ chruby ruby-2.1
 # added by travis gem
 [ -f /Users/isaac/.travis/travis.sh ] && source /Users/isaac/.travis/travis.sh
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
