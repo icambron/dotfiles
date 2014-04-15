@@ -37,3 +37,6 @@ elif [[ "$os" == 'Darwin' ]]; then
 fi
 
 [[ -s "$HOME/.zshprivate" ]] && source "$HOME/.zshprivate"
+
+export PATH="/usr/local/heroku/bin:$PATH"
+
