@@ -68,6 +68,8 @@ export EDITOR=vim
 alias nr=repl.history
 alias less='less -i'
 
+csv() { csvtool readable $@ | view -}
+
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
@@ -100,7 +102,6 @@ export GOPATH=$HOME/code/go
 if [ -e ~/.nvm ]; then
   ~/.nvm/nvm.sh
 fi
-
 
 #OS-specific stuff
 os=$(uname)
