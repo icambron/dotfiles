@@ -278,4 +278,3 @@ Bundle 'chriskempson/vim-tomorrow-theme'
 "colorscheme Tomorrow-Night-Bright
 "autocmd BufEnter,BufNewFile {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme detailed
 "autocmd BufLeave {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme Tomorrow-Night-Bright
-
