@@ -278,3 +278,9 @@ Bundle 'chriskempson/vim-tomorrow-theme'
 "colorscheme Tomorrow-Night-Bright
 "autocmd BufEnter,BufNewFile {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme detailed
 "autocmd BufLeave {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme Tomorrow-Night-Bright
+
+" Change cursor shape between insert and normal mode in iTerm2.app
+if $TERM_PROGRAM =~ "iTerm"
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
