@@ -76,3 +76,6 @@ export GREP_COLOR='1;32'
 autoload edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
+
+# 10ms for key sequences
+KEYTIMEOUT=1

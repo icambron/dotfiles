@@ -16,6 +16,7 @@ function! s:setupWrapping()
 endfunction
 
 " Basics
+set timeoutlen=1000 ttimeoutlen=0 " Get rid of delays
 set nocompatible      " Use vim, no vi defaults
 set encoding=utf-8    " Set default encoding to UTF-8
 set noswapfile
@@ -51,6 +52,7 @@ set guicursor=a:blinkon0 " Shut off the fucking blinking cursor
 set guioptions-=T  "remove toolbar
 set guioptions-=L
 set guioptions=-l
+
 if os == "Darwin"
   set guifont=Inconsolata\ for\ Powerline:h13
 endif
