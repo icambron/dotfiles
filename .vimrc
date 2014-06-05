@@ -135,6 +135,11 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'matchit.zip'
 
+" tmux
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'kana/vim-fakeclip'
+let g:fakeclip_provide_clipboard_key_mappings = 1
+
 " Tabbing
 Bundle 'nathanaelkane/vim-indent-guides'
 set expandtab
@@ -153,8 +158,8 @@ nmap <silent> <leader>cd :lcd %:h<CR>         " cd to the directory containing t
 nmap <silent> <leader>md :!mkdir -p %:p:h<CR> " Create the directory containing the file in the buffer
 Bundle 'vim-scripts/ZoomWin'
 
-Bundle 'rgarver/Kwbd.vim'
-nnoremap <silent> ,d :<C-u>Kwbd<CR>
+" Bundle 'rgarver/Kwbd.vim'
+" nnoremap <silent> ,d :<C-u>Kwbd<CR>
 
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
