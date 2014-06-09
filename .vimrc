@@ -139,8 +139,8 @@ Bundle 'matchit.zip'
 
 " tmux
 Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'kana/vim-fakeclip'
 let g:fakeclip_provide_clipboard_key_mappings = 1
+Bundle 'kana/vim-fakeclip'
 
 " Tabbing
 Bundle 'nathanaelkane/vim-indent-guides'
