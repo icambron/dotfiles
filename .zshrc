@@ -22,6 +22,9 @@ function git_prompt_info() {
 
 INSERTMODE="$fg_bold[blue]ins$reset_color"
 VIMODE=$INSERTMODE
+function precmd(){
+  VIMODE=$INSERTMODE
+}
 function zle-keymap-select(){
   case $KEYMAP in
     vicmd) VIMODE="$fg_bold[green]cmd$reset_color";;
