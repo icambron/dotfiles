@@ -21,6 +21,3 @@ do
 done
 
 vim +BundleInstall +qall
-
-echo "Compiling vimproc"
-cd .vim/bundle/vimproc.vim; make

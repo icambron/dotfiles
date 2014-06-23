@@ -160,8 +160,8 @@ nmap <silent> <leader>cd :lcd %:h<CR>         " cd to the directory containing t
 nmap <silent> <leader>md :!mkdir -p %:p:h<CR> " Create the directory containing the file in the buffer
 Bundle 'vim-scripts/ZoomWin'
 
-" Bundle 'rgarver/Kwbd.vim'
-" nnoremap <silent> ,d :<C-u>Kwbd<CR>
+Bundle 'rgarver/Kwbd.vim'
+nnoremap <silent> ,d :<C-u>Kwbd<CR>
 
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
@@ -256,13 +256,6 @@ Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-fireplace'
 Bundle 'luochen1990/rainbow'
 let g:rainbow_active = 0
-
-"Shell
-Bundle 'Shougo/vimproc.vim'
-Bundle "Shougo/vimshell.vim"
-set shell=/bin/zsh
-let g:vimshell_user_prompt = '"[" . hostname() . "] [" . getcwd() . "]"'
-let g:vimshell_prompt = '-> '
 
 syntax enable                   " Turn on syntax highlighting allowing local overrides
 
