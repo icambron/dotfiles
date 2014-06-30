@@ -99,7 +99,6 @@ if has("gui_macvim") && has("gui_running")
   nmap <D-k> [e
   nmap <D-j> ]e
 
-  
   vmap <D-Up> [egv                  " Bubble multiple lines 
   vmap <D-Down> ]egv
   vmap <D-k> [egv
@@ -140,6 +139,7 @@ Bundle 'matchit.zip'
 " tmux
 Bundle 'christoomey/vim-tmux-navigator'
 let g:fakeclip_provide_clipboard_key_mappings = 1
+let g:fakeclip_terminal_multiplexer_type = "tmux"
 Bundle 'kana/vim-fakeclip'
 
 " Tabbing
@@ -245,14 +245,15 @@ Bundle 'kchmck/vim-coffee-script'
 autocmd BufRead,BufNewFile {*.coffee,Cakefile} setf coffee
 Bundle "jQuery"
 
-Bundle 'jnwhiteh/vim-golang'
-
 Bundle 'tpope/vim-markdown'
 autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
 
 Bundle 'chrisbra/csv.vim'
 
 Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-leiningen'
+Bundle 'tpope/vim-projectionist'
+Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-fireplace'
 Bundle 'luochen1990/rainbow'
 let g:rainbow_active = 0
