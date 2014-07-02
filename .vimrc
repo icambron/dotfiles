@@ -5,7 +5,7 @@ let os = substitute(system('uname'), "\n", "", "")
 filetype on
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " Functions
 function! s:setupWrapping()
@@ -129,21 +129,21 @@ else
   vmap <C-j> ]egv
 endif
 
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'mbbill/undotree'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'matchit.zip'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'mbbill/undotree'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'matchit.zip'
 
 " tmux
-Bundle 'christoomey/vim-tmux-navigator'
+Plugin 'christoomey/vim-tmux-navigator'
 let g:fakeclip_provide_clipboard_key_mappings = 1
 let g:fakeclip_terminal_multiplexer_type = "tmux"
-Bundle 'kana/vim-fakeclip'
+Plugin 'kana/vim-fakeclip'
 
 " Tabbing
-Bundle 'nathanaelkane/vim-indent-guides'
+Plugin 'nathanaelkane/vim-indent-guides'
 set expandtab
 set shiftwidth=2
 set softtabstop=2
@@ -158,9 +158,9 @@ set wrapmargin=0
 " Buffer/file management
 nmap <silent> <leader>cd :lcd %:h<CR>         " cd to the directory containing the file in the buffer
 nmap <silent> <leader>md :!mkdir -p %:p:h<CR> " Create the directory containing the file in the buffer
-Bundle 'vim-scripts/ZoomWin'
+Plugin 'vim-scripts/ZoomWin'
 
-Bundle 'rgarver/Kwbd.vim'
+Plugin 'rgarver/Kwbd.vim'
 nnoremap <silent> ,d :<C-u>Kwbd<CR>
 
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
@@ -181,14 +181,14 @@ endif
 
 " Status bar
 set laststatus=2                       " not sure what this does, but it unconfuses airline
-Bundle 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 let g:airline_theme = 'powerlineish'
 let g:airline#extensions#tagbar#enabled = 0
 let g:airline_powerline_fonts = 1
 let g:airline_detect_whitespace = 0
 
 " Git
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 nnoremap <silent> <leader>gs :Gstatus<CR>
 nnoremap <silent> <leader>gd :Gdiff<CR>
 nnoremap <silent> <leader>gc :Gcommit<CR>
@@ -202,60 +202,60 @@ nnoremap <silent> <leader>gg :GitGutterToggle<CR>
 map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 
 " Code
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 if executable('ctags')
-  Bundle 'majutsushi/tagbar'
+  Plugin 'majutsushi/tagbar'
 endif
 
 " Finding files
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 
 " Ack stuff
 if executable('ag')
-  Bundle 'mileszs/ack.vim'
+  Plugin 'mileszs/ack.vim'
   let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 elseif executable('ack-grep')
   let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-  Bundle 'mileszs/ack.vim'
+  Plugin 'mileszs/ack.vim'
 elseif executable('ack')
-  Bundle 'mileszs/ack.vim'
+  Plugin 'mileszs/ack.vim'
 endif
 
 " Languages
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-rvm'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rvm'
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'groenewege/vim-less'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'groenewege/vim-less'
 
-Bundle 'amirh/HTML-AutoCloseTag'
-Bundle 'tpope/vim-haml'
-Bundle 'slim-template/vim-slim'
+Plugin 'amirh/HTML-AutoCloseTag'
+Plugin 'tpope/vim-haml'
+Plugin 'slim-template/vim-slim'
 autocmd BufRead,BufNewFile {*.slim} setf slim
 
-Bundle 'elzr/vim-json'
-Bundle 'pangloss/vim-javascript'
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'elzr/vim-json'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
 autocmd BufRead,BufNewFile {*.coffee,Cakefile} setf coffee
-Bundle "jQuery"
+Plugin 'jQuery'
 
-Bundle 'tpope/vim-markdown'
+Plugin 'tpope/vim-markdown'
 autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
 
-Bundle 'chrisbra/csv.vim'
+Plugin 'chrisbra/csv.vim'
 
-Bundle 'guns/vim-clojure-static'
-Bundle 'tpope/vim-leiningen'
-Bundle 'tpope/vim-projectionist'
-Bundle 'tpope/vim-dispatch'
-Bundle 'tpope/vim-fireplace'
-Bundle 'luochen1990/rainbow'
+Plugin 'guns/vim-clojure-static'
+Plugin 'tpope/vim-leiningen'
+Plugin 'tpope/vim-projectionist'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-fireplace'
+Plugin 'luochen1990/rainbow'
 let g:rainbow_active = 0
 
 syntax enable                   " Turn on syntax highlighting allowing local overrides
@@ -266,11 +266,11 @@ filetype plugin indent on
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Colors
-Bundle 'rking/vim-detailed'
+Plugin 'rking/vim-detailed'
 colorscheme detailed
 
 "Use tomorrow night everywhere, but switch to vim-detailed for ruby
-Bundle 'chriskempson/vim-tomorrow-theme'
+Plugin 'chriskempson/vim-tomorrow-theme'
 "colorscheme Tomorrow-Night-Bright
 "autocmd BufEnter,BufNewFile {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme detailed
 "autocmd BufLeave {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme Tomorrow-Night-Bright
