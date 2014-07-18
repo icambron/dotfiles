@@ -138,9 +138,9 @@ Plugin 'matchit.zip'
 
 " tmux
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'kana/vim-fakeclip'
 let g:fakeclip_provide_clipboard_key_mappings = 1
 let g:fakeclip_terminal_multiplexer_type = "tmux"
-Plugin 'kana/vim-fakeclip'
 
 " Tabbing
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -195,10 +195,7 @@ nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>gl :Glog<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
-nnoremap <silent> <leader>gr :Gread<CR>:GitGutter<CR>
-nnoremap <silent> <leader>gw :Gwrite<CR>:GitGutter<CR>
 nnoremap <silent> <leader>ge :Gedit<CR>
-nnoremap <silent> <leader>gg :GitGutterToggle<CR>
 map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 
 " Code
@@ -242,8 +239,13 @@ autocmd BufRead,BufNewFile {*.slim} setf slim
 Plugin 'elzr/vim-json'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
-autocmd BufRead,BufNewFile {*.coffee,Cakefile} setf coffee
+Plugin 'icambron/vim-literate-coffeescript'
 Plugin 'jQuery'
+
+"unclear why these are needed
+autocmd BufRead,BufNewFile {*.coffee,Cakefile} setf coffee
+autocmd BufRead,BufNewFile {*.litcoffee} setf litcoffee
+autocmd BufRead,BufNewFile {Vagrantfile} setf ruby
 
 Plugin 'tpope/vim-markdown'
 autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
@@ -280,3 +282,6 @@ if $TERM_PROGRAM =~ "iTerm"
     let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
     let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 endif
+
+hi clear SpellBad
+hi SpellBad cterm=underline ctermfg=red
