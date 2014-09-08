@@ -10,6 +10,7 @@ export PATH=$PATH:/usr/local/heroku/bin
 export PATH=$PATH:$HOME/code/go/bin
 export GOPATH=$HOME/code/go
 
+
 if [ -e ~/.nvm ]; then
   ~/.nvm/nvm.sh
 fi

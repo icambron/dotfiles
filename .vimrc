@@ -242,12 +242,14 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'icambron/vim-literate-coffeescript'
 Plugin 'jQuery'
 
-"unclear why these are needed
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'tpope/vim-markdown'
+
+"unclear why these are needed - shouldn't the plugins handle this automatically?
 autocmd BufRead,BufNewFile {*.coffee,Cakefile} setf coffee
 autocmd BufRead,BufNewFile {*.litcoffee} setf litcoffee
 autocmd BufRead,BufNewFile {Vagrantfile} setf ruby
-
-Plugin 'tpope/vim-markdown'
+autocmd BufRead,BufNewFile {Dockerfile} setf dockerfile
 autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
 
 Plugin 'chrisbra/csv.vim'
