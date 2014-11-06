@@ -1,11 +1,6 @@
 " Facts
 let os = substitute(system('uname'), "\n", "", "")
-
-" Vundle incantation
 filetype on
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Plugin 'gmarik/vundle'
 
 " Functions
 function! s:setupWrapping()
@@ -23,6 +18,8 @@ set noswapfile
 set history=1000
 set backup                  " Backups are nice ...
 set backupdir=~/.vim/back
+set exrc            " enable per-directory .vimrc files
+set secure          " disable unsafe commands in local .vimrc files
 if has('persistent_undo')
   set undofile              " So is persistent undo ...
   set undolevels=1000       " Maximum number of changes that can be undone
@@ -45,7 +42,17 @@ set listchars+=trail:.            " show trailing spaces as dots
 set listchars+=extends:>          " The character to show in the last column when wrap is
                                   " off and the line continues beyond the right of the screen
 set listchars+=precedes:<         " The character to show in the last column when wrap is
-                                  " off and the line continues beyond the left of the screen
+
+set laststatus=2                       " not sure what this does, but it unconfuses airline
+
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
+set wildignore+=*/tmp/cache/assets/*/sprockets/*,*/tmp/cache/assets/*/sass/*
+set wildignore+=*.swp,*~,._*
+set wildmenu                    " Show list instead of just completing
+set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
+set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 
 " GUI customization
 set guicursor=a:blinkon0 " Shut off the fucking blinking cursor
@@ -71,15 +78,131 @@ set smartcase         " ... unless they contain at least one capital letter
 
 " Editing/Formatting
 set backspace=indent,eol,start           " Backspace for dummies
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set autoindent
+set pastetoggle=<F4>
+
+" Text wrapping
+set nowrap
+set textwidth=0
+set wrapmargin=0
+
+" Clipboard
+if os == "Linux"
+  set clipboard=unnamedplus
+elseif os == "Darwin"
+  set clipboard=unnamed
+endif
+
+" config settings for plugins
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_rails = 1
+let g:rainbow_active = 0
+let g:fakeclip_provide_clipboard_key_mappings = 1
+let g:fakeclip_terminal_multiplexer_type = "tmux"
+let g:airline_theme = 'powerlineish'
+let g:airline#extensions#tagbar#enabled = 0
+let g:airline_powerline_fonts = 1
+let g:airline_detect_whitespace = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
+
+" Vundle incantation
+set rtp+=~/.vim/bundle/vundle/
+call vundle#begin()
+
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'mbbill/undotree'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'matchit.zip'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'kana/vim-fakeclip'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'vim-scripts/ZoomWin'
+Plugin 'rgarver/Kwbd.vim'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/syntastic'
+
+if executable('ctags')
+  Plugin 'majutsushi/tagbar'
+endif
+
+" Finding files
+Plugin 'kien/ctrlp.vim'
+" Ack stuff
+if executable('ag')
+  Plugin 'mileszs/ack.vim'
+  let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+elseif executable('ack-grep')
+  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+  Plugin 'mileszs/ack.vim'
+elseif executable('ack')
+  Plugin 'mileszs/ack.vim'
+endif
+
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rvm'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'groenewege/vim-less'
+Plugin 'amirh/HTML-AutoCloseTag'
+Plugin 'tpope/vim-haml'
+Plugin 'slim-template/vim-slim'
+Plugin 'elzr/vim-json'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'icambron/vim-literate-coffeescript'
+Plugin 'jQuery'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'tpope/vim-markdown'
+Plugin 'chrisbra/csv.vim'
+Plugin 'guns/vim-clojure-static'
+Plugin 'tpope/vim-leiningen'
+Plugin 'tpope/vim-projectionist'
+Plugin 'tpope/vim-dispatch'
+
+Plugin 'tpope/vim-fireplace'
+"Plugin 'file:///Users/isaac/code/vim-fireplace'
+
+Plugin 'luochen1990/rainbow'
+Plugin 'rking/vim-detailed'
+Plugin 'chriskempson/vim-tomorrow-theme'
+call vundle#end()
+
+syntax enable                   " Turn on syntax highlighting allowing local overrides
+filetype plugin indent on
+
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+"unclear why these are needed - shouldn't the plugins handle this automatically?
+autocmd BufRead,BufNewFile {*.coffee,Cakefile} setf coffee
+autocmd BufRead,BufNewFile {*.litcoffee} setf litcoffee
+autocmd BufRead,BufNewFile {Vagrantfile} setf ruby
+autocmd BufRead,BufNewFile {Dockerfile} setf dockerfile
+autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
+autocmd BufRead,BufNewFile {*.slim} setf slim
+
+" Colors
+colorscheme detailed
+"colorscheme Tomorrow-Night-Bright
+"autocmd BufEnter,BufNewFile {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme detailed
+"autocmd BufLeave {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme Tomorrow-Night-Bright
+
+hi clear SpellBad
+hi SpellBad cterm=underline ctermfg=red
+
+" Keybindings
 nnoremap <leader>fef :normal! gg=G``<CR> " Format the entire file
 nmap <leader>u mQviwU`Q                  " upper/lower word
 nmap <leader>l mQviwu`Q
 nmap <leader>U mQgewvU`Q                 " upper/lower first char of word
 nmap <leader>L mQgewvu`Q
 nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`' " swap two words
-if exists("g:enable_mvim_shift_arrow")
-  let macvim_hig_shift_movement = 1 " mvim shift-arrow-keys
-endif
 
 if has("gui_macvim") && has("gui_running")
   vmap <D-]> >gv                    " Map command-[ and command-] to indenting or outdenting while keeping the original selection in visual mode 
@@ -129,66 +252,8 @@ else
   vmap <C-j> ]egv
 endif
 
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'mbbill/undotree'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'matchit.zip'
-
-" tmux
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'kana/vim-fakeclip'
-let g:fakeclip_provide_clipboard_key_mappings = 1
-let g:fakeclip_terminal_multiplexer_type = "tmux"
-
-" Tabbing
-Plugin 'nathanaelkane/vim-indent-guides'
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-set autoindent
-set pastetoggle=<F4>
-
-" Text wrapping
-set nowrap
-set textwidth=0
-set wrapmargin=0
-
-" Buffer/file management
-nmap <silent> <leader>cd :lcd %:h<CR>         " cd to the directory containing the file in the buffer
-nmap <silent> <leader>md :!mkdir -p %:p:h<CR> " Create the directory containing the file in the buffer
-Plugin 'vim-scripts/ZoomWin'
-
-Plugin 'rgarver/Kwbd.vim'
 nnoremap <silent> ,d :<C-u>Kwbd<CR>
 
-set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
-set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
-set wildignore+=*/tmp/cache/assets/*/sprockets/*,*/tmp/cache/assets/*/sass/*
-set wildignore+=*.swp,*~,._*
-set wildmenu                    " Show list instead of just completing
-set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
-set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
-
-" Clipboard
-if os == "Linux"
-  set clipboard=unnamedplus
-elseif os == "Darwin"
-  set clipboard=unnamed
-endif
-
-" Status bar
-set laststatus=2                       " not sure what this does, but it unconfuses airline
-Plugin 'bling/vim-airline'
-let g:airline_theme = 'powerlineish'
-let g:airline#extensions#tagbar#enabled = 0
-let g:airline_powerline_fonts = 1
-let g:airline_detect_whitespace = 0
-
-" Git
-Plugin 'tpope/vim-fugitive'
 nnoremap <silent> <leader>gs :Gstatus<CR>
 nnoremap <silent> <leader>gd :Gdiff<CR>
 nnoremap <silent> <leader>gc :Gcommit<CR>
@@ -198,92 +263,6 @@ nnoremap <silent> <leader>gp :Git push<CR>
 nnoremap <silent> <leader>ge :Gedit<CR>
 map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 
-" Code
-Plugin 'scrooloose/syntastic'
-if executable('ctags')
-  Plugin 'majutsushi/tagbar'
-endif
-
-" Finding files
-Plugin 'kien/ctrlp.vim'
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
-
-" Ack stuff
-if executable('ag')
-  Plugin 'mileszs/ack.vim'
-  let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
-elseif executable('ack-grep')
-  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-  Plugin 'mileszs/ack.vim'
-elseif executable('ack')
-  Plugin 'mileszs/ack.vim'
-endif
-
-" Languages
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rvm'
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
-
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'groenewege/vim-less'
-
-Plugin 'amirh/HTML-AutoCloseTag'
-Plugin 'tpope/vim-haml'
-Plugin 'slim-template/vim-slim'
-autocmd BufRead,BufNewFile {*.slim} setf slim
-
-Plugin 'elzr/vim-json'
-Plugin 'pangloss/vim-javascript'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'icambron/vim-literate-coffeescript'
-Plugin 'jQuery'
-
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'tpope/vim-markdown'
-
-"unclear why these are needed - shouldn't the plugins handle this automatically?
-autocmd BufRead,BufNewFile {*.coffee,Cakefile} setf coffee
-autocmd BufRead,BufNewFile {*.litcoffee} setf litcoffee
-autocmd BufRead,BufNewFile {Vagrantfile} setf ruby
-autocmd BufRead,BufNewFile {Dockerfile} setf dockerfile
-autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
-
-Plugin 'chrisbra/csv.vim'
-
-Plugin 'guns/vim-clojure-static'
-Plugin 'tpope/vim-leiningen'
-Plugin 'tpope/vim-projectionist'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-fireplace'
-Plugin 'luochen1990/rainbow'
-let g:rainbow_active = 0
-
-syntax enable                   " Turn on syntax highlighting allowing local overrides
-
-" End Vundle encantation
-filetype plugin indent on
-
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" Colors
-Plugin 'rking/vim-detailed'
-colorscheme detailed
-
-"Use tomorrow night everywhere, but switch to vim-detailed for ruby
-Plugin 'chriskempson/vim-tomorrow-theme'
-"colorscheme Tomorrow-Night-Bright
-"autocmd BufEnter,BufNewFile {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme detailed
-"autocmd BufLeave {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme Tomorrow-Night-Bright
-
-" Change cursor shape between insert and normal mode in iTerm2.app
-if $TERM_PROGRAM =~ "iTerm"
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
-endif
-
-hi clear SpellBad
-hi SpellBad cterm=underline ctermfg=red
+" Buffer/file management
+nmap <silent> <leader>cd :lcd %:h<CR>         " cd to the directory containing the file in the buffer
+nmap <silent> <leader>md :!mkdir -p %:p:h<CR> " Create the directory containing the file in the buffer

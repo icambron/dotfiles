@@ -10,7 +10,6 @@ export PATH=$PATH:/usr/local/heroku/bin
 export PATH=$PATH:$HOME/code/go/bin
 export GOPATH=$HOME/code/go
 
-
 if [ -e ~/.nvm ]; then
   ~/.nvm/nvm.sh
 fi
@@ -43,3 +42,7 @@ fi
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 [[ -s "$HOME/.zshprivate" ]] && source "$HOME/.zshprivate"
+
+export DOCKER_CERT_PATH=/Users/isaac/.boot2docker/certs/boot2docker-vm
+export DOCKER_HOST=tcp://192.168.59.104:2376
+export DOCKER_TLS_VERIFY=1
