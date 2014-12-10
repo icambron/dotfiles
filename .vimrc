@@ -140,8 +140,8 @@ if executable('ag')
   Plugin 'mileszs/ack.vim'
   let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 elseif executable('ack-grep')
-  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
   Plugin 'mileszs/ack.vim'
+  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 elseif executable('ack')
   Plugin 'mileszs/ack.vim'
 endif
@@ -167,6 +167,7 @@ Plugin 'tpope/vim-leiningen'
 Plugin 'tpope/vim-projectionist'
 Plugin 'tpope/vim-dispatch'
 
+Plugin 'derekwyatt/vim-scala'
 Plugin 'tpope/vim-fireplace'
 "Plugin 'file:///Users/isaac/code/vim-fireplace'
 
@@ -186,6 +187,7 @@ autocmd BufRead,BufNewFile {Vagrantfile} setf ruby
 autocmd BufRead,BufNewFile {Dockerfile} setf dockerfile
 autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
 autocmd BufRead,BufNewFile {*.slim} setf slim
+autocmd BufRead,BufNewFile {*.scala} setf scala
 
 " Colors
 colorscheme detailed
