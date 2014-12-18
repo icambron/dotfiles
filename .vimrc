@@ -2,48 +2,39 @@
 let os = substitute(system('uname'), "\n", "", "")
 filetype on
 
-" Functions
-function! s:setupWrapping()
-  set wrap
-  set linebreak
-  set textwidth=72
-  set nolist
-endfunction
-
 " Basics
 set timeoutlen=1000 ttimeoutlen=0 " Get rid of delays
-set nocompatible      " Use vim, no vi defaults
-set encoding=utf-8    " Set default encoding to UTF-8
+set nocompatible
+set encoding=utf-8
 set noswapfile
 set history=1000
-set backup                  " Backups are nice ...
+set backup
 set backupdir=~/.vim/back
 set exrc            " enable per-directory .vimrc files
 set secure          " disable unsafe commands in local .vimrc files
 if has('persistent_undo')
-  set undofile              " So is persistent undo ...
-  set undolevels=1000       " Maximum number of changes that can be undone
-  set undoreload=10000      " Maximum number lines to save for undo on a buffer reload
+  set undofile
+  set undolevels=1000
+  set undoreload=10000
   set undodir=~/.vim/undo
 endif
 
 " UI
 set background=dark
-set number                      " Show line numbers
-set ruler                       " Show line and column number
+set number
+set ruler
 set shortmess+=filmnrxoOtT      " Abbrev. of messages (avoids 'hit enter')
 "set cursorline
 set showmatch
 
-set list                          " Show invisible characters
-set listchars=""                  " Reset the listchars
-set listchars=tab:\ \             " a tab should display as "  ", trailing whitespace as "."
-set listchars+=trail:.            " show trailing spaces as dots
-set listchars+=extends:>          " The character to show in the last column when wrap is
-                                  " off and the line continues beyond the right of the screen
-set listchars+=precedes:<         " The character to show in the last column when wrap is
+set list                        " Show invisible characters
+set listchars=""                " Reset the listchars
+set listchars=tab:\ \           " A tab should display as "  ", trailing whitespace as "."
+set listchars+=trail:.          " show trailing spaces as dots
+set listchars+=extends:>        " The character to show in the last column when wrap is off and the line continues beyond the right of the screen
+set listchars+=precedes:<       " The character to show in the last column when wrap is
 
-set laststatus=2                       " not sure what this does, but it unconfuses airline
+set laststatus=2                " Not sure what this does, but it unconfuses airline
 
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
@@ -55,8 +46,8 @@ set wildmode=list:longest,full  " Command <Tab> completion, list matches, then l
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 
 " GUI customization
-set guicursor=a:blinkon0 " Shut off the fucking blinking cursor
-set guioptions-=T  "remove toolbar
+set guicursor=a:blinkon0        " Shut off the fucking blinking cursor
+set guioptions-=T               " Remove toolbar
 set guioptions-=L
 set guioptions=-l
 
@@ -65,19 +56,18 @@ if os == "Darwin"
 endif
 if has("gui_running")
   if has("autocmd")
-    " Automatically resize splits when resizing MacVim window
-    autocmd VimResized * wincmd =
+    autocmd VimResized * wincmd = " Automatically resize splits when resizing MacVim window
   endif
 endif
 
 " Search
-set hlsearch          " highlight matches
-set incsearch         " incremental searching
-set ignorecase        " searches are case insensitive...
-set smartcase         " ... unless they contain at least one capital letter
+set hlsearch          " Highlight matches
+set incsearch         " Incremental searching
+set ignorecase        " Searches are case insensitive...
+set smartcase         " ...Unless they contain at least one capital letter
 
 " Editing/Formatting
-set backspace=indent,eol,start           " Backspace for dummies
+set backspace=indent,eol,start  " Backspace for dummies
 set expandtab
 set shiftwidth=2
 set softtabstop=2
@@ -96,11 +86,10 @@ elseif os == "Darwin"
   set clipboard=unnamed
 endif
 
-" config settings for plugins
+" Config settings for plugins
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
-let g:rainbow_active = 0
 let g:fakeclip_provide_clipboard_key_mappings = 1
 let g:fakeclip_terminal_multiplexer_type = "tmux"
 let g:airline_theme = 'powerlineish'
@@ -109,11 +98,15 @@ let g:airline_powerline_fonts = 1
 let g:airline_detect_whitespace = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
+if executable('ag')
+  let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+endif
 
 " Vundle incantation
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
+Plugin 'tpope/vim-repeat'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mbbill/undotree'
 Plugin 'terryma/vim-multiple-cursors'
@@ -126,24 +119,12 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/ZoomWin'
 Plugin 'rgarver/Kwbd.vim'
 Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
 
 if executable('ctags')
   Plugin 'majutsushi/tagbar'
-endif
-
-" Finding files
-Plugin 'kien/ctrlp.vim'
-" Ack stuff
-if executable('ag')
-  Plugin 'mileszs/ack.vim'
-  let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
-elseif executable('ack-grep')
-  Plugin 'mileszs/ack.vim'
-  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-elseif executable('ack')
-  Plugin 'mileszs/ack.vim'
 endif
 
 Plugin 'tpope/vim-rails'
@@ -166,20 +147,20 @@ Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-leiningen'
 Plugin 'tpope/vim-projectionist'
 Plugin 'tpope/vim-dispatch'
-
 Plugin 'derekwyatt/vim-scala'
 Plugin 'tpope/vim-fireplace'
-"Plugin 'file:///Users/isaac/code/vim-fireplace'
+Plugin 'amdt/vim-niji'
+Plugin 'tpope/vim-fugitive'
+Plugin 'chriskempson/base16-vim'
+Plugin 'itchyny/landscape.vim'
 
-Plugin 'luochen1990/rainbow'
-Plugin 'rking/vim-detailed'
-Plugin 'chriskempson/vim-tomorrow-theme'
 call vundle#end()
 
 syntax enable                   " Turn on syntax highlighting allowing local overrides
 filetype plugin indent on
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 "unclear why these are needed - shouldn't the plugins handle this automatically?
 autocmd BufRead,BufNewFile {*.coffee,Cakefile} setf coffee
 autocmd BufRead,BufNewFile {*.litcoffee} setf litcoffee
@@ -188,83 +169,16 @@ autocmd BufRead,BufNewFile {Dockerfile} setf dockerfile
 autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
 autocmd BufRead,BufNewFile {*.slim} setf slim
 autocmd BufRead,BufNewFile {*.scala} setf scala
+autocmd BufRead,BufNewFile {*.cljs} setf clojure
 
 " Colors
-colorscheme detailed
-"colorscheme Tomorrow-Night-Bright
-"autocmd BufEnter,BufNewFile {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme detailed
-"autocmd BufLeave {*.rb,Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} colorscheme Tomorrow-Night-Bright
-
+colorscheme landscape
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=red
 
 " Keybindings
 nnoremap <leader>fef :normal! gg=G``<CR> " Format the entire file
-nmap <leader>u mQviwU`Q                  " upper/lower word
-nmap <leader>l mQviwu`Q
-nmap <leader>U mQgewvU`Q                 " upper/lower first char of word
-nmap <leader>L mQgewvu`Q
-nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`' " swap two words
-
-if has("gui_macvim") && has("gui_running")
-  vmap <D-]> >gv                    " Map command-[ and command-] to indenting or outdenting while keeping the original selection in visual mode 
-  vmap <D-[> <gv
-
-  nmap <D-]> >>
-  nmap <D-[> <<
-
-  omap <D-]> >>
-  omap <D-[> <<
-
-  imap <D-]> <Esc>>>i
-  imap <D-[> <Esc><<i
-
-  nmap <D-Up> [e                    " Bubble single lines
-  nmap <D-Down> ]e
-  nmap <D-k> [e
-  nmap <D-j> ]e
-
-  vmap <D-Up> [egv                  " Bubble multiple lines 
-  vmap <D-Down> ]egv
-  vmap <D-k> [egv
-  vmap <D-j> ]egv
-
-else
-
-  vmap <A-]> >gv                    " Map command-[ and command-] to indenting or outdenting while keeping the original selection in visual mode
-  vmap <A-[> <gv
-
-  nmap <A-]> >>
-  nmap <A-[> <<
-
-  omap <A-]> >>
-  omap <A-[> <<
-
-  imap <A-]> <Esc>>>i
-  imap <A-[> <Esc><<i
-
-  nmap <C-Up> [e                    " Bubble single lines
-  nmap <C-Down> ]e
-  nmap <C-k> [e
-  nmap <C-j> ]e
-
-  vmap <C-Up> [egv                  " Bubble multiple lines 
-  vmap <C-Down> ]egv
-  vmap <C-k> [egv
-  vmap <C-j> ]egv
-endif
-
+nnoremap <F5> :UndotreeToggle<cr>
 nnoremap <silent> ,d :<C-u>Kwbd<CR>
-
-nnoremap <silent> <leader>gs :Gstatus<CR>
-nnoremap <silent> <leader>gd :Gdiff<CR>
-nnoremap <silent> <leader>gc :Gcommit<CR>
-nnoremap <silent> <leader>gb :Gblame<CR>
-nnoremap <silent> <leader>gl :Glog<CR>
-nnoremap <silent> <leader>gp :Git push<CR>
-nnoremap <silent> <leader>ge :Gedit<CR>
-map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
-
-" Buffer/file management
 nmap <silent> <leader>cd :lcd %:h<CR>         " cd to the directory containing the file in the buffer
 nmap <silent> <leader>md :!mkdir -p %:p:h<CR> " Create the directory containing the file in the buffer

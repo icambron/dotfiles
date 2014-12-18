@@ -1,6 +1,9 @@
 autoload -U colors && colors
 setopt PROMPT_SUBST
 
+BASE16_SHELL="$HOME/.base16/base16-shell.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
 GIT_PROMPT_PREFIX="$fg[green]["
 GIT_PROMPT_SUFFIX="]$reset_color"
 
