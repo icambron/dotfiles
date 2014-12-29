@@ -153,6 +153,7 @@ Plugin 'amdt/vim-niji'
 Plugin 'tpope/vim-fugitive'
 Plugin 'chriskempson/base16-vim'
 Plugin 'itchyny/landscape.vim'
+Plugin 'suan/vim-instant-markdown'
 
 call vundle#end()
 
