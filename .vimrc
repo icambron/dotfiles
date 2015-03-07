@@ -98,6 +98,9 @@ let g:airline_powerline_fonts = 1
 let g:airline_detect_whitespace = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
+let g:instant_markdown_slow = 1
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'passive_filetypes': ['java'] }
 if executable('ag')
   let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 endif

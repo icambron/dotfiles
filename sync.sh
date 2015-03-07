@@ -5,7 +5,7 @@ dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 for f in *
 do
-  if [[ $f =~ \.(rb|sh)$ ]] || [[ $f =~ ^\.git ]]; then
+  if [[ $f =~ \.(rb|sh|md)$ ]] || [[ $f =~ ^\.git ]]; then
     continue
   fi
 

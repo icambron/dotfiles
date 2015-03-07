@@ -43,4 +43,8 @@ fi
 
 [[ -s "$HOME/.zshprivate" ]] && source "$HOME/.zshprivate"
 
+if [ -e /usr/local/share/zsh/site-functions/_aws ]; then
+  source /usr/local/share/zsh/site-functions/_aws
+fi
+
 $(boot2docker shellinit 2>/dev/null)
