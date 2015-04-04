@@ -12,6 +12,7 @@ set backup
 set backupdir=~/.vim/back
 set exrc            " enable per-directory .vimrc files
 set secure          " disable unsafe commands in local .vimrc files
+
 if has('persistent_undo')
   set undofile
   set undolevels=1000
@@ -92,13 +93,12 @@ let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 let g:fakeclip_provide_clipboard_key_mappings = 1
 let g:fakeclip_terminal_multiplexer_type = "tmux"
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'murmur'
 let g:airline#extensions#tagbar#enabled = 0
 let g:airline_powerline_fonts = 1
 let g:airline_detect_whitespace = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
-let g:instant_markdown_slow = 1
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'passive_filetypes': ['java'] }
 if executable('ag')
@@ -156,7 +156,6 @@ Plugin 'amdt/vim-niji'
 Plugin 'tpope/vim-fugitive'
 Plugin 'chriskempson/base16-vim'
 Plugin 'itchyny/landscape.vim'
-Plugin 'suan/vim-instant-markdown'
 
 call vundle#end()
 
@@ -174,6 +173,7 @@ autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
 autocmd BufRead,BufNewFile {*.slim} setf slim
 autocmd BufRead,BufNewFile {*.scala} setf scala
 autocmd BufRead,BufNewFile {*.cljs} setf clojure
+autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 " Colors
 colorscheme landscape
