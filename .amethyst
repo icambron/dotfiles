@@ -1,0 +1,34 @@
+{
+  "mod1": [
+    "option",
+  ],
+  "mod2": [
+    "option",
+    "shift"
+  ],
+  "layouts": [
+    "tall",
+    "fullscreen",
+    "wide"
+  ],
+  "floating": [
+    "com.agilebits.onepassword-osx",
+    "com.apple.Aperture",
+    "com.apple.DiskUtility",
+    "com.apple.ScreenSharing",
+    "com.apple.appstore",
+    "com.apple.backup.launcher",
+    "com.apple.bootcampassistant",
+    "com.apple.iTunes",
+    "com.apple.systempreferences",
+    "com.cockos.LICEcap",
+    "com.derlien.DiskInventoryX",
+    "com.intel.nw",
+    "com.pixelmatorteam.pixelmator",
+    "com.skitch.skitch",
+    "com.twitter.twitter-mac",
+    "fr.handbrake.HandBrake",
+    "net.projectmagma.myth2",
+    "org.virtualbox.app.VirtualBoxVM",
+  ]
+}
