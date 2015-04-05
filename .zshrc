@@ -1,45 +1,6 @@
-autoload -U colors && colors
-setopt PROMPT_SUBST
+TERM=xterm-256color
 
-BASE16_SHELL="$HOME/.base16/base16-shell.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-
-GIT_PROMPT_PREFIX="$fg[green]["
-GIT_PROMPT_SUFFIX="]$reset_color"
-
-# get the name of the branch we are on
-function git_prompt_info() {
-  local DIRTY_OR_CLEAN=''
-  local GIT_STATUS=''
-
-  GIT_STATUS=$(command git status -s --ignore-submodules=dirty 2> /dev/null | tail -n1)
-
-  if [[ -n $GIT_STATUS ]]; then
-    DIRTY_OR_CLEAN=" $fg[red]*$fg[green]"
-  fi
-
-  ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
-  ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
-  echo "$GIT_PROMPT_PREFIX${ref#refs/heads/}$DIRTY_OR_CLEAN$GIT_PROMPT_SUFFIX "
-}
-
-INSERTMODE="$fg_bold[blue]ins$reset_color"
-VIMODE=$INSERTMODE
-function precmd(){
-  VIMODE=$INSERTMODE
-}
-function zle-keymap-select(){
-  case $KEYMAP in
-    vicmd) VIMODE="$fg_bold[green]cmd$reset_color";;
-    viins|main) VIMODE=$INSERTMODE
-  esac
-  zle reset-prompt
-}
-
-zle -N zle-keymap-select
-
-PROMPT=$'%{$fg_bold[green]%}%n@%m %{$fg[blue]%}%D{[%I:%M:%S]} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%} $(git_prompt_info)(${VIMODE})\
-%{$fg[blue]%}->%{$fg_bold[blue]%} %{$reset_color%}'
+source "$HOME/.prompt.zsh"
 
 # vi mode
 bindkey -v
@@ -78,7 +39,7 @@ elif [[ "$os" == 'Darwin' ]]; then
 fi
 
 #ls
-alias ls='ls -G'
+alias ls='ls -aG'
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export EDITOR=vim
 
