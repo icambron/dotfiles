@@ -1,12 +1,15 @@
-(setq-default dotspacemacs-configuration-layers '(themes-megapack clojure ruby markdown git dockerfile
-                                                 (colors :variables colors-enable-rainbow-identifiers t)))
-(setq-default dotspacemacs-excluded-packages '(smartparens))
-(setq-default dotspacemacs-themes '(wheatgrass))
-(setq-default show-trailing-whitespace t)
-(setq evil-want-fine-undo 'no)
-(setq magit-last-seen-setup-instructions "1.4.0")
-(setq vc-follow-symlinks nil)
-(setq system-uses-terminfo nil)
+(setq-default dotspacemacs-configuration-layers '(themes-megapack clojure ruby markdown git dockerfile company-mode
+                                                 (colors :variables colors-enable-rainbow-identifiers t))
+              dotspacemacs-excluded-packages '(smartparens)
+              dotspacemacs-themes '(wheatgrass)
+              evil-shift-width 2
+              show-trailing-whitespace t)
+
+(setq evil-want-fine-undo 'no
+      magit-last-seen-setup-instructions "1.4.0"
+      vc-follow-symlinks nil
+      system-uses-terminfo nil)
+
 (global-linum-mode t)
 
 (defun dotspacemacs/config ()
@@ -38,6 +41,5 @@
 (add-hook 'term-mode-hook
           (lambda () (setq term-buffer-maximum-size 10000)))
 
-(add-hook 'enh-ruby-mode-hook (lambda () (rainbow-identifiers-mode 'toggle)))
-
-(setq enh-ruby-mode-hook '())
+;;rainbow-identifiers suck in ruby
+(add-hook 'enh-ruby-mode-hook (lambda () (rainbow-identifiers-mode -1)))
