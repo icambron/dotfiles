@@ -14,8 +14,8 @@
   (set-face-background 'trailing-whitespace "dim gray")
   ;;the theme doesn't help with the persistent highlighting, which is impossible to read
   (set-face-attribute 'evil-search-highlight-persist-highlight-face nil
-                      :foreground "black"
-                      :background "light sea green")
+                      :foreground "white"
+                      :background "sea green")
   ;;the theme's hl-line-face inherits from 'highlight, which sets the foreground color to white
   (set-face-attribute hl-line-face nil
                       :inherit nil
