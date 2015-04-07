@@ -105,6 +105,10 @@ if executable('ag')
   let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 endif
 
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray ctermbg=237
+
 " Vundle incantation
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
@@ -174,8 +178,9 @@ hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=red
 
 " Keybindings
+let mapleader="\\"
 nnoremap <leader>fef :normal! gg=G``<CR> " Format the entire file
-nnoremap <F5> :UndotreeToggle<cr>
-nnoremap <silent> ,d :<C-u>Kwbd<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
+nnoremap <silent> <leader>d :<C-u>Kwbd<CR>
 nmap <silent> <leader>cd :lcd %:h<CR>         " cd to the directory containing the file in the buffer
 nmap <silent> <leader>md :!mkdir -p %:p:h<CR> " Create the directory containing the file in the buffer
