@@ -43,8 +43,8 @@ function spectrum_bls() {
 
 #END SPECTRUM
 
-#this sucks, but i just can't convince multi-term to show 256 colors
 if [[ ! -z "$EMACS" ]]; then
+  #this sucks, but i just can't convince multi-term to show 256 colors
   LOGIN_COLOR="$fg[cyan]"
   TIME_COLOR="$fg[yellow]"
   DIR_COLOR="$fg[white]"

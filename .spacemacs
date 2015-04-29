@@ -1,6 +1,6 @@
 (setq-default dotspacemacs-configuration-layers '(themes-megapack clojure ruby markdown git dockerfile colors)
               dotspacemacs-excluded-packages '(smartparens)
-              dotspacemacs-themes '(wheatgrass)
+              dotspacemacs-themes '(smyx)
               evil-shift-width 2
               show-trailing-whitespace t)
 
@@ -10,8 +10,6 @@
       flycheck-rubocop-lint-only t
       flycheck-check-syntax-automatically '(mode-enabled save)
       system-uses-terminfo nil)
-
-(global-linum-mode t)
 
 (defun dotspacemacs/config ()
   ;;override the theme's crazy trailing whitespace rage
@@ -24,7 +22,11 @@
   (set-face-attribute hl-line-face nil
                       :inherit nil
                       :background "gray9")
-  (global-hl-line-mode t))
+  ;;todo: this doesn't work on load, need to do this later?
+  ;(set-face-attribute 'helm-selection nil
+  ;                    :inherit nil
+					;                    :background "gray9")
+  )
 
 (setq undo-tree-auto-save-history t
       undo-tree-history-directory-alist
