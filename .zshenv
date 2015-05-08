@@ -38,7 +38,6 @@ if [ -e /usr/local/share/chruby/chruby.sh ]; then
   chruby ruby-2.1.5
 fi
 
-# added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 [[ -s "$HOME/.zshprivate" ]] && source "$HOME/.zshprivate"
@@ -47,4 +46,6 @@ if [ -e /usr/local/share/zsh/site-functions/_aws ]; then
   source /usr/local/share/zsh/site-functions/_aws
 fi
 
-$(boot2docker shellinit 2>/dev/null)
+if [ -e boot2docker ]; then 
+  $(boot2docker shellinit 2>/dev/null)
+fi
