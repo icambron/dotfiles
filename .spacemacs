@@ -1,10 +1,11 @@
-(setq-default dotspacemacs-configuration-layers '(themes-megapack clojure ruby markdown git dockerfile colors)
+(setq-default dotspacemacs-configuration-layers '(themes-megapack clojure ruby markdown git dockerfile colors html)
               dotspacemacs-excluded-packages '(smartparens)
               dotspacemacs-themes '(smyx)
               evil-shift-width 2
               show-trailing-whitespace t)
 
 (setq evil-want-fine-undo 'no
+      css-indent-offset 2
       magit-last-seen-setup-instructions "1.4.0"
       vc-follow-symlinks nil
       flycheck-rubocop-lint-only t
@@ -25,8 +26,8 @@
   ;;todo: this doesn't work on load, need to do this later?
   ;(set-face-attribute 'helm-selection nil
   ;                    :inherit nil
-					;                    :background "gray9")
-  )
+  ;                    :background "gray9")
+)
 
 (setq undo-tree-auto-save-history t
       undo-tree-history-directory-alist
