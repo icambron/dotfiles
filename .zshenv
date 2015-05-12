@@ -46,6 +46,6 @@ if [ -e /usr/local/share/zsh/site-functions/_aws ]; then
   source /usr/local/share/zsh/site-functions/_aws
 fi
 
-if [ -e boot2docker ]; then 
+if [ -e /usr/local/bin/boot2docker ]; then 
   $(boot2docker shellinit 2>/dev/null)
 fi
