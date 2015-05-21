@@ -29,28 +29,29 @@ setopt hist_ignore_dups # ignore duplication command history list
 setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
-unsetopt share_history # share command history data
+unsetopt share_history # share command history data between instances
 
 os=$(uname)
-if [[ "$os" == 'Linux' ]]; then
-  alias ack=ack-grep
-elif [[ "$os" == 'Darwin' ]]; then
+if [[ "$os" == 'Darwin' ]]; then
   alias sudoedit="sudo -e"
 fi
+
+export EDITOR=vim
 
 #ls
 alias ls='ls -aG'
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
-export EDITOR=vim
+
+#git shortcuts
+alias rupstream=git pull upstream --rebase master
+alias rorigin=git pull origin --rebase master
 
 #other aliases
 alias nr=repl.history
 alias less='less -i'
+  alias ack=ag
 
 csv() { csvtool readable $@ | view -}
-
-export GREP_OPTIONS='--color=auto'
-export GREP_COLOR='1;32'
 
 autoload edit-command-line
 zle -N edit-command-line

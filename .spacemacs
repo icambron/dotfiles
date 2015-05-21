@@ -1,6 +1,6 @@
 (setq-default dotspacemacs-configuration-layers '(themes-megapack clojure ruby markdown git dockerfile colors html)
               dotspacemacs-excluded-packages '(smartparens)
-              dotspacemacs-themes '(smyx)
+              dotspacemacs-themes '(ujelly)
               evil-shift-width 2
               show-trailing-whitespace t)
 
