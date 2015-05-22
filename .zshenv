@@ -20,9 +20,9 @@ home='unknown'
 if [[ "$os" == 'Linux' ]]; then
   home='/home'
   if [[ $(uname -m) == 'x86_64' ]]; then
-    #export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64
+    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
   else
-    #export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-i386
+    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-i386
   fi
 elif [[ "$os" == 'Darwin' ]]; then
   PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
@@ -47,5 +47,9 @@ if [ -e /usr/local/share/zsh/site-functions/_aws ]; then
 fi
 
 if [ -e /usr/local/bin/boot2docker ]; then
-  $(boot2docker shellinit 2>/dev/null)
+  if [ -e /usr/local/bin/gtimeout ]; then
+    $(gtimeout 3 boot2docker shellinit 2>/dev/null)
+  else
+    $(boot2docker shellinit 2>/dev/null)
+  fi
 fi

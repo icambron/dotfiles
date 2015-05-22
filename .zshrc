@@ -43,13 +43,13 @@ alias ls='ls -aG'
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
 #git shortcuts
-alias rupstream=git pull upstream --rebase master
-alias rorigin=git pull origin --rebase master
+alias rupstream=git pull --rebase upstream master
+alias rorigin=git pull --rebase origin master
 
 #other aliases
 alias nr=repl.history
 alias less='less -i'
-  alias ack=ag
+alias ack=ag
 
 csv() { csvtool readable $@ | view -}
 
