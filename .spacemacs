@@ -1,4 +1,4 @@
-(setq-default dotspacemacs-configuration-layers '(themes-megapack clojure ruby markdown git dockerfile colors html)
+(setq-default dotspacemacs-configuration-layers '(themes-megapack clojure ruby markdown git dockerfile colors html spotify)
               dotspacemacs-excluded-packages '(smartparens)
               dotspacemacs-themes '(ujelly)
               evil-shift-width 2
@@ -6,6 +6,8 @@
 
 (setq evil-want-fine-undo 'no
       css-indent-offset 2
+      js2-basic-offset 2
+      js2-bounce-indent-p t
       magit-last-seen-setup-instructions "1.4.0"
       vc-follow-symlinks nil
       flycheck-rubocop-lint-only t
