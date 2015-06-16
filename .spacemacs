@@ -1,4 +1,14 @@
-(setq-default dotspacemacs-configuration-layers '(themes-megapack clojure ruby markdown git dockerfile colors html spotify)
+(setq-default dotspacemacs-configuration-layers '(clojure
+                                                  colors
+                                                  dockerfile
+                                                  emacs-lisp
+                                                  git
+                                                  html
+                                                  markdown
+                                                  ruby
+                                                  shell
+                                                  spotify
+                                                  themes-megapack)
               dotspacemacs-excluded-packages '(smartparens)
               dotspacemacs-themes '(ujelly)
               evil-shift-width 2
