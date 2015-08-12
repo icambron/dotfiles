@@ -1,3 +1,5 @@
 [user]
 	email = isaac@isaaccambron.com
 	name = Isaac Cambron
+[push]
+	default = simple
