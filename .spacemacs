@@ -9,6 +9,7 @@
                                                   shell
                                                   spotify
                                                   themes-megapack)
+              dotspacemacs-highlight-delimiters nil
               dotspacemacs-enable-paste-micro-state nil
               dotspacemacs-excluded-packages '(smartparens)
               dotspacemacs-themes '(ujelly)
