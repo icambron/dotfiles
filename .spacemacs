@@ -6,6 +6,7 @@
                                                   html
                                                   markdown
                                                   ruby
+                                                  yaml
                                                   shell
                                                   spotify)
               dotspacemacs-highlight-delimiters nil
