@@ -38,13 +38,15 @@
     (set-face-foreground 'font-lock-keyword-face "#dbbe00")          ;;yellow
     (set-face-foreground 'font-lock-constant-face "#e98e25")         ;;orange
     (set-face-foreground 'font-lock-type-face "#82a6df")             ;;light blue
-    (set-face-foreground 'font-lock-function-name-face "#ea4873")    ;;pink
-  )
-)
+    (set-face-foreground 'font-lock-function-name-face "#ea4873")))  ;;pink
 
 ;;for some reason, trying to turn this off here disables all the highlighting for ruby...
+;;but if i put it in the (config) section, it won't work becasue the face hasn't been created yet
 ;;(with-eval-after-load 'enh-ruby-mode
 ;;  (set-face-background 'enh-ruby-op-face nil))
+
+;;so we do this dumb thing instead
+(add-hook 'enh-ruby-mode-hook (lambda () (set-face-background 'enh-ruby-op-face nil)))
 
 ;;up the saturation of colored delimiters
 (with-eval-after-load 'rainbow-delimiters
