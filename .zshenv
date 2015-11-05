@@ -35,7 +35,7 @@ fi
 #chruby
 if [ -e /usr/local/share/chruby/chruby.sh ]; then
   source /usr/local/share/chruby/chruby.sh
-  chruby ruby-2.2.2
+  chruby ruby-2.2.3
 fi
 
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh

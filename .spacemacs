@@ -7,14 +7,51 @@
                                                   markdown
                                                   ruby
                                                   shell
-                                                  spotify
-                                                  themes-megapack)
+                                                  spotify)
               dotspacemacs-highlight-delimiters nil
               dotspacemacs-enable-paste-micro-state nil
+              dotspacemacs-enable-helm-micro-state nil
               dotspacemacs-excluded-packages '(smartparens)
-              dotspacemacs-themes '(ujelly)
+              dotspacemacs-themes '(spacemacs-dark)
               evil-shift-width 2
               show-trailing-whitespace t)
+
+(defun dotspacemacs/config ()
+
+  ;;the theme doesn't help with the persistent highlighting, which is impossible to read
+  (set-face-attribute 'evil-search-highlight-persist-highlight-face nil
+                      :foreground "white"
+                      :background "sea green")
+
+  ;;unbold all the things
+  (mapc
+   (lambda (face)
+     (set-face-attribute face nil :weight 'normal :underline nil))
+   (face-list))
+
+  ;;override some colors from the theme, mostly to make things brighter
+  (set-face-background 'default "gray5")
+  (set-face-background 'region "#284050")
+  (set-face-background 'font-lock-comment-face nil)
+
+  (when (display-graphic-p)
+    (set-face-foreground 'font-lock-keyword-face "#dbbe00")          ;;yellow
+    (set-face-foreground 'font-lock-constant-face "#e98e25")         ;;orange
+    (set-face-foreground 'font-lock-type-face "#82a6df")             ;;light blue
+    (set-face-foreground 'font-lock-function-name-face "#ea4873")    ;;pink
+  )
+)
+
+;;for some reason, trying to turn this off here disables all the highlighting for ruby...
+;;(with-eval-after-load 'enh-ruby-mode
+;;  (set-face-background 'enh-ruby-op-face nil))
+
+;;up the saturation of colored delimiters
+(with-eval-after-load 'rainbow-delimiters
+  (require 'color)
+  (dotimes (i (- rainbow-delimiters-max-face-count 1))
+    (let ((face (rainbow-delimiters-default-pick-face (+ i 1) t nil)))
+      (set-face-foreground face (color-saturate-name (face-foreground face) 60)))))
 
 (setq evil-want-fine-undo 'no
       css-indent-offset 2
@@ -24,56 +61,12 @@
       vc-follow-symlinks nil
       flycheck-rubocop-lint-only t
       flycheck-check-syntax-automatically '(mode-enabled save)
-      system-uses-terminfo nil)
+      system-uses-terminfo nil
+      shell-file-name "zsh")
 
-(defun dotspacemacs/config ()
-  ;;override the theme's crazy trailing whitespace rage
-  (set-face-background 'trailing-whitespace "dim gray")
-  ;;the theme doesn't help with the persistent highlighting, which is impossible to read
-  (set-face-attribute 'evil-search-highlight-persist-highlight-face nil
-                      :foreground "white"
-                      :background "sea green")
-  ;;the theme's hl-line-face inherits from 'highlight, which sets the foreground color to white
-  (set-face-attribute hl-line-face nil
-                      :inherit nil
-                      :background "gray9")
-  ;;todo: this doesn't work on load, need to do this later?
-  ;(set-face-attribute 'helm-selection nil
-  ;                    :inherit nil
-  ;                    :background "gray9")
-)
-
+;;save undo tree across sessions
 (setq undo-tree-auto-save-history t
       undo-tree-history-directory-alist
       `(("." . ,(concat spacemacs-cache-directory "undo"))))
-
 (unless (file-exists-p (concat spacemacs-cache-directory "undo"))
   (make-directory (concat spacemacs-cache-directory "undo")))
-
-;;change the saturation of colored delimiters
-(with-eval-after-load 'rainbow-delimiters
-  (require 'color)
-  (dotimes (i (- rainbow-delimiters-max-face-count 1))
-    (let ((face (rainbow-delimiters-default-pick-face (+ i 1) t nil)))
-        (set-face-foreground face (color-saturate-name (face-foreground face) 60)))))
-
-(add-hook 'term-mode-hook (lambda () (setq term-buffer-maximum-size 10000)))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ahs-case-fold-search nil)
- '(ahs-default-range (quote ahs-range-whole-buffer))
- '(ahs-idle-interval 0.25)
- '(ahs-idle-timer 0 t)
- '(ahs-inhibit-face-list nil)
- '(paradox-github-token t)
- '(ring-bell-function (quote ignore) t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((((class color) (min-colors 89)) (:foreground "#ffffff" :background "#000000")))))
