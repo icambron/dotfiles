@@ -7,6 +7,8 @@
                                                   markdown
                                                   ruby
                                                   yaml
+                                                  syntax-checking
+                                                  smex
                                                   shell
                                                   spotify)
               dotspacemacs-highlight-delimiters nil
@@ -45,7 +47,6 @@
 ;;but if i put it in the (config) section, it won't work becasue the face hasn't been created yet
 ;;(with-eval-after-load 'enh-ruby-mode
 ;;  (set-face-background 'enh-ruby-op-face nil))
-
 ;;so we do this dumb thing instead
 (add-hook 'enh-ruby-mode-hook (lambda () (set-face-background 'enh-ruby-op-face nil)))
 

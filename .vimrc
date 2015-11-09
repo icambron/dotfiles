@@ -88,9 +88,6 @@ elseif os == "Darwin"
 endif
 
 " Config settings for plugins
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
 let g:fakeclip_provide_clipboard_key_mappings = 1
 let g:fakeclip_terminal_multiplexer_type = "tmux"
 let g:airline_theme = 'murmur'
@@ -99,8 +96,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_detect_whitespace = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'passive_filetypes': ['java'] }
+
 if executable('ag')
   let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 endif
@@ -114,21 +110,13 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
 Plugin 'tpope/vim-repeat'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'mbbill/undotree'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'matchit.zip'
-Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'kana/vim-fakeclip'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-scripts/ZoomWin'
-Plugin 'rgarver/Kwbd.vim'
 Plugin 'bling/vim-airline'
-Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
+Plugin 'rgarver/Kwbd.vim'
 
 if executable('ctags')
   Plugin 'majutsushi/tagbar'
@@ -144,13 +132,7 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'tpope/vim-markdown'
 Plugin 'chrisbra/csv.vim'
 Plugin 'guns/vim-clojure-static'
-Plugin 'tpope/vim-leiningen'
-Plugin 'tpope/vim-projectionist'
-Plugin 'tpope/vim-dispatch'
 Plugin 'derekwyatt/vim-scala'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-fugitive'
-Plugin 'chriskempson/base16-vim'
 Plugin 'itchyny/landscape.vim'
 
 call vundle#end()
@@ -179,10 +161,11 @@ hi SpellBad cterm=underline ctermfg=red
 hi Cursor guibg=black guifg=gray
 
 " Keybindings
-let mapleader="\\"
-nnoremap <leader>fef :normal! gg=G``<CR> " Format the entire file
-nnoremap <leader>u :UndotreeToggle<CR>
-nnoremap <silent> <leader>d :<C-u>Kwbd<CR>
-nmap <silent> <leader>cd :lcd %:h<CR>         " cd to the directory containing the file in the buffer
-nmap <silent> <leader>md :!mkdir -p %:p:h<CR> " Create the directory containing the file in the buffer
-
+let mapleader = "\<Space>"
+nmap <silent> <leader>sp :Ack 
+nmap <silent> <leader>pI :CtrlPClearCache<CR>
+nmap <silent> <leader>pf :CtrlP<CR>
+nmap <silent> <leader>pr :CtrlPMRU<CR>
+nmap <silent> <leader>bb :CtrlPBuffer<CR>
+nmap <silent> <leader>bk<CR> :<C-u>Kwbd<CR>
+nmap <silent> <Leader>ti <Plug>IndentGuidesToggle

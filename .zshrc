@@ -59,3 +59,14 @@ bindkey -M vicmd v edit-command-line
 
 # 10ms for key sequences
 KEYTIMEOUT=1
+
+#chruby
+if [ -e /usr/local/share/chruby/chruby.sh ]; then
+  source /usr/local/share/chruby/chruby.sh
+  chruby ruby-2.2.3
+fi
+
+if [ -e /usr/local/share/zsh/site-functions/_aws ]; then
+  source /usr/local/share/zsh/site-functions/_aws
+fi
+
