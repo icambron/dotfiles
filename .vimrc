@@ -162,7 +162,7 @@ hi Cursor guibg=black guifg=gray
 
 " Keybindings
 let mapleader = "\<Space>"
-nmap <silent> <leader>sp :Ack 
+nmap <leader>sp :Ack 
 nmap <silent> <leader>pI :CtrlPClearCache<CR>
 nmap <silent> <leader>pf :CtrlP<CR>
 nmap <silent> <leader>pr :CtrlPMRU<CR>
