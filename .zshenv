@@ -10,35 +10,10 @@ export PATH=$PATH:/usr/local/heroku/bin
 export PATH=$PATH:$HOME/code/go/bin
 export GOPATH=$HOME/code/go
 
-if [ -e ~/.nvm ]; then
-  ~/.nvm/nvm.sh
-fi
-
-#OS-specific stuff
-os=$(uname)
-home='unknown'
-if [[ "$os" == 'Linux' ]]; then
-  home='/home'
-  if [[ $(uname -m) == 'x86_64' ]]; then
-    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-  else
-    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-i386
-  fi
-elif [[ "$os" == 'Darwin' ]]; then
-  PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
-  home='/Users'
-  if [ -e /usr/libexec/java_home ]; then
-    export JAVA_HOME=$(/usr/libexec/java_home -v '1.8*')
-  fi
-fi
-
 [[ -s "$HOME/.zshprivate" ]] && source "$HOME/.zshprivate"
 [[ -s "$HOME/.zshgpg" ]] && source "$HOME/.zshgpg"
 
-if [ -e /usr/local/bin/boot2docker ]; then
-  if [ -e /usr/local/bin/gtimeout ]; then
-    $(gtimeout 3 boot2docker shellinit 2>/dev/null)
-  else
-    $(boot2docker shellinit 2>/dev/null)
-  fi
-fi
+#these never change anymore
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/isaac/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
