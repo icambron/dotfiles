@@ -4,6 +4,7 @@ source "$HOME/.prompt.zsh"
 
 # vi mode
 bindkey -v
+bindkey "^R" history-incremental-search-backward
 
 # autocomplete
 unsetopt menu_complete   # do not autoselect the first completion entry
@@ -50,6 +51,7 @@ alias rorigin=git pull --rebase origin master
 alias nr=repl.history
 alias less='less -i'
 alias ack=ag
+alias fig=docker-compose
 
 csv() { csvtool readable $@ | view -}
 

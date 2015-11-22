@@ -1,5 +1,6 @@
 (setq-default dotspacemacs-configuration-layers '(clojure
                                                   colors
+                                                  javascript
                                                   dockerfile
                                                   emacs-lisp
                                                   git
@@ -17,6 +18,7 @@
               dotspacemacs-excluded-packages '(smartparens)
               dotspacemacs-themes '(spacemacs-dark)
               evil-shift-width 2
+              coffee-tab-width 2
               show-trailing-whitespace t)
 
 (defun dotspacemacs/config ()
@@ -49,6 +51,12 @@
 ;;  (set-face-background 'enh-ruby-op-face nil))
 ;;so we do this dumb thing instead
 (add-hook 'enh-ruby-mode-hook (lambda () (set-face-background 'enh-ruby-op-face nil)))
+
+(with-eval-after-load 'flycheck
+  (set-face-attribute 'flycheck-error nil :underline "IndianRed3"))
+
+(with-eval-after-load 'cider
+  (set-face-attribute 'cider-error-highlight-face nil :underline "IndianRed3"))
 
 ;;up the saturation of colored delimiters
 (with-eval-after-load 'rainbow-delimiters
