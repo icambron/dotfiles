@@ -1,3 +1,4 @@
+;; -*- mode: Emacs-Lisp -*-
 (setq-default dotspacemacs-configuration-layers '(clojure
                                                   colors
                                                   javascript
@@ -43,7 +44,8 @@
     (set-face-foreground 'font-lock-keyword-face "#dbbe00")          ;;yellow
     (set-face-foreground 'font-lock-constant-face "#e98e25")         ;;orange
     (set-face-foreground 'font-lock-type-face "#82a6df")             ;;light blue
-    (set-face-foreground 'font-lock-function-name-face "#ea4873")))  ;;pink
+    (set-face-foreground 'font-lock-function-name-face "#ea4873"))  ;;pink
+)
 
 ;;for some reason, trying to turn this off here disables all the highlighting for ruby...
 ;;but if i put it in the (config) section, it won't work becasue the face hasn't been created yet
