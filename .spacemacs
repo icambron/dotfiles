@@ -12,6 +12,7 @@
                                                   syntax-checking
                                                   smex
                                                   shell
+                                                  spell-checking
                                                   spotify)
               dotspacemacs-highlight-delimiters nil
               dotspacemacs-enable-paste-micro-state nil
@@ -29,10 +30,10 @@
                       :foreground "white"
                       :background "sea green")
 
-  ;;unbold all the things
+  ;unbold all the things
   (mapc
    (lambda (face)
-     (set-face-attribute face nil :weight 'normal :underline nil))
+     (set-face-attribute face nil :weight 'normal))
    (face-list))
 
   ;;override some colors from the theme, mostly to make things brighter
@@ -70,6 +71,7 @@
 (setq evil-want-fine-undo 'no
       css-indent-offset 2
       js2-basic-offset 2
+      js-indent-level 2
       js2-bounce-indent-p t
       magit-last-seen-setup-instructions "1.4.0"
       vc-follow-symlinks nil
