@@ -17,11 +17,14 @@
               dotspacemacs-highlight-delimiters nil
               dotspacemacs-enable-paste-micro-state nil
               dotspacemacs-enable-helm-micro-state nil
-              dotspacemacs-excluded-packages '(smartparens)
+              dotspacemacs-excluded-packages '(smartparens evil-little-word)
               dotspacemacs-themes '(spacemacs-dark)
+              fill-column 100
               evil-shift-width 2
               coffee-tab-width 2
               show-trailing-whitespace t)
+
+(add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
 
 (defun dotspacemacs/config ()
 
