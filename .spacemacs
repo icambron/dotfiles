@@ -72,6 +72,8 @@
       (set-face-foreground face (color-saturate-name (face-foreground face) 60)))))
 
 (setq evil-want-fine-undo 'no
+      make-backup-files nil
+      backup-directory-alist '((".*" . "~/.emacs.d/backups/"))
       css-indent-offset 2
       js2-basic-offset 2
       js-indent-level 2
