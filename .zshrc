@@ -52,6 +52,7 @@ alias nr=repl.history
 alias less='less -i'
 alias ack=ag
 alias fig=docker-compose
+alias weather='curl http://wttr.in/Boston'
 
 csv() { csvtool readable $@ | view -}
 
@@ -65,7 +66,7 @@ KEYTIMEOUT=1
 #chruby
 if [ -e /usr/local/share/chruby/chruby.sh ]; then
   source /usr/local/share/chruby/chruby.sh
-  chruby ruby-2.2.3
+  chruby ruby-2.3.1
 fi
 
 if [ -e /usr/local/share/zsh/site-functions/_aws ]; then

@@ -2,18 +2,19 @@
 (setq-default dotspacemacs-configuration-layers '(clojure
                                                   colors
                                                   javascript
+                                                  dash
                                                   dockerfile
                                                   emacs-lisp
                                                   git
                                                   html
                                                   markdown
+                                                  osx
                                                   ruby
                                                   yaml
                                                   syntax-checking
                                                   smex
                                                   shell
-                                                  spell-checking
-                                                  spotify)
+                                                  spell-checking)
               dotspacemacs-highlight-delimiters nil
               dotspacemacs-enable-paste-micro-state nil
               dotspacemacs-enable-helm-micro-state nil

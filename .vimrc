@@ -112,7 +112,7 @@ call vundle#begin()
 Plugin 'tpope/vim-repeat'
 Plugin 'kana/vim-fakeclip'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'vim-scripts/ZoomWin'
+Plugin 'szw/vim-maximizer'
 Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
@@ -162,10 +162,23 @@ hi Cursor guibg=black guifg=gray
 
 " Keybindings
 let mapleader = "\<Space>"
-nmap <leader>sp :Ack 
-nmap <silent> <leader>pI :CtrlPClearCache<CR>
+nmap <leader>sp :Ack<SPACE>
+nmap <leader>pI :CtrlPClearAllCaches<CR>
 nmap <silent> <leader>pf :CtrlP<CR>
 nmap <silent> <leader>pr :CtrlPMRU<CR>
 nmap <silent> <leader>bb :CtrlPBuffer<CR>
+nmap <silent> <Leader>sc :noh<CR>
 nmap <silent> <leader>bk<CR> :<C-u>Kwbd<CR>
 nmap <silent> <Leader>ti <Plug>IndentGuidesToggle
+nmap <LEADER>w- :sp<CR>
+nmap <LEADER>w/ :vsp<CR>
+nmap <LEADER>w= <C-W>=
+nmap <LEADER>wh <C-W>h
+nmap <LEADER>wj <C-W>j
+nmap <LEADER>wk <C-W>k
+nmap <LEADER>wl <C-W>l
+nmap <LEADER>ws <C-W>s
+nmap <LEADER>wv <C-W>v
+nmap <LEADER>wm :MaximizerToggle<CR>
+nmap <LEADER>ww <C-W><C-W>
+nmap <LEADER>feR :source ~/.vimrc<CR>
