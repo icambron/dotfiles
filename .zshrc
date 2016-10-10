@@ -37,11 +37,8 @@ if [[ "$os" == 'Darwin' ]]; then
   alias sudoedit="sudo -e"
 fi
 
-export EDITOR=vim
-
 #ls
 alias ls='ls -aG'
-export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
 #git shortcuts
 alias rupstream=git pull --rebase upstream master
@@ -67,8 +64,4 @@ KEYTIMEOUT=1
 if [ -e /usr/local/share/chruby/chruby.sh ]; then
   source /usr/local/share/chruby/chruby.sh
   chruby ruby-2.3.1
-fi
-
-if [ -e /usr/local/share/zsh/site-functions/_aws ]; then
-  source /usr/local/share/zsh/site-functions/_aws
 fi

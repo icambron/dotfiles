@@ -3,7 +3,6 @@
                                                   colors
                                                   javascript
                                                   dash
-                                                  dockerfile
                                                   emacs-lisp
                                                   git
                                                   html
@@ -25,14 +24,17 @@
               coffee-tab-width 2
               show-trailing-whitespace t)
 
+;;spacemacs issues a weird-- and as far as I can tell, incorrect-- warning about having exports in my .zshrc file unless I do this
+(setq exec-path-from-shell-check-startup-files nil)
+
 (add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
 
-(defun dotspacemacs/config ()
+(defun dotspacemacs/init ()
 
   ;;the theme doesn't help with the persistent highlighting, which is impossible to read
-  (set-face-attribute 'evil-search-highlight-persist-highlight-face nil
-                      :foreground "white"
-                      :background "sea green")
+  ;(set-face-attribute 'evil-search-highlight-persist-highlight-face nil
+  ;                    :foreground "white"
+  ;                    :background "sea green")
 
   ;unbold all the things
   (mapc
