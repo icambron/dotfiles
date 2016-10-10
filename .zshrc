@@ -65,3 +65,5 @@ if [ -e /usr/local/share/chruby/chruby.sh ]; then
   source /usr/local/share/chruby/chruby.sh
   chruby ruby-2.3.1
 fi
+
+autoload -Uz compinit && compinit
