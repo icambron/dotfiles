@@ -3,6 +3,7 @@
                                                   colors
                                                   javascript
                                                   dash
+                                                  docker
                                                   emacs-lisp
                                                   git
                                                   html
