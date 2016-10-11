@@ -15,22 +15,45 @@
                                                   smex
                                                   shell
                                                   spell-checking)
+
+              ;;rainbow delimiters, but no special highlighting for the "current" one
               dotspacemacs-highlight-delimiters 'any
+
+              ;;these micro state have been buggy and I don't use them anyway
               dotspacemacs-enable-paste-micro-state nil
               dotspacemacs-enable-helm-micro-state nil
+
+              ;;these are annoying
               dotspacemacs-excluded-packages '(smartparens evil-little-word)
+
+              ;;dark, duh
               dotspacemacs-themes '(spacemacs-dark)
-              fill-column 100
-              evil-shift-width 2
-              coffee-tab-width 2
-              show-trailing-whitespace t)
 
-;;spacemacs issues a weird--and as far as I can tell, incorrect--warning about having exports in my .zshrc file unless I do this
-(setq exec-path-from-shell-check-startup-files nil)
-
-(add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
+              ;;spacemacs issues a weird--and as far as I can tell, incorrect--warning about having exports in my .zshrc file unless I do this
+              exec-path-from-shell-check-startup-files nil)
 
 (defun dotspacemacs/user-config ()
+
+  ;;general settings
+  (setq fill-column 100
+        show-trailing-whitespace t
+        evil-want-fine-undo 'no
+        make-backup-files nil
+        backup-directory-alist '((".*" . "~/.emacs.d/backups/"))
+        magit-last-seen-setup-instructions "1.4.0"
+        vc-follow-symlinks nil
+        flycheck-rubocop-lint-only t
+        flycheck-check-syntax-automatically '(mode-enabled save)
+        system-uses-terminfo nil
+        shell-file-name "zsh")
+
+  ;;indents
+  (setq evil-shift-width 2
+        coffee-tab-width 2
+        css-indent-offset 2
+        js2-basic-offset 2
+        js-indent-level 2
+        js2-bounce-indent-p t)
 
   ;unbold all the things
   (mapc
@@ -43,23 +66,35 @@
   (set-face-background 'region "#284050")
   (set-face-background 'font-lock-comment-face nil)
 
+  ;;change some of the colors when not in terminal
   (when (display-graphic-p)
     (set-face-foreground 'font-lock-keyword-face "#dbbe00")          ;;yellow
     (set-face-foreground 'font-lock-constant-face "#e98e25")         ;;orange
     (set-face-foreground 'font-lock-type-face "#82a6df")             ;;light blue
     (set-face-foreground 'font-lock-function-name-face "#ea4873"))   ;;pink
-)
+
+  ;;save undo tree across sessions
+  (setq undo-tree-auto-save-history t
+        undo-tree-history-directory-alist
+        `(("." . ,(concat spacemacs-cache-directory "undo"))))
+  (unless (file-exists-p (concat spacemacs-cache-directory "undo"))
+    (make-directory (concat spacemacs-cache-directory "undo"))))
 
 ;;for some reason, trying to turn this off here disables all the highlighting for ruby...
-;;but if i put it in the (config) section, it won't work becasue the face hasn't been created yet
+;;but if i put it in the (user-config) section, it won't work becasue the face hasn't been created yet
 ;;(with-eval-after-load 'enh-ruby-mode
 ;;  (set-face-background 'enh-ruby-op-face nil))
 ;;so we do this dumb thing instead
 (add-hook 'enh-ruby-mode-hook (lambda () (set-face-background 'enh-ruby-op-face nil)))
 
+;;make a "word" in Clojure span over hyphens
+(add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
+
+;;errors with less eyeball murder
 (with-eval-after-load 'flycheck
   (set-face-attribute 'flycheck-error nil :underline "IndianRed3"))
 
+;;again, eyeball murder is frowned on
 (with-eval-after-load 'cider
   (set-face-attribute 'cider-error-highlight-face nil :underline "IndianRed3"))
 
@@ -69,24 +104,3 @@
   (dotimes (i (- rainbow-delimiters-max-face-count 1))
     (let ((face (rainbow-delimiters-default-pick-face (+ i 1) t nil)))
       (set-face-foreground face (color-saturate-name (face-foreground face) 30)))))
-
-(setq evil-want-fine-undo 'no
-      make-backup-files nil
-      backup-directory-alist '((".*" . "~/.emacs.d/backups/"))
-      css-indent-offset 2
-      js2-basic-offset 2
-      js-indent-level 2
-      js2-bounce-indent-p t
-      magit-last-seen-setup-instructions "1.4.0"
-      vc-follow-symlinks nil
-      flycheck-rubocop-lint-only t
-      flycheck-check-syntax-automatically '(mode-enabled save)
-      system-uses-terminfo nil
-      shell-file-name "zsh")
-
-;;save undo tree across sessions
-(setq undo-tree-auto-save-history t
-      undo-tree-history-directory-alist
-      `(("." . ,(concat spacemacs-cache-directory "undo"))))
-(unless (file-exists-p (concat spacemacs-cache-directory "undo"))
-  (make-directory (concat spacemacs-cache-directory "undo")))
