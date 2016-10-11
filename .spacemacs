@@ -15,6 +15,7 @@
                                                   smex
                                                   shell
                                                   spell-checking)
+              dotspacemacs-highlight-delimiters 'any
               dotspacemacs-enable-paste-micro-state nil
               dotspacemacs-enable-helm-micro-state nil
               dotspacemacs-excluded-packages '(smartparens evil-little-word)
@@ -29,7 +30,7 @@
 
 (add-hook 'clojure-mode-hook #'(lambda () (modify-syntax-entry ?- "w")))
 
-(defun dotspacemacs/init ()
+(defun dotspacemacs/user-config ()
 
   ;unbold all the things
   (mapc
@@ -67,7 +68,7 @@
   (require 'color)
   (dotimes (i (- rainbow-delimiters-max-face-count 1))
     (let ((face (rainbow-delimiters-default-pick-face (+ i 1) t nil)))
-      (set-face-foreground face (color-saturate-name (face-foreground face) 60)))))
+      (set-face-foreground face (color-saturate-name (face-foreground face) 30)))))
 
 (setq evil-want-fine-undo 'no
       make-backup-files nil
