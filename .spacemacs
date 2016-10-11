@@ -15,7 +15,6 @@
                                                   smex
                                                   shell
                                                   spell-checking)
-              dotspacemacs-highlight-delimiters nil
               dotspacemacs-enable-paste-micro-state nil
               dotspacemacs-enable-helm-micro-state nil
               dotspacemacs-excluded-packages '(smartparens evil-little-word)
