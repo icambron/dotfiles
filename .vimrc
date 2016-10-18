@@ -168,7 +168,7 @@ nmap <silent> <leader>pf :CtrlP<CR>
 nmap <silent> <leader>pr :CtrlPMRU<CR>
 nmap <silent> <leader>bb :CtrlPBuffer<CR>
 nmap <silent> <Leader>sc :noh<CR>
-nmap <silent> <leader>bk<CR> :<C-u>Kwbd<CR>
+nmap <silent> <leader>bd<CR> :<C-u>Kwbd<CR>
 nmap <silent> <Leader>ti <Plug>IndentGuidesToggle
 nmap <LEADER>w- :sp<CR>
 nmap <LEADER>w/ :vsp<CR>
