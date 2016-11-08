@@ -1,36 +1,46 @@
 ;; -*- mode: Emacs-Lisp -*-
-(setq-default dotspacemacs-configuration-layers '(clojure
-                                                  colors
-                                                  javascript
-                                                  dash
-                                                  docker
-                                                  emacs-lisp
-                                                  git
-                                                  html
-                                                  markdown
-                                                  osx
-                                                  ruby
-                                                  yaml
-                                                  syntax-checking
-                                                  smex
-                                                  shell
-                                                  spell-checking)
 
-              ;;rainbow delimiters, but no special highlighting for the "current" one
-              dotspacemacs-highlight-delimiters 'any
+(defun dotspacemacs/layers ()
+  (setq-default dotspacemacs-configuration-layers '(clojure
+                                                    colors
+                                                    javascript
+                                                    dash
+                                                    docker
+                                                    emacs-lisp
+                                                    git
+                                                    html
+                                                    markdown
+                                                    nginx
+                                                    osx
+                                                    ruby
+                                                    yaml
+                                                    syntax-checking
+                                                    smex
+                                                    shell
+                                                    sql
+                                                    spell-checking)))
 
-              ;;these micro state have been buggy and I don't use them anyway
-              dotspacemacs-enable-paste-micro-state nil
-              dotspacemacs-enable-helm-micro-state nil
+(defun dotspacemacs/init ()
+  (setq-default
+   dotspacemacs-enable-lazy-installation nil
 
-              ;;these are annoying
-              dotspacemacs-excluded-packages '(smartparens evil-little-word)
+   ;;rainbow delimiters, but no special highlighting for the "current" one
+   dotspacemacs-highlight-delimiters 'any
 
-              ;;dark, duh
-              dotspacemacs-themes '(spacemacs-dark)
+   ;;these micro state have been buggy and I don't use them anyway
+   dotspacemacs-enable-paste-micro-state nil
+   dotspacemacs-enable-helm-micro-state nil
 
-              ;;spacemacs issues a weird--and as far as I can tell, incorrect--warning about having exports in my .zshrc file unless I do this
-              exec-path-from-shell-check-startup-files nil)
+   ;;these are annoying
+   dotspacemacs-excluded-packages '(smartparens evil-little-word)
+
+   ;;dark, duh
+   dotspacemacs-themes '(spacemacs-dark)
+
+   ;;spacemacs issues a weird--and as far as I can tell, incorrect--warning about having exports in my .zshrc file unless I do this
+   exec-path-from-shell-check-startup-files nil))
+
+(defun dotspacemacs/user-init ())
 
 (defun dotspacemacs/user-config ()
 
