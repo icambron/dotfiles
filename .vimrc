@@ -134,6 +134,7 @@ Plugin 'chrisbra/csv.vim'
 Plugin 'guns/vim-clojure-static'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'itchyny/landscape.vim'
+Plugin 'amdt/vim-niji'
 
 call vundle#end()
 
