@@ -28,7 +28,6 @@
    dotspacemacs-highlight-delimiters 'any
 
    ;;these micro state have been buggy and I don't use them anyway
-   dotspacemacs-enable-paste-micro-state nil
    dotspacemacs-enable-helm-micro-state nil
 
    ;;these are annoying
@@ -40,7 +39,16 @@
    ;;spacemacs issues a weird--and as far as I can tell, incorrect--warning about having exports in my .zshrc file unless I do this
    exec-path-from-shell-check-startup-files nil))
 
-(defun dotspacemacs/user-init ())
+(defun dotspacemacs/user-init ()
+ (if (executable-find "trash")
+      (defun system-move-file-to-trash (file)
+        "Use `trash' to move FILE to the system trash.
+Can be installed with `brew install trash', or `brew install osxutils`''."
+        (call-process (executable-find "trash") nil 0 nil file))
+    ;; regular move to trash directory
+    (setq trash-directory "~/.Trash/emacs"))
+
+)
 
 (defun dotspacemacs/user-config ()
 
