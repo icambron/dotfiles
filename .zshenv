@@ -1,13 +1,9 @@
-export PATH=/usr/local/bin
-export PATH=$PATH:/usr/bin
-export PATH=$PATH:/usr/sbin
-export PATH=$PATH:/bin
-export PATH=$PATH:/sbin
 export PATH=$PATH:/opt/X11/bin
 export PATH=$PATH:/usr/local/share/npm/bin
 export PATH=$PATH:/usr/local/tranquil/bin
 export PATH=$PATH:/usr/local/heroku/bin
 export PATH=$PATH:$HOME/code/go/bin
+
 export GOPATH=$HOME/code/go
 
 export ZS_HOME=/Users/isaac/code/zensight

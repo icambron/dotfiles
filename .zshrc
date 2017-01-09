@@ -45,11 +45,11 @@ alias rupstream=git pull --rebase upstream master
 alias rorigin=git pull --rebase origin master
 
 #other aliases
-alias nr=repl.history
 alias less='less -i'
 alias ack=ag
 alias fig=docker-compose
 alias weather='curl http://wttr.in/Boston'
+alias zpg='psql -h localhost -U zensight -d zensight -v "PROMPT1=~dev~  %/%R%[%033[0m%]%# "'
 
 csv() { csvtool readable $@ | view -}
 
@@ -60,10 +60,11 @@ bindkey -M vicmd v edit-command-line
 # 10ms for key sequences
 KEYTIMEOUT=1
 
-#chruby
-if [ -e /usr/local/share/chruby/chruby.sh ]; then
-  source /usr/local/share/chruby/chruby.sh
-  chruby ruby-2.3.1
-fi
-
+#initialize completion
 autoload -Uz compinit && compinit
+
+#this can't go in zsenv because /etc/paths will supersede it
+export PATH=$HOME/.rbenv/shims:$PATH
+#todo - does this need some sort of check for where I don't have it?
+eval "$(rbenv init -)"
+
