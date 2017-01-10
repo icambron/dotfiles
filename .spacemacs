@@ -27,9 +27,6 @@
    ;;rainbow delimiters, but no special highlighting for the "current" one
    dotspacemacs-highlight-delimiters 'any
 
-   ;;these micro state have been buggy and I don't use them anyway
-   dotspacemacs-enable-helm-micro-state nil
-
    ;;these are annoying
    dotspacemacs-excluded-packages '(smartparens evil-little-word)
 
@@ -40,21 +37,23 @@
    exec-path-from-shell-check-startup-files nil))
 
 (defun dotspacemacs/user-init ()
+
+  ;;this is silly, but for some reason launching emacs in the terminal requires deleting bracketed-paste
+  ;;but that deletion fails. The deletion is dumb but failing is dumber, so this makes it work
  (if (executable-find "trash")
       (defun system-move-file-to-trash (file)
         "Use `trash' to move FILE to the system trash.
 Can be installed with `brew install trash', or `brew install osxutils`''."
         (call-process (executable-find "trash") nil 0 nil file))
     ;; regular move to trash directory
-    (setq trash-directory "~/.Trash/emacs"))
-
-)
+    (setq trash-directory "~/.Trash/emacs")))
 
 (defun dotspacemacs/user-config ()
 
+  (setq-default fill-column 100)
+
   ;;general settings
-  (setq fill-column 100
-        show-trailing-whitespace t
+  (setq show-trailing-whitespace t
         evil-want-fine-undo 'no
         make-backup-files nil
         backup-directory-alist '((".*" . "~/.emacs.d/backups/"))
