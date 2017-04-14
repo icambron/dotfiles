@@ -100,5 +100,5 @@ fi
 
 zle -N zle-keymap-select
 
-PROMPT=$'%{$LOGIN_COLOR%}%n@%m %{$TIME_COLOR%}%D{[%I:%M:%S]} %{$reset_color%}%{$DIR_COLOR%}[%~]%{$reset_color%}$(git_prompt_info)${VIMODE}\
+PROMPT=$'%{$LOGIN_COLOR%}%n@%m %{$TIME_COLOR%}%D{[%H:%M:%S]} %{$reset_color%}%{$DIR_COLOR%}[%~]%{$reset_color%}$(git_prompt_info)${VIMODE}\
 %{$PROMPT_COLOR%}-> %{$reset_color%}'
