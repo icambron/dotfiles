@@ -50,6 +50,7 @@ alias ack=ag
 alias fig=docker-compose
 alias weather='curl http://wttr.in/Boston'
 alias zpg='psql -h localhost -U zensight -d zensight -v "PROMPT1=~dev~  %/%R%[%033[0m%]%# "'
+alias emacs='emacs -nw'
 
 csv() { csvtool readable $@ | view -}
 

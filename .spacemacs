@@ -1,7 +1,8 @@
 ;; -*- mode: Emacs-Lisp -*-
 
 (defun dotspacemacs/layers ()
-  (setq-default dotspacemacs-configuration-layers '(clojure
+  (setq-default dotspacemacs-configuration-layers '(auto-completion
+                                                    clojure
                                                     colors
                                                     javascript
                                                     dash
@@ -18,7 +19,8 @@
                                                     smex
                                                     shell
                                                     sql
-                                                    spell-checking)))
+                                                    spell-checking)
+                dotspacemacs-additional-packages '(prettier-js)))
 
 (defun dotspacemacs/init ()
   (setq-default
@@ -51,6 +53,7 @@ Can be installed with `brew install trash', or `brew install osxutils`''."
 (defun dotspacemacs/user-config ()
 
   (setq-default fill-column 100)
+  (setq recentf-save-file (format "/tmp/recentf.%s" (emacs-pid)))
 
   ;;general settings
   (setq show-trailing-whitespace t
@@ -71,6 +74,8 @@ Can be installed with `brew install trash', or `brew install osxutils`''."
         js2-basic-offset 2
         js-indent-level 2
         js2-bounce-indent-p t)
+
+  (setq prettier-js-args '("--single-quote" "--print-width 100"))
 
   ;unbold all the things
   (mapc
@@ -95,7 +100,9 @@ Can be installed with `brew install trash', or `brew install osxutils`''."
         undo-tree-history-directory-alist
         `(("." . ,(concat spacemacs-cache-directory "undo"))))
   (unless (file-exists-p (concat spacemacs-cache-directory "undo"))
-    (make-directory (concat spacemacs-cache-directory "undo"))))
+    (make-directory (concat spacemacs-cache-directory "undo")))
+
+  (add-hook 'js2-mode-hook 'prettier-js-mode))
 
 ;;for some reason, trying to turn this off here disables all the highlighting for ruby...
 ;;but if i put it in the (user-config) section, it won't work becasue the face hasn't been created yet
@@ -121,3 +128,17 @@ Can be installed with `brew install trash', or `brew install osxutils`''."
   (dotimes (i (- rainbow-delimiters-max-face-count 1))
     (let ((face (rainbow-delimiters-default-pick-face (+ i 1) t nil)))
       (set-face-foreground face (color-saturate-name (face-foreground face) 30)))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (prettier-js helm-company helm-c-yasnippet fuzzy company-web web-completion-data company-tern dash-functional company-statistics company clojure-snippets auto-yasnippet ac-ispell auto-complete pcre2el simple-httpd parent-mode projectile request gitignore-mode flyspell-correct pos-tip flx iedit anzu goto-chg f tablist docker-tramp json-snatcher json-reformat diminish hydra inflections edn multiple-cursors paredit s peg eval-sexp-fu seq spinner queue pkg-info epl bind-map bind-key packed popup powerline markdown-mode yasnippet cider clojure-mode inf-ruby json-mode smartparens highlight evil undo-tree flycheck helm helm-core avy skewer-mode js2-mode magit magit-popup git-commit with-editor async haml-mode dash winum yaml-mode xterm-color ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tern tagedit sql-indent spacemacs-theme spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe reveal-in-osx-finder restart-emacs rbenv rake rainbow-mode rainbow-identifiers rainbow-delimiters quelpa pug-mode popwin persp-mode pbcopy paradox osx-trash osx-dictionary orgit org-plus-contrib org-bullets open-junk-file nginx-mode neotree multi-term move-text mmm-mode minitest markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode launchctl js2-refactor js-doc info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-dash helm-css-scss helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump dockerfile-mode docker dash-at-point column-enforce-mode color-identifiers-mode coffee-mode clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby bundler bracketed-paste auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
