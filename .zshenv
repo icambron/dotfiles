@@ -6,6 +6,7 @@ export PATH=$PATH:$HOME/code/go/bin
 
 export GOPATH=$HOME/code/go
 
+
 export ZS_HOME=/Users/isaac/code/zensight
 
 [[ -s "$HOME/.zshprivate" ]] && source "$HOME/.zshprivate"
@@ -14,3 +15,4 @@ export ZS_HOME=/Users/isaac/code/zensight
 export EDITOR=vim
 
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
+

@@ -64,8 +64,12 @@ KEYTIMEOUT=1
 #initialize completion
 autoload -Uz compinit && compinit
 
-#this can't go in zsenv because /etc/paths will supersede it
+#these can't go in zsenv because /etc/paths will supersede them
 export PATH=$HOME/.rbenv/shims:$PATH
+export PATH=$HOME/anaconda2/bin:$PATH
+
 #todo - does this need some sort of check for where I don't have it?
 eval "$(rbenv init -)"
 
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
