@@ -41,6 +41,7 @@ values."
      markdown
      nginx
      osx
+     react
      ruby
      yaml
      syntax-checking
