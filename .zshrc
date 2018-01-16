@@ -69,7 +69,7 @@ export PATH=$HOME/.rbenv/shims:$PATH
 export PATH=$HOME/anaconda2/bin:$PATH
 
 #todo - does this need some sort of check for where I don't have it?
-eval "$(rbenv init -)"
+test -e rbenv && eval "$(rbenv init -)"
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
