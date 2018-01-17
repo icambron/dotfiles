@@ -2,6 +2,9 @@ TERM=xterm-256color
 
 source "$HOME/.prompt.zsh"
 
+# jesus fucking christ
+setopt NO_BEEP
+
 # vi mode
 bindkey -v
 bindkey "^R" history-incremental-search-backward

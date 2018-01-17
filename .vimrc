@@ -12,6 +12,7 @@ set backup
 set backupdir=~/.vim/back
 set exrc            " enable per-directory .vimrc files
 set secure          " disable unsafe commands in local .vimrc files
+set noerrorbells visualbell t_vb=set noerrorbells visualbell t_vb= " shut the fuck up, Donny
 
 if has('persistent_undo')
   set undofile

@@ -25,3 +25,5 @@ function path_remove {
 }
 
 path_remove '/mnt/c/Program Files/nodejs/npm'
+
+eval `keychain --eval --agents ssh id_rsa`
