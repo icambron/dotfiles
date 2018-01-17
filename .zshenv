@@ -1,3 +1,4 @@
+export PATH=$HOME/bin:$PATH
 export PATH=$PATH:/opt/X11/bin
 export PATH=$PATH:/usr/local/share/npm/bin
 export PATH=$PATH:/usr/local/tranquil/bin

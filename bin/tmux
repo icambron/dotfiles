@@ -1,0 +1,4 @@
+#!/bin/sh
+unset cfg
+test "$(uname)" = "Darwin" && cfg=$HOME/.tmux-osx.conf
+exec /usr/local/bin/tmux ${cfg+-f "$cfg"} "$@"
