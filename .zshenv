@@ -37,4 +37,6 @@ export DOCKER_HOST=tcp://0.0.0.0:2375
 export ANSIBLE_VAULT_PASSWORD_FILE=~/.ansible_vault_password
 
 alias python=/usr/bin/python3
-alias pip=$HOME/.local/bin/pip3.5
+alias pip=/usr/bin/pip3
+
+test -e keychain && eval `keychain --eval --agents ssh id_rsa`
