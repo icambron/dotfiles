@@ -29,7 +29,7 @@ path_remove '/mnt/c/Program Files/nodejs/npm'
 path_remove '/mnt/c/Python37'
 
 # why is this so slow?
-eval `keychain --quiet --eval --agents ssh id_rsa`
+test -e keychain && eval `keychain --quiet --eval --agents ssh id_rsa`
 
 # todo - should only be in WSL
 export DOCKER_HOST=tcp://0.0.0.0:2375
