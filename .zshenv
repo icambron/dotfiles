@@ -3,6 +3,7 @@ export PATH=$PATH:/opt/X11/bin
 export PATH=$PATH:/usr/local/share/npm/bin
 export PATH=$PATH:/usr/local/tranquil/bin
 export PATH=$PATH:/usr/local/heroku/bin
+export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/code/go/bin
 
 export GOPATH=$HOME/code/go
@@ -25,5 +26,15 @@ function path_remove {
 }
 
 path_remove '/mnt/c/Program Files/nodejs/npm'
+path_remove '/mnt/c/Python37'
 
-eval `keychain --eval --agents ssh id_rsa`
+# why is this so slow?
+eval `keychain --quiet --eval --agents ssh id_rsa`
+
+# todo - should only be in WSL
+export DOCKER_HOST=tcp://0.0.0.0:2375
+
+export ANSIBLE_VAULT_PASSWORD_FILE=~/.ansible_vault_password
+
+alias python=/usr/bin/python3
+alias pip=$HOME/.local/bin/pip3.5

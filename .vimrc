@@ -167,11 +167,10 @@ let mapleader = "\<Space>"
 nmap <leader>sp :Ack<SPACE>
 nmap <leader>pI :CtrlPClearAllCaches<CR>
 nmap <silent> <leader>pf :CtrlP<CR>
-nmap <silent> <leader>pr :CtrlPMRU<CR>
-nmap <silent> <leader>bb :CtrlPBuffer<CR>
 nmap <silent> <Leader>sc :noh<CR>
 nmap <silent> <leader>bd<CR> :<C-u>Kwbd<CR>
 nmap <silent> <Leader>ti <Plug>IndentGuidesToggle
+nmap <silent> <Leader>tn :set number!<CR>
 nmap <LEADER>w- :sp<CR>
 nmap <LEADER>w/ :vsp<CR>
 nmap <LEADER>w= <C-W>=

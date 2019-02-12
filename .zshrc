@@ -15,6 +15,10 @@ setopt auto_menu         # show completion menu on succesive tab press
 setopt complete_in_word
 setopt always_to_end
 
+
+# this is some task background thing that doesn't work in WSL
+unsetopt BG_NICE
+
 # don't complain when leaving jobs behind
 setopt nohup
 setopt nocheckjobs
@@ -73,6 +77,5 @@ export PATH=$HOME/anaconda2/bin:$PATH
 
 #todo - does this need some sort of check for where I don't have it?
 test -e rbenv && eval "$(rbenv init -)"
-
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
