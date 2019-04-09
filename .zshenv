@@ -8,9 +8,6 @@ export PATH=$PATH:$HOME/code/go/bin
 
 export GOPATH=$HOME/code/go
 
-
-export ZS_HOME=/Users/isaac/code/zensight
-
 [[ -s "$HOME/.zshprivate" ]] && source "$HOME/.zshprivate"
 [[ -s "$HOME/.zshgpg" ]] && source "$HOME/.zshgpg"
 
@@ -32,11 +29,7 @@ path_remove '/mnt/c/Python37'
 test -e keychain && eval `keychain --quiet --eval --agents ssh id_rsa`
 
 # todo - should only be in WSL
-export DOCKER_HOST=tcp://0.0.0.0:2375
 
-export ANSIBLE_VAULT_PASSWORD_FILE=~/.ansible_vault_password
-
-alias python=/usr/bin/python3
-alias pip=/usr/bin/pip3
-
-test -e keychain && eval `keychain --eval --agents ssh id_rsa`
+if [[ "$(< /proc/version)" == *@(Microsoft|WSL)* ]]; then
+  export DOCKER_HOST=tcp://0.0.0.0:2375
+fi

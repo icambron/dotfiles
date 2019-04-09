@@ -56,8 +56,9 @@ alias less='less -i'
 alias ack=ag
 alias fig=docker-compose
 alias weather='curl http://wttr.in/Boston'
-alias zpg='psql -h localhost -U zensight -d zensight -v "PROMPT1=~dev~  %/%R%[%033[0m%]%# "'
 alias emacs='emacs -nw'
+alias python=/usr/bin/python3
+alias pip=/usr/bin/pip3
 
 csv() { csvtool readable $@ | view -}
 
@@ -71,10 +72,25 @@ KEYTIMEOUT=1
 #initialize completion
 autoload -Uz compinit && compinit
 
-#these can't go in zsenv because /etc/paths will supersede them
-export PATH=$HOME/.rbenv/shims:$PATH
+#these can't go in zhenv because /etc/paths will supersede them
 export PATH=$HOME/anaconda2/bin:$PATH
 
-test -e rbenv && eval "$(rbenv init -)"
+[ -s "${HOME}/.iterm2_shell_integration.zsh" ] && source "${HOME}/.iterm2_shell_integration.zsh"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+[[ -z "$TMUX" && -n "$USE_TMUX" ]] && {
+    [[ -n "$ATTACH_ONLY" ]] && {
+        tmux a 2>/dev/null || {
+            cd && exec tmux
+        }
+        exit
+    }
+
+    tmux new-window -c "$PWD" 2>/dev/null && exec tmux a
+    exec tmux
+}
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -s "/usr/local/share/chruby/chruby.sh" ] && source "/usr/local/share/chruby/chruby.sh" && chruby ruby-2.6
