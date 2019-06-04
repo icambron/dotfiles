@@ -8,6 +8,9 @@ export PATH=$PATH:$HOME/code/go/bin
 
 export GOPATH=$HOME/code/go
 
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export SPARK_HOME=/opt/spark
+
 [[ -s "$HOME/.zshprivate" ]] && source "$HOME/.zshprivate"
 [[ -s "$HOME/.zshgpg" ]] && source "$HOME/.zshgpg"
 
@@ -22,13 +25,12 @@ function path_remove {
   PATH=${PATH/%":$1"/} # delete any instance in the at the end
 }
 
+# Stop Windows programs from preempting the WSL paths
 path_remove '/mnt/c/Program Files/nodejs/npm'
 path_remove '/mnt/c/Python37'
 
 # why is this so slow?
 test -e keychain && eval `keychain --quiet --eval --agents ssh id_rsa`
-
-# todo - should only be in WSL
 
 if [[ "$(< /proc/version)" == *@(Microsoft|WSL)* ]]; then
   export DOCKER_HOST=tcp://0.0.0.0:2375
