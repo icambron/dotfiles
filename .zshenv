@@ -35,3 +35,8 @@ test -e keychain && eval `keychain --quiet --eval --agents ssh id_rsa`
 if [[ "$(< /proc/version)" == *@(Microsoft|WSL)* ]]; then
   export DOCKER_HOST=tcp://0.0.0.0:2375
 fi
+
+alias python=python3
+alias pip=pip3
+
+test -e keychain && eval `keychain --eval --agents ssh id_rsa`
