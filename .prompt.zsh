@@ -52,7 +52,7 @@ if [[ ! -z "$EMACS" ]]; then
   GIT_MODIFIED_COLOR="$fg[red]"
   PROMPT_COLOR="$fg[cyan]"
 else
-  LOGIN_COLOR="$FG[026]"
+  LOGIN_COLOR="$FG[074]"
   TIME_COLOR="$FG[172]"
   DIR_COLOR="$FG[006]"
   GIT_STATUS_COLOR="$FG[105]"

@@ -1,4 +1,5 @@
 .vim/bundle/*
+.vim/plugged/*
 .vim/back/*
 .vim/undo/*
 .netrwhist

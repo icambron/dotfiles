@@ -8,7 +8,7 @@
 	smudge = git-lfs smudge %f
 	required = true
 [merge]
-	ff = only
+        #ff = only
 
 # most stuff below stolen from https://github.com/mpercy/Dotfiles/blob/master/gitconfig
 

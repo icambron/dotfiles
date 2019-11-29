@@ -20,4 +20,4 @@ do
 
 done
 
-vim +BundleInstall +qall
+vim +PlugInstall +qall

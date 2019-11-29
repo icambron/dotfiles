@@ -26,7 +26,7 @@ set background=dark
 set number
 set ruler
 set shortmess+=filmnrxoOtT      " Abbrev. of messages (avoids 'hit enter')
-set cursorline
+set nocursorline
 set showmatch
 
 set list                        " Show invisible characters
@@ -91,10 +91,6 @@ endif
 " Config settings for plugins
 let g:fakeclip_provide_clipboard_key_mappings = 1
 let g:fakeclip_terminal_multiplexer_type = "tmux"
-let g:airline_theme = 'murmur'
-let g:airline#extensions#tagbar#enabled = 0
-let g:airline_powerline_fonts = 1
-let g:airline_detect_whitespace = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 
@@ -106,36 +102,29 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white ctermbg=235
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=gray ctermbg=237
 
-" Vundle incantation
-set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-surround'
+Plug 'w0rp/ale'
+Plug 'chriskempson/base16-vim'
+Plug 'nathanaelkane/vim-indent-guides'
 
-Plugin 'tpope/vim-repeat'
-Plugin 'kana/vim-fakeclip'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'szw/vim-maximizer'
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'kien/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'rgarver/Kwbd.vim'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'slim-template/vim-slim'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'tpope/vim-markdown'
+Plug 'chrisbra/csv.vim'
+Plug 'guns/vim-clojure-static'
+Plug 'derekwyatt/vim-scala'
+Plug 'leafgarland/typescript-vim'
 
-if executable('ctags')
-  Plugin 'majutsushi/tagbar'
-endif
-
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'slim-template/vim-slim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'tpope/vim-markdown'
-Plugin 'chrisbra/csv.vim'
-Plugin 'guns/vim-clojure-static'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'itchyny/landscape.vim'
-
-call vundle#end()
+call plug#end()
 
 syntax enable                   " Turn on syntax highlighting allowing local overrides
 filetype plugin indent on
@@ -154,7 +143,10 @@ autocmd BufRead,BufNewFile {*.cljs} setf clojure
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 
 " Colors
-colorscheme landscape
+" colorscheme base16-nord
+if (has("termguicolors"))
+  set termguicolors
+endif
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=red
 " not sure why i need this...
@@ -162,13 +154,16 @@ hi Cursor guibg=black guifg=gray
 
 " Keybindings
 let mapleader = "\<Space>"
-nmap <leader>sp :Ack<SPACE>
-nmap <leader>pI :CtrlPClearAllCaches<CR>
-nmap <silent> <leader>pf :CtrlP<CR>
+" nmap <leader>pI :CtrlPClearAllCaches<CR>
+nmap <silent> <leader>pf :Files<CR>
+nmap <silent> <leader>pb :Buffers<CR>
+nmap <silent> <leader>pg :GFiles?<CR>
+nmap <silent> <Leader>sp :Ag <CR>
 nmap <silent> <Leader>sc :noh<CR>
-nmap <silent> <leader>bd<CR> :<C-u>Kwbd<CR>
+nmap <silent> <leader>bd :bd<CR>
 nmap <silent> <Leader>ti <Plug>IndentGuidesToggle
 nmap <silent> <Leader>tn :set number!<CR>
+nmap <silent> <Leader>gh BCommits<CR>
 nmap <LEADER>w- :sp<CR>
 nmap <LEADER>w/ :vsp<CR>
 nmap <LEADER>w= <C-W>=
