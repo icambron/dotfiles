@@ -1,11 +1,16 @@
 os=$(uname)
 TERM=xterm-256color
 
+# completions
+fpath=(/usr/local/share/zsh/site-functions $fpath)
+autoload -Uz compinit && compinit
+
 #source "$HOME/.prompt.zsh"
 eval "$(starship init zsh)"
 [[ -s "$HOME/.zshprivate" ]] && source "$HOME/.zshprivate"
 
 setopt NO_BEEP
+
 
 # don't complain when leaving jobs behind
 setopt nohup
@@ -55,3 +60,7 @@ KEYTIMEOUT=1
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export FZF_DEFAULT_COMMAND='fd --type f'
 export NUGET_CONFIG_PATH=~/.nuget/NuGet/NuGetNoPush.Config
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+export SPARK_HOME=/usr/local/spark
+export PATH=$PATH:$SPARK_HOME/bin
