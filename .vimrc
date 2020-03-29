@@ -89,8 +89,6 @@ elseif os == "Darwin"
 endif
 
 " Config settings for plugins
-let g:fakeclip_provide_clipboard_key_mappings = 1
-let g:fakeclip_terminal_multiplexer_type = "tmux"
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 

@@ -11,7 +11,6 @@ eval "$(starship init zsh)"
 
 setopt NO_BEEP
 
-
 # don't complain when leaving jobs behind
 setopt nohup
 setopt nocheckjobs
@@ -59,8 +58,8 @@ KEYTIMEOUT=1
 
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export FZF_DEFAULT_COMMAND='fd --type f'
-export NUGET_CONFIG_PATH=~/.nuget/NuGet/NuGetNoPush.Config
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 export SPARK_HOME=/usr/local/spark
 export PATH=$PATH:$SPARK_HOME/bin
+export NUGET_CONFIG_PATH=~/.nuget/NuGet/Nuget.Config
