@@ -59,7 +59,17 @@ KEYTIMEOUT=1
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export FZF_DEFAULT_COMMAND='fd --type f'
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
 export SPARK_HOME=/usr/local/spark
-export PATH=$PATH:$SPARK_HOME/bin
 export NUGET_CONFIG_PATH=~/.nuget/NuGet/Nuget.Config
+export PATH=$PATH:$SPARK_HOME/bin
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export PATH="$PATH:/Users/isaaccambron/.dotnet/tools"
+export JAVA_HOME=$(/usr/libexec/java_home -v13)
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/vault vault
+
+fdiff() {
+  preview="git diff $@ --color=always -- {-1}"
+  git diff $@ --name-only | fzf -m --ansi --preview $preview
+}

@@ -121,6 +121,7 @@ Plug 'chrisbra/csv.vim'
 Plug 'guns/vim-clojure-static'
 Plug 'derekwyatt/vim-scala'
 Plug 'leafgarland/typescript-vim'
+Plug 'terryma/vim-multiple-cursors'
 
 call plug#end()
 
