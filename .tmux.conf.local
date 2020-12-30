@@ -277,7 +277,7 @@ tmux_conf_copy_to_os_clipboard=false
 # this is the place to override or undo settings
 
 # increase history size
-#set -g history-limit 10000
+set -g history-limit 10000
 
 # start with mouse mode enabled
 #set -g mouse on
@@ -294,5 +294,7 @@ tmux_conf_copy_to_os_clipboard=false
 # set -g prefix C-a
 # bind C-a send-prefix
 
+bind q last-window
+
 # move status line to top
-#set -g status-position top
+set -g status-position top
