@@ -1,0 +1,38 @@
+[user]
+	email = isaac@isaaccambron.com
+	name = Isaac Cambron
+[push]
+	default = simple
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[merge]
+        #ff = only
+
+# most stuff below stolen from https://github.com/mpercy/Dotfiles/blob/master/gitconfig
+
+# from http://j-query.blogspot.com/2011/03/adding-colors-to-git-diff-by-default.html
+[color]
+        branch = auto
+        diff = auto
+        status = auto
+[color "branch"]
+        current = yellow bold
+        local = white
+        remote = green
+[color "diff"]
+        meta = yellow bold
+        frag = magenta bold
+        old = red
+        new = green
+[color "status"]
+        added = yellow
+        changed = green
+        untracked = red
+
+[alias]
+        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s - %an %Cgreen(%cr)%Creset' -n15
+        lgs = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s - %an %Cgreen(%cr)%Creset' -n5 --stat
+        br = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:red)%(objectname:short)%(color:reset)   %(color:yellow)%(refname:short)%(color:reset)\t  %(contents:subject) - %(authorname) %(color:green)(%(committerdate:relative))%(color:reset)'
+        oldest-ancestor = !bash -c 'diff -u <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -

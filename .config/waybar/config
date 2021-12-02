@@ -1,0 +1,83 @@
+{
+    "height": 40, // Waybar height (to be removed for auto height)
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["custom/weather", "network", "cpu", "memory", "temperature", "clock"],
+
+    // Modules configuration
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "format": "{name}: {icon}",
+        "format-icons": {
+            "10": "",
+            "11": "",
+            "12": "",
+            "13": "",
+            "4": "",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
+
+    "sway/window": {
+        "max-length": 80,
+        "tooltip": false
+    },
+
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    // "tray": {
+    //     // "icon-size": 21,
+    //     "spacing": 10
+    // },
+
+    "clock": {
+        "format": " {:%a %m/%d  %H:%M }",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": " {}%"
+    },
+
+    "temperature": {
+      "critical-threshold": 80,
+      "format": "{icon} {temperatureC}°C",
+      "format-icons": ["", "", ""]
+    },
+
+    "network": {
+        "format-ethernet": "  {ipaddr}",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "format-disconnected": "⚠ Disconnected"
+    },
+
+    // "custom/media": {
+    //     "format": "{icon} {}",
+    //     "return-type": "json",
+    //     "max-length": 40,
+    //     "format-icons": {
+    //         "spotify": "",
+    //         "default": "🎜"
+    //     },
+    //     "escape": true,
+    //     "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+    //     // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    // },
+
+    "custom/weather": {
+    	  "interval": 600,
+        "exec": "curl -s wttr.in/{Boston}?format=%t",
+        "format": "摒 {}"
+    },
+}
