@@ -187,6 +187,15 @@ mode "workspace > rename" {
   bindsym Escape mode "workspace"
 }
 
+mode "power" {
+  bindsym e exec "swaymsg exit"
+  bindsym l exec "swaylock"
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+backslash mode "power"
+
 bar {
     position top
 

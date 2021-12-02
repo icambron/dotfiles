@@ -23,7 +23,7 @@
     },
 
     "sway/window": {
-        "max-length": 80,
+        "max-length": 400,
         "tooltip": false
     },
 
