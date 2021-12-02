@@ -59,14 +59,7 @@ bindkey -M vicmd v edit-command-line
 # 10ms for key sequences
 KEYTIMEOUT=1
 
-export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export FZF_DEFAULT_COMMAND='fd --type f -H'
-
-export NUGET_CONFIG_PATH=~/.nuget/NuGet/Nuget.Config
-export PATH=$PATH:$SPARK_HOME/bin
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH=/usr/local/lib/ruby/gems/3.0.0/bin:$PATH
 export PATH=~/.cargo/bin:$PATH
 
 if type /usr/libexec/java_home > /dev/null; then
@@ -79,19 +72,3 @@ export EDITOR=nvim
 export SUDO_EDITOR=nvim
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/vault vault
-
-fdiff() {
-  preview="git diff $@ --color=always -- {-1}"
-  git diff $@ --name-only | fzf -m --ansi --preview $preview
-}
-
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-
-# if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-#   exec sway
-# fi
-#

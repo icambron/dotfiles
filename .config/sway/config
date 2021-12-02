@@ -1,4 +1,4 @@
-set $term alacritty
+set $term kitty
 
 set $mod Mod4
 
