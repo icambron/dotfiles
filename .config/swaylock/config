@@ -1,0 +1,26 @@
+ignore-empty-password
+font=Space Mono Nerd Font
+
+color=000000
+bs-hl-color=f7768e
+
+separator-color=000000
+
+text-clear-color=ffffff
+text-ver-color=ffffff
+text-wrong-color=ffffff
+
+ring-color=000000
+ring-ver-color=7aa2f7
+ring-clear-color=e0af68
+ring-wrong-color=f7768e
+
+inside-color=9ece6a
+inside-ver-color=7aa2f7
+inside-clear-color=e0af68
+inside-wrong-color=f7768e
+
+line-uses-ring
+
+indicator-radius=140
+indicator-thickness=60
