@@ -10,7 +10,8 @@ set $right l
 set $left-monitor DP-3
 set $right-monitor DP-2
 
-set $menu wofi --show=drun --lines=6 --prompt=""
+set $menu wofi --show=drun --lines=8 --prompt="" --gtk-dark
+exec env RUST_BACKTRACE=1 swayrd > /tmp/swayrd.log 2>&1
 
 default_border pixel 6
 gaps inner 21 
@@ -109,6 +110,9 @@ bindsym $mod+c focus child
 
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
+
+bindsym $mod+Tab exec env RUST_BACKTRACE=1 \
+    swayr switch-to-urgent-or-lru-window >> /tmp/swayr.log 2>&1
 
 mode "resize" {
     bindsym $left resize shrink width 10px
