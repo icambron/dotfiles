@@ -1,13 +1,24 @@
 os=$(uname)
 
+# Vi mode
+bindkey -v
+
 # completions
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 autoload -Uz compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
 
+# v to open command in vim
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
+# load starship if available
 if command -v starship > /dev/null; then
   eval "$(starship init zsh)"
 fi
 
+# source private info
 [[ -s "$HOME/.zshprivate" ]] && source "$HOME/.zshprivate"
 
 setopt NO_BEEP
@@ -38,9 +49,6 @@ if [[ "$os" == 'Darwin' ]]; then
 fi
 
 alias less='less -i'
-alias ack=ag
-alias weather='curl http://wttr.in/Boston'
-alias emacs='emacs -nw'
 alias exa="exa --header --long --git --all"
 alias python=python3
 alias pip=pip3
@@ -49,26 +57,13 @@ alias ogvim=/usr/bin/vim
 alias vim=nvim
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-# Vi mode
-bindkey -v
-
-autoload edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
-
 # 10ms for key sequences
 KEYTIMEOUT=1
 
-export FZF_DEFAULT_COMMAND='fd --type f -H'
+# path
 export PATH=~/.cargo/bin:$PATH
-
-if type /usr/libexec/java_home > /dev/null; then
-  export JAVA_HOME=$(/usr/libexec/java_home -v16)
-fi
-
 export PATH="$PATH:/home/icambron/.local/bin"
 
+# editors
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
-
-autoload -U +X bashcompinit && bashcompinit
