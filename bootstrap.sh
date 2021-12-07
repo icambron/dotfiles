@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# https://raw.githubusercontent.com/icambron/dotfiles/master/bootstrap.sh
-
-git clone --bare https://github.com/icambron/dotfiles $HOME/.cfg
+git clone --bare git@github.com:icambron/dotfiles.git $HOME/.cfg
 function config {
    /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
 }
