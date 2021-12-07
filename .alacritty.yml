@@ -6,17 +6,17 @@ background_opacity: 0.95
 font:
   # Normal (roman) font face
   normal:
-    family: Inconsolata Nerd Font
+    family: Roboto Mono Nerd Font
   bold:
-    family: Inconsolata Nerd Font
+    family: Roboto Mono Nerd Font
     style: Bold
 
   italic:
-    family: Inconsolata Nerd Font
+    family: Roboto Mono Nerd Font
     style: Italic
 
   bold_italic:
-    family: Inconsolata Nerd Font
+    family: Roboto Mono Nerd Font
     style: Bold Italic
 
 draw_bold_text_with_bright_colors: false

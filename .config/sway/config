@@ -24,7 +24,7 @@ output $left-monitor {
 
 output $right-monitor {
   scale 1.25 pos 3072 0 res 3840x2160
-  bg /home/isaac/wallpaper/floating spacecraft.jpg fill
+  bg /home/isaac/wallpaper/floating spaceships.jpg fill
 }
 
 workspace 1 output $left-monitor
