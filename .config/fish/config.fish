@@ -6,16 +6,28 @@ starship init fish | source
 alias less='less -i'
 alias ack=ag
 alias weather='curl http://wttr.in/Boston'
-alias emacs='emacs -nw'
 alias exa="exa --header --long --git --all"
 alias python=python3
 alias pip=pip3
-alias ls='ls -aG --color=auto'
 alias ogvim=/usr/bin/vim
 alias vim=nvim
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-export FZF_DEFAULT_COMMAND='fd --type f -H'
+if type -q tre
+  alias tree=tre
+end
+
+if type -q fd
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --color=always'
+  export FZF_DEFAULT_OPTS='--ansi'
+end
+
+if type -q exa
+  alias ls=exa
+else
+  alias ls='ls -aG --color=auto'
+end
+
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
 
