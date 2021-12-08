@@ -3,7 +3,7 @@
 filetype on
 syntax enable
 set secure
-set timeoutlen=1000 ttimeoutlen=0 " Get rid of delays
+set timeoutlen=1000 ttimeoutlen=0
 set nocompatible
 set encoding=utf-8
 set noswapfile
@@ -11,7 +11,7 @@ set history=1000
 set noerrorbells visualbell t_vb=set noerrorbells visualbell t_vb= " shut the fuck up, Donny
 
 set background=dark
-set shortmess+=filmnrxoOtT      " Abbrev. of messages (avoids 'hit enter')
+set shortmess+=filmnrxoOtT
 set nocursorline
 set showmatch
 
@@ -20,7 +20,7 @@ set incsearch
 set ignorecase
 set smartcase
 
-set backspace=indent,eol,start  " Backspace for dummies
+set backspace=indent,eol,start
 set expandtab
 set shiftwidth=2
 set softtabstop=2

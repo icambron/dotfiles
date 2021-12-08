@@ -1,18 +1,35 @@
+# VARS
 set os (uname)
-
-fish_vi_key_bindings
 set fish_greeting
 
-starship init fish | source
+# BASICS
+fish_vi_key_bindings
 
+# PROMPT
+if type -q starship
+  starship init fish | source
+end
+
+# PATHS
+fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/.local/bin
+
+# OTHER ENV
+export EDITOR=nvim
+export SUDO_EDITOR=nvim
+
+# ALIASES
 alias less='less -i'
 alias weather='curl http://wttr.in/Boston'
 alias exa="exa --header --git --all"
 alias python=python3
 alias pip=pip3
 alias ogvim=/usr/bin/vim
-alias vim=nvim
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+if type -q nvim
+  alias vim=nvim
+end
 
 if type -q tre
   alias tree=tre
@@ -38,13 +55,9 @@ if test "$os" = "Darwin"
   alias sudo="sudo -e"
 end
 
-export EDITOR=nvim
-export SUDO_EDITOR=nvim
-
-fish_add_path $HOME/.cargo/bin
-fish_add_path $HOME/.local/bin
-
+# PLUGINS
 if type -q fundle
   fundle plugin 'PatrickF1/fzf.fish'
   fundle plugin 'jethrokuan/z'
 end
+

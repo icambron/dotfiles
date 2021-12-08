@@ -1,44 +1,35 @@
+# VARS
 os=$(uname)
-
-# Vi mode
-bindkey -v
-
-# 10ms for key sequences
-KEYTIMEOUT=1
-
-# completions
 fpath=(/usr/local/share/zsh/site-functions $fpath)
-autoload -Uz compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
-
-# v to open command in vim
-autoload edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
-
-setopt NO_BEEP
-
-# don't complain when leaving jobs behind
-setopt nohup
-setopt nocheckjobs
-
-# history
-if [ -z $HISTFILE ]; then
-  HISTFILE=$HOME/.zsh_history
-fi
-
+KEYTIMEOUT=1
 HISTSIZE=10000
 SAVEHIST=10000
+HISTFILE=$HOME/.zsh_history
+
+# OPTS
+setopt NO_BEEP
+setopt nohup
+setopt nocheckjobs
 setopt append_history
 setopt extended_history
 setopt hist_expire_dups_first
-setopt hist_ignore_dups # ignore duplication command history list
+setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
-unsetopt share_history # share command history data between instances
+unsetopt share_history
 
-#aliases
+# CAPABILITIES
+autoload -Uz compinit && compinit
+autoload -U +X bashcompinit && bashcompinit
+autoload edit-command-line
+zle -N edit-command-line
+
+# KEYS
+bindkey -v
+bindkey -M vicmd v edit-command-line
+
+# ALIASES
 if [[ "$os" == 'Darwin' ]]; then
   alias sudoedit="sudo -e"
 fi
@@ -51,10 +42,10 @@ alias ogvim=/usr/bin/vim
 alias vim=nvim
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-# path
-export PATH=~/.cargo/bin:$PATH
+# PATH
+export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/bin"
 
-# editors
+# OTHER ENV
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
