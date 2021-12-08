@@ -58,6 +58,8 @@ packer.startup(function(use)
   -- other language plugins
   -- use "elixir-editors/vim-elixir"
   -- use "cespare/vim-toml", { "branch": "main" }
+  use 'terminalnode/sway-vim-syntax'
+
   use {
     "simrat39/rust-tools.nvim",
     requires = { "neovim/nvim-lspconfig" },

@@ -14,9 +14,9 @@ set $menu wofi --show=drun --lines=8 --prompt="" --gtk-dark
 exec env RUST_BACKTRACE=1 swayrd > /tmp/swayrd.log 2>&1
 
 default_border pixel 6
-gaps inner 21 
+gaps inner 21
 
-output $left-monitor { 
+output $left-monitor {
   bg /home/isaac/wallpaper/submarine.jpg fill
   # 3072 = 3840 / 1.25
   scale 1.25 pos 0 0 res 380x21614
@@ -40,8 +40,8 @@ input type:touchpad {
 }
 
 exec swayidle -w \
-	timeout 1800 'swaylock -c 000000' \
-	timeout 1805 'swaymsg "output * dpms off"' \
+	timeout 900 'swaylock -c 000000' \
+	timeout 905 'swaymsg "output * dpms off"' \
 	resume 'swaymsg "output * dpms on"'
 
 bindsym $mod+Return exec $term

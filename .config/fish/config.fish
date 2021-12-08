@@ -50,7 +50,6 @@ if type -q fundle
   fundle plugin 'jethrokuan/z'
 end
 
-
 # FZF
 if type -q fd
   export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --color=always'
