@@ -49,7 +49,6 @@ if [[ "$os" == 'Darwin' ]]; then
 fi
 
 alias less='less -i'
-alias exa="exa --header --long --git --all"
 alias python=python3
 alias pip=pip3
 alias ls='ls -aG --color=auto'
