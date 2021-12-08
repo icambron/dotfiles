@@ -38,3 +38,8 @@ export SUDO_EDITOR=nvim
 
 fish_add_path /home/isaac/.cargo/bin
 fish_add_path /home/icambron/.local/bin
+
+if type -q fundle
+  fundle plugin 'PatrickF1/fzf.fish'
+  fundle plugin 'jethrokuan/z'
+end
