@@ -1,5 +1,4 @@
 # VARS
-set os (uname)
 set fish_greeting
 
 # BASICS
@@ -51,8 +50,8 @@ else
   alias ls='ls -aG --color=auto'
 end
 
-if test "$os" = "Darwin"
-  alias sudo="sudo -e"
+if test (uname) = "Darwin"
+  alias sudoedit="sudo -e"
 end
 
 # PLUGINS
