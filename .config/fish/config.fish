@@ -1,10 +1,11 @@
+set os (uname)
+
 fish_vi_key_bindings
 set fish_greeting
 
 starship init fish | source
 
 alias less='less -i'
-alias ack=ag
 alias weather='curl http://wttr.in/Boston'
 alias exa="exa --header --git --all"
 alias python=python3
@@ -33,11 +34,15 @@ else
   alias ls='ls -aG --color=auto'
 end
 
+if test "$os" = "Darwin"
+  alias sudo="sudo -e"
+end
+
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
 
-fish_add_path /home/isaac/.cargo/bin
-fish_add_path /home/icambron/.local/bin
+fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/.local/bin
 
 if type -q fundle
   fundle plugin 'PatrickF1/fzf.fish'

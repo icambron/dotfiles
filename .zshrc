@@ -3,6 +3,9 @@ os=$(uname)
 # Vi mode
 bindkey -v
 
+# 10ms for key sequences
+KEYTIMEOUT=1
+
 # completions
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 autoload -Uz compinit && compinit
@@ -12,14 +15,6 @@ autoload -U +X bashcompinit && bashcompinit
 autoload edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
-
-# load starship if available
-if command -v starship > /dev/null; then
-  eval "$(starship init zsh)"
-fi
-
-# source private info
-[[ -s "$HOME/.zshprivate" ]] && source "$HOME/.zshprivate"
 
 setopt NO_BEEP
 
@@ -56,12 +51,9 @@ alias ogvim=/usr/bin/vim
 alias vim=nvim
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-# 10ms for key sequences
-KEYTIMEOUT=1
-
 # path
 export PATH=~/.cargo/bin:$PATH
-export PATH="$PATH:/home/icambron/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # editors
 export EDITOR=nvim
