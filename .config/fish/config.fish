@@ -6,7 +6,7 @@ starship init fish | source
 alias less='less -i'
 alias ack=ag
 alias weather='curl http://wttr.in/Boston'
-alias exa="exa --header --long --git --all"
+alias exa="exa --header --git --all"
 alias python=python3
 alias pip=pip3
 alias ogvim=/usr/bin/vim
@@ -19,7 +19,12 @@ end
 
 if type -q fd
   export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --color=always'
-  export FZF_DEFAULT_OPTS='--ansi'
+
+  if type -q bat
+    export FZF_DEFAULT_OPTS='--ansi --preview "bat --color=always {}"'
+  else
+    export FZF_DEFAULT_OPTS='--ansi'
+  end
 end
 
 if type -q exa
@@ -33,4 +38,3 @@ export SUDO_EDITOR=nvim
 
 fish_add_path /home/isaac/.cargo/bin
 fish_add_path /home/icambron/.local/bin
-

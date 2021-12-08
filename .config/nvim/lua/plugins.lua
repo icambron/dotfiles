@@ -35,25 +35,25 @@ packer.startup(function(use)
 
   use "ggandor/lightspeed.nvim"
 
--- treesitter
---   use {
---     "nvim-treesitter/nvim-treesitter",
---     run = ":TSUpdate",
---     require = {
---       { "p00f/nvim-ts-rainbow", after = "nvim-treesitter/nvim-treesitter" }
---     },
---     config = function()
---       require("nvim-treesitter.configs").setup {
---         ensure_installed = "maintained",
---         highlight = {
---           enable = true
---         },
---         rainbow = {
---           enable = false -- for now
---         }
---       }
---     end
---   }
+  -- treesitter
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+    require = {
+      { "p00f/nvim-ts-rainbow", after = "nvim-treesitter/nvim-treesitter" }
+    },
+    config = function()
+      require("nvim-treesitter.configs").setup {
+        ensure_installed = "maintained",
+        highlight = {
+          enable = true
+        },
+        rainbow = {
+          enable = false -- for now
+        }
+      }
+    end
+  }
 
   -- other language plugins
   -- use "elixir-editors/vim-elixir"
