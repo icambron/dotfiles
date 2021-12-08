@@ -3,7 +3,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["custom/weather", "network", "cpu", "memory", "temperature", "clock"],
+    "modules-right": ["custom/weather", "network", "cpu", "memory", "clock"],
 
     // Modules configuration
     "sway/workspaces": {
