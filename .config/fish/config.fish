@@ -34,16 +34,6 @@ if type -q tre
   alias tree=tre
 end
 
-if type -q fd
-  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --color=always'
-
-  if type -q bat
-    export FZF_DEFAULT_OPTS='--ansi --preview "bat --color=always {}"'
-  else
-    export FZF_DEFAULT_OPTS='--ansi'
-  end
-end
-
 if type -q exa
   alias ls=exa
 else
@@ -60,3 +50,14 @@ if type -q fundle
   fundle plugin 'jethrokuan/z'
 end
 
+
+# FZF
+if type -q fd
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --color=always'
+end
+
+if type -q bat
+  export FZF_DEFAULT_OPTS='--ansi --preview "bat --color=always {}"'
+else
+  export FZF_DEFAULT_OPTS='--ansi'
+end
