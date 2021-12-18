@@ -63,6 +63,7 @@ local leader = {
     h = { [[<cmd>lua require("telescope.builtin").commands_history()cr>]], "commands history" },
     c = { [[<cmd>lua require("telescope.builtin").search_history()<cr>]], "search history" },
     k = { [[<cmd>lua require("telescope.builtin").keymaps()<cr>]], "keymaps" },
+    p = {[[<cmd>lua require("telescope.builtin").pickers()<cr>]], "pickers"},
   },
   m = {
     name = "+mgmt",
@@ -73,6 +74,7 @@ local leader = {
   s = {
     p = {"<cmd>Telescope live_grep<cr>", "search project"},
     c = {"<cmd>noh<cr>", "clear search"},
+    l = {[[<cmd>lua require("telescope.builtin").resume()<cr>]], "previous"},
   },
   x = {
     t = {"<cmd>TroubleToggle<cr>", "toggle trouble"},

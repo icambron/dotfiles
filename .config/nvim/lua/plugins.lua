@@ -59,6 +59,9 @@ packer.startup(function(use)
   -- use "elixir-editors/vim-elixir"
   -- use "cespare/vim-toml", { "branch": "main" }
   use 'terminalnode/sway-vim-syntax'
+  use "jose-elias-alvarez/null-ls.nvim"
+
+  use { "jose-elias-alvarez/nvim-lsp-ts-utils", config = [[require("config.ts")]] }
 
   use {
     "simrat39/rust-tools.nvim",

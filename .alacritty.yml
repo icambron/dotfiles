@@ -1,6 +1,10 @@
 window:
   decorations: none
 
+cursor:
+  style:
+    blinking: Off
+
 background_opacity: 0.95
 
 font:
@@ -56,3 +60,8 @@ colors:
 
 scrolling:
   history: 10000
+
+key_bindings:
+  - { key: M, mods: alt,            action: ToggleViMode }
+  - { key: P, mods: alt,            action: Paste }
+  - { key: P,             mode: Vi, action: Paste }

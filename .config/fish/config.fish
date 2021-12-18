@@ -1,5 +1,6 @@
 # VARS
 set fish_greeting
+set fish_cursor_unknown block
 
 # BASICS
 fish_vi_key_bindings
@@ -44,12 +45,6 @@ if test (uname) = "Darwin"
   alias sudoedit="sudo -e"
 end
 
-# PLUGINS
-if type -q fundle
-  fundle plugin 'PatrickF1/fzf.fish'
-  fundle plugin 'jethrokuan/z'
-end
-
 # FZF
 if type -q fd
   export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --color=always'
@@ -59,4 +54,10 @@ if type -q bat
   export FZF_DEFAULT_OPTS='--ansi --preview "bat --color=always {}"'
 else
   export FZF_DEFAULT_OPTS='--ansi'
+end
+
+function scan
+  set temp (mktemp)
+  scanimage --device "airscan:w2:Brother ADS-2700W [000ec6eba5ad]" --format=pnm --output-file "$temp"
+  gm convert $temp $argv
 end

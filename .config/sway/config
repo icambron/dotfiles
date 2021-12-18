@@ -1,4 +1,4 @@
-set $term kitty
+set $term alacritty
 
 set $mod Mod4
 
@@ -31,12 +31,12 @@ workspace 1 output $left-monitor
 workspace 2 output $right-monitor
 
 input type:touchpad {
-    left_handed enabled
     tap enabled
     natural_scroll enabled
     dwt enabled
     accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
     pointer_accel 0.5 # set mouse sensitivity (between -1 and 1)
+    drag disabled
 }
 
 exec swayidle -w \
