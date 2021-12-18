@@ -65,3 +65,6 @@ key_bindings:
   - { key: M, mods: alt,            action: ToggleViMode }
   - { key: P, mods: alt,            action: Paste }
   - { key: P,             mode: Vi, action: Paste }
+
+  - { key: PageUp,   mods: alt, action: ScrollPageUp }
+  - { key: PageDown, mods: alt, action: ScrollPageDown }
