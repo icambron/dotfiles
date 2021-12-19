@@ -41,4 +41,3 @@ vim.opt.wildignore = "*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem,*.zip,
 vim.opt.clipboard = "unnamedplus"
 vim.opt.shortmess = "flxoOtTc"
 vim.opt.signcolumn = "yes:1"
-

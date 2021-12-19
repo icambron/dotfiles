@@ -25,6 +25,8 @@ packer.startup(function(use)
 
   use "kyazdani42/nvim-web-devicons"
 
+  use { "sunjon/Shade.nvim", config = [[require("config.shade")]] }
+
   -- editor plugins
   use "tpope/vim-repeat"
 

@@ -53,6 +53,7 @@ local leader = {
     f = { "<cmd>NvimTreeToggle<cr>", "tree" },
     n = { "<cmd>set number!<cr>", "line numbers" },
     h = { [[<cmd>lua require("config.inlay").toggle_inlay_hints()<cr>]], "inlay hints" },
+    s = { [[<cmd>lua require("shade").toggle()<cr>]], "shade" },
   },
   v = {
     name = "+vim",
