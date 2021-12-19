@@ -1,7 +1,4 @@
--- https://sharksforarms.dev/posts/neovim-rust/
--- Configure LSP through rust-tools.nvim plugin.
--- rust-tools will configure and enable certain LSP features for us.
--- See https://github.com/simrat39/rust-tools.nvim#configuration
+-- rust-tools configures lsp for us
 
 local opts = {
     tools = { -- rust-tools options

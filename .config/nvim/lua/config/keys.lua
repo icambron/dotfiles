@@ -52,7 +52,7 @@ local leader = {
     name = "+toggle",
     f = { "<cmd>NvimTreeToggle<cr>", "tree" },
     n = { "<cmd>set number!<cr>", "line numbers" },
-    h = { "<cmd>RustToggleInlayHints<cr>", "inlay hints" },
+    h = { [[<cmd>lua require("config.inlay").toggle_inlay_hints()<cr>]], "inlay hints" },
   },
   v = {
     name = "+vim",
@@ -61,7 +61,7 @@ local leader = {
     j = { [[<cmd>lua require("telescope.builtin").jumplist()<cr>]], "jumplist" },
     c = { [[<cmd>lua require("telescope.builtin").commands()<cr>]], "commands" },
     h = { [[<cmd>lua require("telescope.builtin").commands_history()cr>]], "commands history" },
-    c = { [[<cmd>lua require("telescope.builtin").search_history()<cr>]], "search history" },
+    s = { [[<cmd>lua require("telescope.builtin").search_history()<cr>]], "search history" },
     k = { [[<cmd>lua require("telescope.builtin").keymaps()<cr>]], "keymaps" },
     p = {[[<cmd>lua require("telescope.builtin").pickers()<cr>]], "pickers"},
   },

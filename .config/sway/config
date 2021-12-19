@@ -13,6 +13,8 @@ set $right-monitor DP-2
 set $menu wofi --show=drun --lines=8 --prompt="" --gtk-dark
 exec env RUST_BACKTRACE=1 swayrd > /tmp/swayrd.log 2>&1
 
+exec mako
+
 default_border pixel 6
 gaps inner 21
 

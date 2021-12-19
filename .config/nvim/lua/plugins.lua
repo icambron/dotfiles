@@ -1,5 +1,7 @@
 local fn = vim.fn
 local install_path = fn.stdpath("data").."/site/pack/packer/start/packer.nvim"
+
+local packer_bootstrap
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
 end
@@ -61,19 +63,19 @@ packer.startup(function(use)
   use 'terminalnode/sway-vim-syntax'
   use "jose-elias-alvarez/null-ls.nvim"
 
-  use { "jose-elias-alvarez/nvim-lsp-ts-utils", config = [[require("config.ts")]] }
-
   use {
     "simrat39/rust-tools.nvim",
     requires = { "neovim/nvim-lspconfig" },
-    config = [[require("config.rust")]]
+    config = [[require("lang.rust")]]
   }
 
   -- lsp stuff
+  use { "jose-elias-alvarez/nvim-lsp-ts-utils"}
   use {
     "neovim/nvim-lspconfig",
     requires = {
       "hrsh7th/nvim-cmp",
+      "jose-elias-alvarez/nvim-lsp-ts-utils",
     },
     config = [[require("config.lsp")]]
   }
@@ -81,7 +83,7 @@ packer.startup(function(use)
   use {
     "tami5/lspsaga.nvim",
     branch = "nvim51",
-    config = [[require("lspsaga").init_lsp_saga()]]
+    config = [[require("config.lspsaga")]]
   }
 
   -- completion plugins
@@ -124,18 +126,6 @@ packer.startup(function(use)
   -- debugger
   use "mfussenegger/nvim-dap"
 
-  -- theme
---  use {
---    "EdenEast/nightfox.nvim",
---    config = function()
---      local nightfox = require("nightfox")
---      nightfox.setup {
---        fox = "duskfox"
---      }
---       nightfox.load()
---    end
---  }
-
   use {
     "folke/tokyonight.nvim",
     branch = "main",
@@ -145,9 +135,8 @@ packer.startup(function(use)
       vim.gtokyonight_colors = {
         background = '#08090c'
       },
-      vim.cmd([[colorscheme tokyonight]])
+      vim.cmd("colorscheme tokyonight")
     end
-    -- config = [[require("config.tokyonight")]]
   }
 
   use {
