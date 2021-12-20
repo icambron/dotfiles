@@ -6,6 +6,7 @@ lspconfig.tsserver.setup({
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
     ts_utils.setup({
+        auto_inlay_hints = false,
         eslint_bin = "eslint_d",
         eslint_enable_diagnostics = true,
         eslint_enable_code_actions = true,
