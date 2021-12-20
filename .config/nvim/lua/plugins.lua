@@ -25,7 +25,7 @@ packer.startup(function(use)
 
   use "kyazdani42/nvim-web-devicons"
 
-  use { "sunjon/Shade.nvim", config = [[require("config.shade")]] }
+  -- use { "sunjon/Shade.nvim", config = [[require("config.shade")]] }
 
   -- editor plugins
   use "tpope/vim-repeat"
@@ -38,6 +38,8 @@ packer.startup(function(use)
   }
 
   use "ggandor/lightspeed.nvim"
+
+  use {'stevearc/aerial.nvim'}
 
   -- treesitter
   use {
@@ -78,6 +80,7 @@ packer.startup(function(use)
     requires = {
       "hrsh7th/nvim-cmp",
       "jose-elias-alvarez/nvim-lsp-ts-utils",
+      "stevearc/aerial.nvim"
     },
     config = [[require("config.lsp")]]
   }

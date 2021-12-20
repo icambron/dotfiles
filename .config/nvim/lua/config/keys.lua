@@ -54,6 +54,7 @@ local leader = {
     n = { "<cmd>set number!<cr>", "line numbers" },
     h = { [[<cmd>lua require("config.inlay").toggle_inlay_hints()<cr>]], "inlay hints" },
     s = { [[<cmd>lua require("shade").toggle()<cr>]], "shade" },
+    o = { "<cmd>AerialToggle<cr>", "outline" }
   },
   v = {
     name = "+vim",
