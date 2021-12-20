@@ -9,6 +9,7 @@ nmap("\\", "<cmd>Lspsaga lsp_finder<cr>")
 nmap("<c-j>", "<cmd>Lspsaga diagnostic_jump_next<cr>")
 nmap("<c-k>", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
 nmap("<c-b>", "<cmd>lua vim.lsp.buf.definition()<cr>")
+nmap("2", "<cmd>lua vim.lsp.buf.definition()<cr>")
 
 vim.g.mapleader = " "
 
@@ -54,7 +55,7 @@ local leader = {
     n = { "<cmd>set number!<cr>", "line numbers" },
     h = { [[<cmd>lua require("config.inlay").toggle_inlay_hints()<cr>]], "inlay hints" },
     s = { [[<cmd>lua require("shade").toggle()<cr>]], "shade" },
-    o = { "<cmd>AerialToggle<cr>", "outline" }
+    o = { "<cmd>SymbolsOutline<cr>", "outline"}
   },
   v = {
     name = "+vim",

@@ -39,7 +39,8 @@ packer.startup(function(use)
 
   use "ggandor/lightspeed.nvim"
 
-  use {'stevearc/aerial.nvim'}
+  -- outlining
+  use {'simrat39/symbols-outline.nvim'}
 
   -- treesitter
   use {
