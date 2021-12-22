@@ -123,7 +123,7 @@ packer.startup(function(use)
       "nvim-lua/plenary.nvim",
       "nvim-lua/telescope.nvim"
     },
-    cmd = 'Telescope',
+    cmd = "Telescope",
     config = [[require("config.telescope")]]
   }
 
@@ -139,7 +139,7 @@ packer.startup(function(use)
       vim.g.tokyonight_style = "night"
       vim.g.tokyonight_transparent = true
       vim.gtokyonight_colors = {
-        background = '#08090c'
+        background = "#08090c"
       },
       vim.cmd("colorscheme tokyonight")
     end
@@ -153,7 +153,15 @@ packer.startup(function(use)
       options = {
         theme = "tokyonight",
         section_separators = { left = "", right = "" },
-        component_separators = { left = "", right = "" }
+        component_separators = { left = "", right = "" },
+      },
+      sections = {
+        lualine_a = {"mode"},
+        lualine_b = {"branch", "diff", "diagnostics"},
+        lualine_c = { {"filename", path = 1 } },
+        lualine_x = {"encoding", "fileformat", "filetype"},
+        lualine_y = {"progress"},
+        lualine_z = {"location"}
       }
     }
   end

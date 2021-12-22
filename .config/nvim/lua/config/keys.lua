@@ -9,7 +9,6 @@ nmap("\\", "<cmd>Lspsaga lsp_finder<cr>")
 nmap("<c-j>", "<cmd>Lspsaga diagnostic_jump_next<cr>")
 nmap("<c-k>", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
 nmap("<c-b>", "<cmd>lua vim.lsp.buf.definition()<cr>")
-nmap("2", "<cmd>lua vim.lsp.buf.definition()<cr>")
 
 vim.g.mapleader = " "
 
@@ -81,8 +80,8 @@ local leader = {
   },
   x = {
     t = {"<cmd>TroubleToggle<cr>", "toggle trouble"},
-    w = {"<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace trouble"},
-    d = {"<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document trouble"},
+    w = {"<cmd>TroubleToggle workspace_diagnostics<cr>", "workspace trouble"},
+    d = {"<cmd>TroubleToggle document_diagnostics<cr>", "document trouble"},
     r = {"<cmd>TroubleRefresh<cr>", "refresh trouble"},
   }
 }
