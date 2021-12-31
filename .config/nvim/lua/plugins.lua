@@ -88,7 +88,6 @@ packer.startup(function(use)
 
   use {
     "tami5/lspsaga.nvim",
-    branch = "nvim51",
     config = [[require("config.lspsaga")]]
   }
 

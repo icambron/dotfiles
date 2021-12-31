@@ -195,6 +195,8 @@ mode "workspace > rename" {
 
 mode "power" {
   bindsym e exec "swaymsg exit"
+
+  # todo - also leave this mode
   bindsym l exec "swaylock"
 
   bindsym Return mode "default"

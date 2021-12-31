@@ -1,6 +1,6 @@
 local nvim_lsp = require('lspconfig')
 
 nvim_lsp.elixirls.setup {
-	cmd = {'/opt/elixir-ls/language_server.sh'}
+	cmd = {'/home/isaac/.elixir-ls/language_server.sh'}
 }
 
