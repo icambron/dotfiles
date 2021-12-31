@@ -25,6 +25,7 @@ packer.startup(function(use)
 
   use "kyazdani42/nvim-web-devicons"
 
+  -- shade is great but blows up when I use floating windows
   -- use { "sunjon/Shade.nvim", config = [[require("config.shade")]] }
 
   -- editor plugins
@@ -52,6 +53,9 @@ packer.startup(function(use)
     config = function()
       require("nvim-treesitter.configs").setup {
         ensure_installed = "maintained",
+
+        -- see https://github.com/nvim-treesitter/nvim-treesitter/issues/1957
+        ignore_install = { "elixir" },
         highlight = {
           enable = true
         },
@@ -63,10 +67,12 @@ packer.startup(function(use)
   }
 
   -- other language plugins
-  -- use "elixir-editors/vim-elixir"
   -- use "cespare/vim-toml", { "branch": "main" }
   use 'terminalnode/sway-vim-syntax'
   use "jose-elias-alvarez/null-ls.nvim"
+
+  -- until perf issues with elixir treesitter are fixed
+  use "elixir-editors/vim-elixir"
 
   use {
     "simrat39/rust-tools.nvim",
