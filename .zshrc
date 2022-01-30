@@ -49,3 +49,5 @@ export PATH="$PATH:$HOME/.local/bin"
 # OTHER ENV
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
+
+source /home/isaac/.config/broot/launcher/bash/br

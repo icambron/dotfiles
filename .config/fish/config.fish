@@ -17,6 +17,7 @@ fish_add_path $HOME/.local/bin
 # OTHER ENV
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
+export GRIM_DEFAULT_DIR=$HOME/screenshots
 
 # ALIASES
 alias less='less -i'

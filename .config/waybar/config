@@ -76,7 +76,7 @@
     // },
 
     "custom/weather": {
-    	  "interval": 600,
+    	"interval": 600,
         "exec": "curl -s wttr.in/{Boston}?format=%t",
         "format": "摒 {}"
     },

@@ -46,7 +46,8 @@ local leader = {
   },
   r = {
     name = "+refactor",
-    r = { "<cmd>Lspsaga rename<cr>", "rename" }
+    r = { "<cmd>Lspsaga rename<cr>", "rename" },
+    f = { "<cmd>Neoformat<cr>", "format" }
   },
   t = {
     name = "+toggle",

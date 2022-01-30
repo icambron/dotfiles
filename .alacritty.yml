@@ -1,11 +1,10 @@
 window:
   decorations: none
+  opacity: 0.95
 
 cursor:
   style:
     blinking: Off
-
-background_opacity: 0.95
 
 font:
   # Normal (roman) font face
