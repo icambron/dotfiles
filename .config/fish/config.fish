@@ -27,6 +27,7 @@ alias python=python3
 alias pip=pip3
 alias ogvim=/usr/bin/vim
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias hx=helix
 
 if type -q nvim
   alias vim=nvim
@@ -57,6 +58,9 @@ else
   export FZF_DEFAULT_OPTS='--ansi'
 end
 
+# FUNCTIONS
+
+# scan a doc like `scan foo.pdf`
 function scan
   set temp (mktemp)
   scanimage --device "airscan:w2:Brother ADS-2700W [000ec6eba5ad]" --format=pnm --output-file "$temp"
