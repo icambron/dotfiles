@@ -8,7 +8,7 @@ nmap(";", "<cmd>Lspsaga code_action<cr>")
 nmap("\\", "<cmd>Lspsaga lsp_finder<cr>")
 nmap("<c-j>", "<cmd>Lspsaga diagnostic_jump_next<cr>")
 nmap("<c-k>", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
-nmap("<c-b>", "<cmd>lua vim.lsp.buf.definition()<cr>")
+nmap("gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
 
 vim.g.mapleader = " "
 
