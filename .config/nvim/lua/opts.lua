@@ -16,10 +16,11 @@ vim.opt.ignorecase = true        -- Searches are case insensitive...
 vim.opt.smartcase = true         -- ...Unless they contain at least one capital letter
 
 -- tabs
+vim.opt.filetype = "on"
 vim.opt.tabstop = 2
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 vim.opt.shiftwidth = 2
--- vim.opt.smartindent = true
+vim.opt.smartindent = true
 vim.opt.shiftround = true
 
 -- other editing
@@ -41,3 +42,4 @@ vim.opt.wildignore = "*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem,*.zip,
 vim.opt.clipboard = "unnamedplus"
 vim.opt.shortmess = "flxoOtTc"
 vim.opt.signcolumn = "yes:1"
+

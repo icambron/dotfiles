@@ -13,6 +13,7 @@ end
 # PATHS
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/bin
+fish_add_path $HOME/code/lqbk/LBDeploy/src/main/python/lbtools.py 
 fish_add_path /opt/homebrew/bin
 
 # OTHER ENV
@@ -24,8 +25,6 @@ export GRIM_DEFAULT_DIR=$HOME/screenshots
 alias less='less -i'
 alias weather='curl http://wttr.in/Boston'
 alias exa="exa --header --git --all"
-alias python=python3
-alias pip=pip3
 alias ogvim=/usr/bin/vim
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias hx=helix

@@ -2,6 +2,10 @@ local function nmap(lhs, rhs)
   vim.api.nvim_set_keymap("n", lhs, rhs, { noremap = true, silent = true })
 end
 
+local function vmap(lhs, rhs)
+  vim.api.nvim_set_keymap("v", lhs, rhs, { noremap = true, silent = true })
+end
+
 nmap("K", "<cmd>Lspsaga hover_doc<cr>")
 nmap(",", "<cmd>Lspsaga preview_definition<cr>")
 nmap(";", "<cmd>Lspsaga code_action<cr>")
@@ -23,7 +27,9 @@ local leader = {
   },
   b = {
     name = "+buffers",
-    b = { "<cmd>Telescope buffers<cr>", "list" }
+    b = { "<cmd>Telescope buffers<cr>", "list" },
+    c = { "<cmd>bd<cr>", "close current" },
+    C = { "<cmd>bd!<cr>", "close current" }
   },
   g = {
     name = "+git",
@@ -88,3 +94,8 @@ local leader = {
 }
 
 wk.register(leader, { prefix = "<leader>" })
+
+
+local visual = {
+
+}
