@@ -1,5 +1,7 @@
 local lspconfig = require("lspconfig")
 local ts_utils = require("nvim-lsp-ts-utils")
+--local lsp_format = require("lsp-format")
+
 lspconfig.tsserver.setup({
   init_options = ts_utils.init_options,
   on_attach = function(client)
@@ -10,6 +12,7 @@ lspconfig.tsserver.setup({
         eslint_enable_code_actions = true,
     })
     ts_utils.setup_client(client)
+		--lsp_format.on_attach()
   end
 })
 

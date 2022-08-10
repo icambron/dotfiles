@@ -10,5 +10,4 @@ local config = {
   }
 }
 
-
 saga.init_lsp_saga(config)

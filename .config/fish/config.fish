@@ -13,7 +13,7 @@ end
 # PATHS
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/bin
-fish_add_path $HOME/code/lqbk/LBDeploy/src/main/python/lbtools.py 
+fish_add_path $HOME/code/lqbk/LBDeploy/src/main/python
 fish_add_path /opt/homebrew/bin
 
 # OTHER ENV
@@ -27,7 +27,7 @@ alias weather='curl http://wttr.in/Boston'
 alias exa="exa --header --git --all"
 alias ogvim=/usr/bin/vim
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias hx=helix
+alias z=zoxide
 
 if type -q nvim
   alias vim=nvim

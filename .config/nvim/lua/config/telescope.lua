@@ -1,10 +1,13 @@
 local telescope = require("telescope");
-local trouble = require("trouble");
+local actions = require("telescope.actions");
+
 telescope.setup {
   defaults = {
     mappings = {
-      i = { ["<C-t>"] = trouble.open_with_trouble }, -- these don't work?
-      n = { ["<C-t>"] = trouble.open_with_trouble },
+      i = {
+				["<C-k>"] = actions.move_selection_previous,
+				["<C-j>"] = actions.move_selection_next,
+			},
     },
   },
   pickers = {
@@ -14,3 +17,4 @@ telescope.setup {
   }
 }
 telescope.load_extension("fzf")
+telescope.load_extension("ui-select")

@@ -52,10 +52,10 @@ packer.startup(function(use)
     },
     config = function()
       require("nvim-treesitter.configs").setup {
-        ensure_installed = "maintained",
+        ensure_installed = { "rust", "lua", "typescript" },
 
         -- see https://github.com/nvim-treesitter/nvim-treesitter/issues/1957
-        ignore_install = { "elixir" },
+        ignore_install = { "elixir", "php" },
         highlight = {
           enable = true
         },
@@ -67,6 +67,7 @@ packer.startup(function(use)
   }
 
   use { 'sbdchd/neoformat' }
+	--use "lukas-reineke/lsp-format.nvim"
 
   -- other language plugins
   -- use "cespare/vim-toml", { "branch": "main" }
@@ -122,6 +123,8 @@ packer.startup(function(use)
   -- fuzzy finder plugins
   use "nvim-lua/popup.nvim"
   use "nvim-lua/plenary.nvim"
+
+	use {'nvim-telescope/telescope-ui-select.nvim' }
 
   use {
     "nvim-telescope/telescope.nvim",

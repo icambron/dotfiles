@@ -10,9 +10,11 @@ nmap("K", "<cmd>Lspsaga hover_doc<cr>")
 nmap(",", "<cmd>Lspsaga preview_definition<cr>")
 nmap(";", "<cmd>Lspsaga code_action<cr>")
 nmap("\\", "<cmd>Lspsaga lsp_finder<cr>")
-nmap("<c-j>", "<cmd>Lspsaga diagnostic_jump_next<cr>")
-nmap("<c-k>", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
-nmap("gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
+nmap("gn", "<cmd>Lspsaga diagnostic_jump_next<cr>")
+nmap("gp", "<cmd>Lspsaga diagnostic_jump_prev<cr>")
+nmap("gd", "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
+nmap("gt", "<cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>")
+nmap("gi", "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>")
 
 vim.g.mapleader = " "
 
@@ -42,13 +44,11 @@ local leader = {
   c = {
     name = "+code",
     r = { [[<cmd>lua require("telescope.builtin").lsp_references()<cr>]], "references" },
-    a = { [[<cmd>lua require("telescope.builtin").lsp_code_actions()<cr>]], "actions" },
+		a = { [[<cmd>lua require('lspsaga.codeaction').code_action()<cr>]], "actions"},
+    -- a = { [[<cmd>lua vim.lsp.buf.code_action()<cr>]], "actions" },
     s = { [[<cmd>lua require("telescope.builtin").lsp_document_symbols()<cr>]], "document symbols" },
-    w = { [[<cmd>lua require("telescope.builtin").lsp_workspace_symbols()<cr>]], "workspace symbols" },
-    i = { [[<cmd>lua require("telescope.builtin").lsp_implementations()<cr>]], "implementation" },
-    t = { [[<cmd>lua require("telescope.builtin").lsp_type_definitions()<cr>]], "type definitions" },
-    d = { [[<cmd>lua require("telescope.builtin").lsp_document_diagnostics()<cr>]], "document diagnostics" },
-    p = { [[<cmd>lua require("telescope.builtin").lsp_workspace_diagnostics()<cr>]], "workspace diagnostics" },
+		-- this is redundant with trouble
+		d = { [[<cmd>lua require("telescope.builtin").diagnostics()<cr>]], "document symbols" },
   },
   r = {
     name = "+refactor",
@@ -90,7 +90,29 @@ local leader = {
     w = {"<cmd>TroubleToggle workspace_diagnostics<cr>", "workspace trouble"},
     d = {"<cmd>TroubleToggle document_diagnostics<cr>", "document trouble"},
     r = {"<cmd>TroubleRefresh<cr>", "refresh trouble"},
-  }
+  },
+	o = {
+		-- most of these should be folded into generic facilities, like with
+		-- toggling inlay hints. However, that's silly until I have at least one other envthat can do it
+		-- In fact, many of these should just get folded into standard LSP tooling
+		r = {"<cmd>RustRunnables<cr>", "runnables" },
+		m = {"<cmd>RustExpandMacro<cr>", "cargo" },
+		c = {"<cmd>RustOpenCargo<cr>", "cargo" },
+		p = {"<cmd>RustParentModule<cr>", "parent module" },
+		-- should I just make J do this?
+		j = {"<cmd>RustJoinLines<cr>", "join lines" },
+		-- are these any different than LSP code actions?
+		a = { "<cmd>RustHoverActions<cr>", "actions" },
+		h = { "<cmd>RustHoverRange<cr>", "range actions" },
+		u = { "<cmd>RustMoveItemUp<cr>", "move item up" },
+		d = { "<cmd>RustMoveItemDown<cr>", "move item down" },
+		g = { "<cmd>RustViewCrateGraph<cr>", "crate graph" },
+		w = { "<cmd>RustReloadWorkspace<cr>", "reload workspace" },
+		e = { "<cmd>RustOpenExternalDocs<cr>", "external docs" },
+		s = { "<cmd>RustSSR<cr>", "search and replace" },
+		b = { "<cmd>RustStartStandaloneServerForBuffer<cr>", "standalone server" },
+		y = { "<cmd>RustDebuggables<cr>", "debug" },
+	}
 }
 
 wk.register(leader, { prefix = "<leader>" })

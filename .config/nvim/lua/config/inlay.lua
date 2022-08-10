@@ -1,7 +1,7 @@
 local M = {}
 
 function M.toggle_inlay_hints()
-  local buf = vim.api.nvim_get_current_buf() 
+  local buf = vim.api.nvim_get_current_buf()
   local ft = vim.api.nvim_buf_get_option(buf, "filetype")
 
   if ft == "rust" then
