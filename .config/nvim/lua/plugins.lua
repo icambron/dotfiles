@@ -41,7 +41,12 @@ packer.startup(function(use)
   use "ggandor/lightspeed.nvim"
 
   -- outlining
-  use {'simrat39/symbols-outline.nvim'}
+  use {
+		"simrat39/symbols-outline.nvim",
+		config = function()
+			require("symbols-outline").setup()
+		end
+	}
 
   -- treesitter
   use {
