@@ -90,7 +90,8 @@ packer.startup(function(use)
     requires = {
       "hrsh7th/nvim-cmp",
       "jose-elias-alvarez/nvim-lsp-ts-utils",
-      "stevearc/aerial.nvim"
+      "stevearc/aerial.nvim",
+			"MunifTanjim/eslint.nvim"
     },
     config = [[require("config.lsp")]]
   }

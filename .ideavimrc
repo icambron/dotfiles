@@ -44,411 +44,118 @@ set ReplaceWithRegister
 " (without ") at the end of your ~/.ideavimrc file
 " vunmap <A-X>
 
-""" Key bindings that do not have <leader> as first key
+nnoremap <leader>pf    :action GotoFile<CR>
+vnoremap <leader>pf    :action GotoFile<CR>
 
-" Go to next change
-nnoremap g,    :action JumpToNextChange<CR>
-vnoremap g,    :action JumpToNextChange<CR>
-
-" Go to last change
-nnoremap g;    :action JumpToLastChange<CR>
-vnoremap g;    :action JumpToLastChange<CR>
-
-" Go to declaration
 nnoremap <leader>gd    :action GotoDeclaration<CR>
 vnoremap <leader>gd    <Esc>:action GotoDeclaration<CR>
 
-" Collapse all folds
-nnoremap zm    :action CollapseAllRegions<CR>
-vnoremap zm    :action CollapseAllRegions<CR>
+nnoremap <leader>gd    :action GotoDeclaration<CR>
+vnoremap <leader>gd    <Esc>:action GotoDeclaration<CR>
+nnoremap <leader>gt    :action GotoTypeDeclaration<CR>
+vnoremap <leader>gt    <Esc>:action GotoTypeDeclaration<CR>
 
-" Open all folds
-nnoremap zr    :action ExpandAllRegions<CR>
-vnoremap zr    :action ExpandAllRegions<CR>
-
-" Jump to previously visited location
 nnoremap <C-i>    :action Forward<CR>
-
-" Jump to lately visited location
 nnoremap <C-o>    :action Back<CR>
 
-" Execute an action. Like <M-x>
-nnoremap <A-X>    :action GotoAction<CR>
-vnoremap <A-X>    :action GotoAction<CR>
-inoremap <A-X>    <Esc>:action GotoAction<CR>
-
-""" Spacemacs hybrid mode.
-
-" Unbind C-g
-nnoremap <C-g>    <Esc>
-vnoremap <C-g>    <Esc>
-inoremap <C-g>    <Esc>a
-
-" Go to first character
-inoremap <C-a>    <Esc>I
-cnoremap <C-a>    <Home>
-
-" Go to end of line
-inoremap <C-e>    <Esc>A
-cnoremap <C-e>    <End>
-
-" Delete character
-inoremap <C-d>    <del>
-
-" Go up
-inoremap <C-p>    <up>
-
-" Go down
-inoremap <C-n>    <down>
-
-" Go right
-inoremap <C-f>    <right>
-
-" Go left
-inoremap <C-b>    <left>
-
-" Delete to line end
-inoremap <C-k>    <Esc>:action EditorDeleteToLineEnd<CR>a
-
-" Go to next word
-inoremap <A-f>    <Esc>:action EditorNextWord<CR>a
-
-" Go to previous word
-inoremap <A-b>    <Esc>:action EditorPreviousWord<CR>i
-
-" TABS
-
-" Go to first tab
-nnoremap <leader>b0    :action GoToTab1<CR>
-vnoremap <leader>b0    <Esc>:action GoToTab1<CR>
-
-" Go to last tab
-nnoremap <leader>b$    :action GoToLastTab<CR>
-vnoremap <leader>b$    <Esc>:action GoToLastTab<CR>
-
-" Next Tab
-nnoremap <leader>bk    :action NextTab<CR>
-vnoremap <leader>bk    <Esc>:action NextTab<CR>
-
-" Previous Tab
-nnoremap <leader>bj    :action PreviousTab<CR>
-vnoremap <leader>bj    <Esc>:action PreviousTab<CR>
-
-" Switch among recently opened files
+" tabs
+nnoremap <leader>bn    :action NextTab<CR>
+vnoremap <leader>bn    <Esc>:action NextTab<CR>
+nnoremap <leader>bp    :action PreviousTab<CR>
+vnoremap <leader>bp    <Esc>:action PreviousTab<CR>
+nnoremap <leader>bu    :action ReopenClosedTab<CR>
+vnoremap <leader>bu    <Esc>:action ReopenClosedTab<CR>
+nnoremap <leader>bd    :action CloseAllEditorsButActive<CR>
+vnoremap <leader>bd    :action CloseAllEditorsButActive<CR>
+nnoremap <leader>bc    :action CloseContent<CR>
+vnoremap <leader>bc    <Esc>:action CloseContent<CR>
 nnoremap <leader>bb    :action RecentFiles<CR>
 vnoremap <leader>bb    :action RecentFiles<CR>
 
-" Close current tab
-nnoremap <leader>bd    :action CloseContent<CR>
-vnoremap <leader>bd    <Esc>:action CloseContent<CR>
+" management
+nnoremap <leader>mr    :source ~/.ideavimrc<CR>
+vnoremap <leader>mr    <Esc>:source ~/.ideavimrc<CR>
 
-" Show event log
-nnoremap <leader>bm    :action ActivateEventLogToolWindow<CR>
-vnoremap <leader>bm    :action ActivateEventLogToolWindow<CR>
-
-" Next Tab
-nnoremap <leader>bn    :action NextTab<CR>
-vnoremap <leader>bn    <Esc>:action NextTab<CR>
-
-" Substitute the whole content of the buffer with the content of your clipboard
-nnoremap <leader>bP    ggVGp<CR>
-vnoremap <leader>bP    <Esc>ggVGp<CR>
-
-" Previous Tab
-nnoremap <leader>bp    :action PreviousTab<CR>
-vnoremap <leader>bp    <Esc>:action PreviousTab<CR>
-
-" Open a new scratch buffer
-nnoremap <leader>bs    :action NewScratchBuffer<CR>
-vnoremap <leader>bs    <Esc>:action NewScratchBuffer<CR>
-
-" Reopen last closed tab
-nnoremap <leader>bu    :action ReopenClosedTab<CR>
-vnoremap <leader>bu    <Esc>:action ReopenClosedTab<CR>
-
-" Close a window together with its tabs
-nnoremap <leader>bx    :action CloseAllEditors<CR>
-vnoremap <leader>bx    <Esc>:action CloseAllEditors<CR>
-
-" Copy whole buffer
-nnoremap <leader>bY    :%y<CR>
-vnoremap <leader>bY    <Esc>:%y<CR>
-
-" Close other tabs in current window
-nnoremap <leader>b<C-d>    :action CloseAllEditorsButActive<CR>
-vnoremap <leader>b<C-d>    :action CloseAllEditorsButActive<CR>
-
-" TOGGLES
-
-" Toggle show indent guide
+" toggles
 nnoremap <leader>ti    :action EditorToggleShowIndentLines<CR>
 vnoremap <leader>ti    <Esc>:action EditorToggleShowIndentLines<CR>
 
-" Toggle truncate lines
 nnoremap <leader>tl    :action EditorToggleUseSoftWraps<CR>
 vnoremap <leader>tl    :action EditorToggleUseSoftWraps<CR>
 
-" Toggle line numbers
 nnoremap <leader>tn    :action EditorToggleShowLineNumbers<CR>
 vnoremap <leader>tn    :action EditorToggleShowLineNumbers<CR>
 
-" Toggle relative line numbers
-nnoremap <leader>tr    :set relativenumber!<CR>
-vnoremap <leader>tr    <Esc>:set relativenumber!<CR>
-
-" Toggle Show Whitespaces
 nnoremap <leader>tw    :action EditorToggleShowWhitespaces<CR>
 vnoremap <leader>tw    :action EditorToggleShowWhitespaces<CR>
 
-" Switch among recently opened files
+" refactor
+nnoremap <leader>rr    :action RenameElement<CR>
+vnoremap <leader>rr    :action RenameElement<CR>
+
+nnoremap <leader>rf    :action ReformatCode<CR>
+vnoremap <leader>rf    :action ReformatCode<CR>
+
+" search 
+nnoremap <leader>sp    :action FindInPath<CR>
+vnoremap <leader>sp    :action FindInPath<CR>
+nnoremap <leader>sc    :nohlsearch<CR>
+vnoremap <leader>sc    <Esc>:nohlsearch<CR>
+nnoremap <leader>sI    :action InvalidateCaches<CR>
+vnoremap <leader>sI    :action InvalidateCaches<CR>
+nnoremap <leader>ss    :action GotoSymbol<CR>
+vnoremap <leader>ss    :action GotoSymbol<CR>
+nnoremap <leader>sC   :action GotoClass<CR>
+vnoremap <leader>sC   :action GotoClass<CR>
+
+" code
+nnoremap <leader>cr    :action FindUsages<CR>
+vnoremap <leader>cr    :action FindUsages<CR>
+nnoremap <leader>ca    :action ShowIntentionActions<CR>
+vnoremap <leader>ca    :action ShowIntentionActions<CR>
+
+" vi
+nnoremap <leader>vr    :reg<CR>
+vnoremap <leader>vr    <Esc>:reg<CR>
+nnoremap <leader>vm    :action ShowBookmarks<CR>
+vnoremap <leader>vm    :action ShowBookmarks<CR>
+
+
+" THINGS I MIGHT WANT (but don't have in neovim)
+
+" files
 nnoremap <leader>rb    :action RecentFiles<CR>
 vnoremap <leader>rb    :action RecentFiles<CR>
-nnoremap <leader>rB    :action RecentFiles<CR>
-vnoremap <leader>rB    :action RecentFiles<CR>
 
-" Show registers
-nnoremap <leader>re    :reg<CR>
-vnoremap <leader>re    <Esc>:reg<CR>
-
-" Search in project
-nnoremap <leader>rs    :action FindInPath<CR>
-vnoremap <leader>rs    :action FindInPath<CR>
+nnoremap <leader>jd    :action ActivateProjectToolWindow<CR>
+vnoremap <leader>jd    :action ActivateProjectToolWindow<CR>
 
 " Show kill ring
 nnoremap <leader>ry    :action PasteMultiple<CR>
 vnoremap <leader>ry    :action PasteMultiple<CR>
 
-" Reformat whole buffer
-nnoremap <leader>j=    :action ReformatCode<CR>
-
-" Reformat selected lines
-vnoremap <leader>j=    :action ReformatCode<CR>
-
-" Focus on project window.
-" Sadly when you are inside the project window this key binding does not work
-" anymore. You can use <A-1> if you want to close the window or <Esc> if you
-" want to leave the window opened and focus on the code.
-nnoremap <leader>jD    :action ActivateProjectToolWindow<CR>
-vnoremap <leader>jD    :action ActivateProjectToolWindow<CR>
-nnoremap <leader>jd    :action ActivateProjectToolWindow<CR>
-vnoremap <leader>jd    :action ActivateProjectToolWindow<CR>
-
-" Insert new line
-nnoremap <leader>jo    i<CR><Esc>k$
-vnoremap <leader>jo    <Esc>i<CR><Esc>k$
-
-" Insert new line and move down
-nnoremap <leader>jn    i<CR><Esc>
-vnoremap <leader>jn    <Esc>i<CR><Esc>
-
-" Jump to class
-nnoremap <leader>jc   :action GotoClass<CR>
-vnoremap <leader>jc   :action GotoClass<CR>
+" todo window
+nnoremap <leader>aot    :action ActivateTODOToolWindow<CR>
+vnoremap <leader>aot    :action ActivateTODOToolWindow<CR>
 
 " Jump to element in current file
 nnoremap <leader>je   :action FileStructurePopup<CR>
 vnoremap <leader>je   :action FileStructurePopup<CR>
 
-" Jump to symbol
-nnoremap <leader>js    :action GotoSymbol<CR>
-vnoremap <leader>js    :action GotoSymbol<CR>
-
-" Increment number.
-" As usual you can press '.' to repeat this action again.
-nnoremap <leader>n+    <C-a>
-vnoremap <leader>n+    <C-a>
-nnoremap <leader>n=    <C-a>
-vnoremap <leader>n=    <C-a>
-
-" Decrement number.
-" As usual you can press '.' to repeat this action again.
-nnoremap <leader>n-    <C-x>
-vnoremap <leader>n-    <C-x>
-
-" Clear search highlights.
-nnoremap <leader>sc    :nohlsearch<CR>
-vnoremap <leader>sc    <Esc>:nohlsearch<CR>
-
-" Rename symbol
-nnoremap <leader>se    :action RenameElement<CR>
-vnoremap <leader>se    :action RenameElement<CR>
-
 " Highlight current symbol. Do it again to toggle highlight.
 nnoremap <leader>sh    :action HighlightUsagesInFile<CR>
 vnoremap <leader>sh    <Esc>:action HighlightUsagesInFile<CR>
-
-" Find usages
-nnoremap <leader>sP    :action FindUsages<CR>
-vnoremap <leader>sP    :action FindUsages<CR>
-
-" Search in project. Unfortunately <leader>/ does not work.
-nnoremap <leader>sp    :action FindInPath<CR>
-vnoremap <leader>sp    :action FindInPath<CR>
-nnoremap <leader>sl    :action FindInPath<CR>
-vnoremap <leader>sl    :action FindInPath<CR>
-nnoremap <leader>ss    :action FindInPath<CR>
-vnoremap <leader>ss    :action FindInPath<CR>
-
-" Plugins screen
-nnoremap <leader>ak    :action WelcomeScreen.Plugins<CR>
-vnoremap <leader>ak    :action WelcomeScreen.Plugins<CR>
-
-" Show TODOs
-nnoremap <leader>aot    :action ActivateTODOToolWindow<CR>
-vnoremap <leader>aot    :action ActivateTODOToolWindow<CR>
-
-" Show cpu usage
-nnoremap <leader>aP    :action Performance.ActivityMonitor<CR>
-vnoremap <leader>aP    :action Performance.ActivityMonitor<CR>
-
-" List processes
-nnoremap <leader>ap    :action ShowProcessWindow<CR>
-vnoremap <leader>ap    :action ShowProcessWindow<CR>
 
 " Open the terminal window
 nnoremap <leader>as    :action Terminal.OpenInTerminal<CR>
 vnoremap <leader>as    :action Terminal.OpenInTerminal<CR>
 
-" Open terminal in project root
-nnoremap <leader>p!    :action ActivateTerminalToolWindow<CR>
-vnoremap <leader>p!    :action ActivateTerminalToolWindow<CR>
-
-" Toggle between implementation file and its test file
-nnoremap <leader>pa    :action GotoTest<CR>
-vnoremap <leader>pa    :action GotoTest<CR>
-
 " Switch among recently opened files
-nnoremap <leader>pb    :action RecentFiles<CR>
-vnoremap <leader>pb    :action RecentFiles<CR>
 nnoremap <leader>ph    :action RecentFiles<CR>
 vnoremap <leader>ph    :action RecentFiles<CR>
 nnoremap <leader>pr    :action RecentFiles<CR>
 vnoremap <leader>pr    :action RecentFiles<CR>
 
-" Make project
-nnoremap <leader>pc    :action CompileDirty<CR>
-vnoremap <leader>pc    :action CompileDirty<CR>
-
-" Focus on project window.
-" Sadly when you are inside the project window this key binding does not work
-" anymore. You can use <A-1> if you want to close the window or <Esc> if you
-" want to leave the window opened and focus on the code.
-nnoremap <leader>pD    :action ActivateProjectToolWindow<CR>
-vnoremap <leader>pD    :action ActivateProjectToolWindow<CR>
-nnoremap <leader>pt    :action ActivateProjectToolWindow<CR>
-vnoremap <leader>pt    :action ActivateProjectToolWindow<CR>
-
-" Find files
-nnoremap <leader>pf    :action GotoFile<CR>
-vnoremap <leader>pf    :action GotoFile<CR>
-
-" Invalidate cache
-nnoremap <leader>pI    :action InvalidateCaches<CR>
-vnoremap <leader>pI    :action InvalidateCaches<CR>
-
-" Recent projects
-nnoremap <leader>pp    :action ManageRecentProjects<CR>
-vnoremap <leader>pp    :action ManageRecentProjects<CR>
-
-" Replace in path
-nnoremap <leader>pR    :action ReplaceInPath<CR>
-vnoremap <leader>pR    :action ReplaceInPath<CR>
-
-" Rerun tests
-nnoremap <leader>pT    :action RerunTests<CR>
-vnoremap <leader>pT    <Esc>:action RerunTests<CR>
-
-" Show local changes (git status)
-nnoremap <leader>pv    :action Vcs.Show.Local.Changes<CR>
-vnoremap <leader>pv    :action Vcs.Show.Local.Changes<CR>
-
-" Split window right
-nnoremap <leader>w/    :action SplitVertically<CR>
-vnoremap <leader>w/    <Esc>:action SplitVertically<CR>
-nnoremap <leader>wv    :action SplitVertically<CR>
-vnoremap <leader>wv    <Esc>:action SplitVertically<CR>
-
-" Split window below
-nnoremap <leader>w-    :action SplitHorizontally<CR>
-vnoremap <leader>w-    <Esc>:action SplitHorizontally<CR>
-nnoremap <leader>ws    :action SplitHorizontally<CR>
-vnoremap <leader>ws    <Esc>:action SplitHorizontally<CR>
-
-" Close window
-nnoremap <leader>wd    :action CloseAllEditors<CR>
-vnoremap <leader>wd    <Esc>:action CloseAllEditors<CR>
-nnoremap <leader>wx    :action CloseAllEditors<CR>
-vnoremap <leader>wx    <Esc>:action CloseAllEditors<CR>
-
-" Focus window left
-nnoremap <leader>wh         <C-w>h
-vnoremap <leader>wh         <Esc><C-w>h
-nnoremap <leader>w<Left>    <C-w>h
-vnoremap <leader>w<Left>    <Esc><C-w>h
-
-" Focus window down
-nnoremap <leader>wj         <C-w>j
-vnoremap <leader>wj         <Esc><C-w>j
-nnoremap <leader>w<Down>    <C-w>j
-vnoremap <leader>w<Down>    <Esc><C-w>j
-
-" Focus window up
-nnoremap <leader>wk       <C-w>k
-vnoremap <leader>wk       <Esc><C-w>k
-nnoremap <leader>w<Up>    <C-w>k
-vnoremap <leader>w<Up>    <Esc><C-w>k
-
-" Focus window right
-nnoremap <leader>wl          <C-w>l
-vnoremap <leader>wl          <Esc><C-w>l
-nnoremap <leader>w<Right>    <C-w>l
-vnoremap <leader>w<Right>    <Esc><C-w>l
-
-" Focus next project
-nnoremap <leader>wo    :action NextProjectWindow<CR>
-vnoremap <leader>wo    :action NextProjectWindow<CR>
-
-" Show Event Log window
-nnoremap <leader>wpm    :action ActivateEventLogToolWindow<CR>
-vnoremap <leader>wpm    :action ActivateEventLogToolWindow<CR>
-
-" Split window below and focus
-nnoremap <leader>wS    <C-w>s<C-w>j
-vnoremap <leader>wS    <Esc><C-w>s<C-w>j
-
-" Split window right and focus
-nnoremap <leader>wV    <C-w>v<C-w>l
-vnoremap <leader>wV    <Esc><C-w>v<C-w>l
-
-" Focus next window
-nnoremap <leader>ww    :action NextSplitter<CR>
-vnoremap <leader>ww    <Esc>:action NextSplitter<CR>
-
-" List errors
-nnoremap <leader>el    :action CodeInspection.OnEditor<CR>
-vnoremap <leader>el    :action CodeInspection.OnEditor<CR>
-
-" Go to previous error
-nnoremap <leader>eN    :action GotoPreviousError<CR>
-vnoremap <leader>eN    <Esc>:action GotoPreviousError<CR>
-
-" Go to next error
-nnoremap <leader>en    :action GotoNextError<CR>
-vnoremap <leader>en    <Esc>:action GotoNextError<CR>
-
-" Go to previous error
-nnoremap <leader>ep    :action GotoPreviousError<CR>
-vnoremap <leader>ep    <Esc>:action GotoPreviousError<CR>
-
-" Select inspection by name
-nnoremap <leader>es    :action RunInspection<CR>
-vnoremap <leader>es    <Esc>:action RunInspection<CR>
-
-" Explain error at point
-nnoremap <leader>ex    :action ShowErrorDescription<CR>
-vnoremap <leader>ex    :action ShowErrorDescription<CR>
-
-" Execute an action. Like <M-x>
 nnoremap <leader><Space>    :action GotoAction<CR>
 vnoremap <leader><Space>    :action GotoAction<CR>
 
@@ -462,113 +169,11 @@ vnoremap <leader>!    :action Terminal.OpenInTerminal<CR>
 nnoremap <leader>'    :action Terminal.OpenInTerminal<CR>
 vnoremap <leader>'    :action Terminal.OpenInTerminal<CR>
 
-" Show usages for symbol.
-" Ideally this should be FindInPath the current word, but I think that it is
-" not possible.
-nnoremap <leader>*    :action ShowUsages<CR>
-vnoremap <leader>*    :action ShowUsages<CR>
-
-" Comment lines
-nnoremap <leader>;;    :action CommentByLineComment<CR>
-vnoremap <leader>;     :action CommentByLineComment<CR>
-
-" Show key bindings
-nnoremap <leader>?    :map<CR>
-vnoremap <leader>?    <Esc>:map<CR>
-
-" Focus next project
-nnoremap <leader>Fo    :action NextProjectWindow<CR>
-vnoremap <leader>Fo    :action NextProjectWindow<CR>
-
-" Close project
-nnoremap <leader>qf    :action CloseProject<CR>
-vnoremap <leader>qf    <Esc>:action CloseProject<CR>
-nnoremap <leader>qq    :action CloseProject<CR>
-vnoremap <leader>qq    <Esc>:action CloseProject<CR>
-
-" Exit (close all projects)
-nnoremap <leader>qQ    :action Exit<CR>
-vnoremap <leader>qQ    <Esc>:action Exit<CR>
-
-" Save all and close project
-nnoremap <leader>qs    :action SaveAll<CR>:action CloseProject<CR>
-vnoremap <leader>qs    <Esc>:action SaveAll<CR>:action CloseProject<CR>
-
-" Show bookmarks.
-" Create bookmark 0 with <C-S-0>, Create bookmark 1 with <C-S-1> and so on.
-" Go to bookmark 0 with <C-0>, go to bookmark 1 with <C-1> and so on.
-nnoremap <leader>fb    :action ShowBookmarks<CR>
-vnoremap <leader>fb    :action ShowBookmarks<CR>
-
-" Show settings
-nnoremap <leader>fed    :action ShowSettings<CR>
-vnoremap <leader>fed    <Esc>:action ShowSettings<CR>
-
-" Reload .ideavimrc
-nnoremap <leader>feR    :source ~/.ideavimrc<CR>
-vnoremap <leader>feR    <Esc>:source ~/.ideavimrc<CR>
-
-" Find files
-nnoremap <leader>fF    :action GotoFile<CR>
-vnoremap <leader>fF    :action GotoFile<CR>
-nnoremap <leader>ff    :action GotoFile<CR>
-vnoremap <leader>ff    :action GotoFile<CR>
-
-" Search in project
-nnoremap <leader>fg    :action FindInPath<CR>
-vnoremap <leader>fg    :action FindInPath<CR>
-
 " Rename file
 nnoremap <leader>fR    :action RenameFile<CR>
 vnoremap <leader>fR    :action RenameFile<CR>
-
-" Recent files
-nnoremap <leader>fr    :action RecentFiles<CR>
-vnoremap <leader>fr    :action RecentFiles<CR>
-
-" Save all files
-nnoremap <leader>fS    :action SaveAll<CR>
-vnoremap <leader>fS    :action SaveAll<CR>
-
-" Save single file (I think that Intellij autosaves anything by default anyway)
-nnoremap <leader>fs    :action SaveDocument<CR>
-vnoremap <leader>fs    :action SaveDocument<CR>
-
-" Focus on project window.
-" Sadly when you are inside the project window this key binding does not work
-" anymore. You can use <A-1> if you want to close the window or <Esc> if you
-" want to leave the window opened and focus on the code.
-nnoremap <leader>ft    :action ActivateProjectToolWindow<CR>
-vnoremap <leader>ft    :action ActivateProjectToolWindow<CR>
-
-" Copy file path
-nnoremap <leader>fyy    :action CopyAbsolutePath<CR>
-vnoremap <leader>fyy    :action CopyAbsolutePath<CR>
-
-" Create a new Element.
-nnoremap <leader>fN    :action NewElement<CR>
-vnoremap <leader>fN    :action NewElement<CR>
-
-" Create a new class. You can also create enum, interface and more.
-nnoremap <leader>fn    :action NewClass<CR>
-vnoremap <leader>fn    :action NewClass<CR>
-
-" Increase font size
-nnoremap <leader>z+    :action EditorIncreaseFontSize<CR>
-vnoremap <leader>z+    :action EditorIncreaseFontSize<CR>
-
-" Decrease font size
-nnoremap <leader>z-    :action EditorDecreaseFontSize<CR>
-vnoremap <leader>z-    :action EditorDecreaseFontSize<CR>
-
-" Reset font size
-nnoremap <leader>z0    :action EditorResetFontSize<CR>
-vnoremap <leader>z0    :action EditorResetFontSize<CR>
 
 " Show action list
 nnoremap <leader>ha    :actionlist<CR>
 vnoremap <leader>ha    <Esc>:actionlist<CR>
 
-" Show changes in current file
-nnoremap <leader>hh    :action LocalHistory.ShowHistory<CR>
-vnoremap <leader>hh    :action LocalHistory.ShowHistory<CR>

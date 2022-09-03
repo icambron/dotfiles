@@ -81,17 +81,20 @@ local leader = {
     c = { "<cmd>PackerCompile<cr>", "packer compile" },
   },
   s = {
+		name = "+search",
     p = {"<cmd>Telescope live_grep<cr>", "search project"},
     c = {"<cmd>noh<cr>", "clear search"},
     l = {[[<cmd>lua require("telescope.builtin").resume()<cr>]], "previous"},
   },
   x = {
+		name = "+trouble",
     t = {"<cmd>TroubleToggle<cr>", "toggle trouble"},
     w = {"<cmd>TroubleToggle workspace_diagnostics<cr>", "workspace trouble"},
     d = {"<cmd>TroubleToggle document_diagnostics<cr>", "document trouble"},
     r = {"<cmd>TroubleRefresh<cr>", "refresh trouble"},
   },
 	o = {
+		name = "+rust",
 		-- most of these should be folded into generic facilities, like with
 		-- toggling inlay hints. However, that's silly until I have at least one other envthat can do it
 		-- In fact, many of these should just get folded into standard LSP tooling
