@@ -15,7 +15,7 @@ fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/code/lqbk/LBDeploy/src/main/python
 fish_add_path /opt/homebrew/bin
-fish_add_path /Library/Java/JavaVirtualMachines/graalvm-ce-java11-22.2.0/Contents/Home/bin  
+#fish_add_path /Library/Java/JavaVirtualMachines/graalvm-ce-java11-22.2.0/Contents/Home/bin  
 
 # OTHER ENV
 export EDITOR=nvim
