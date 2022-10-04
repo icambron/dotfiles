@@ -38,7 +38,10 @@ packer.startup(function(use)
     config = [[require("config.keys")]]
   }
 
-  use "ggandor/lightspeed.nvim"
+  use {
+		"ggandor/leap.nvim",
+		config = function() require('leap').set_default_keymaps() end
+	}
 
   -- outlining
   use {
@@ -71,13 +74,14 @@ packer.startup(function(use)
     end
   }
 
-  use { 'sbdchd/neoformat' }
+  use { "sbdchd/neoformat" }
 	--use "lukas-reineke/lsp-format.nvim"
 
   -- other language plugins
   -- use "cespare/vim-toml", { "branch": "main" }
-  use 'terminalnode/sway-vim-syntax'
+  use "terminalnode/sway-vim-syntax"
   use "jose-elias-alvarez/null-ls.nvim"
+	use "digitaltoad/vim-pug"
 
   -- until perf issues with elixir treesitter are fixed
   use "elixir-editors/vim-elixir"
