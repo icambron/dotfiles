@@ -1,0 +1,4 @@
+theme="dark_plus"
+
+[keys.normal]
+g = { j = "goto_next_diag", k = "goto_prev_diag" }

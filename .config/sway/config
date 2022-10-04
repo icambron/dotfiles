@@ -24,11 +24,11 @@ output $left-monitor {
   scale 1.25 pos 0 0 res 380x21614
 }
 
-output $right-monitor {
-  scale 1.25 pos 3072 0 res 3840x2160
-  bg /home/isaac/wallpaper/floating spaceships.jpg fill
-}
-
+ output $right-monitor {
+   scale 1.25 pos 3072 0 res 3840x2160
+   bg /home/isaac/wallpaper/floating spaceships.jpg fill
+ }
+ 
 workspace 1 output $left-monitor
 workspace 2 output $right-monitor
 
@@ -136,62 +136,62 @@ mode "gaps" {
 }
 bindsym $mod+g mode "gaps"
 
-mode "workspace" {
-  bindsym h move workspace to left
-  bindsym l move workspace to right
-
-  bindsym r mode "workspace > rename"
-
-  bindsym $mod+1 workspace number 1
-  bindsym $mod+2 workspace number 2
-  bindsym $mod+3 workspace number 3
-  bindsym $mod+4 workspace number 4
-  bindsym $mod+5 workspace number 5
-  bindsym $mod+6 workspace number 6
-  bindsym $mod+7 workspace number 7
-  bindsym $mod+8 workspace number 8
-  bindsym $mod+9 workspace number 9
-  bindsym $mod+0 workspace number 10
-
-  bindsym $mod+n workspace next_on_output
-  bindsym $mod+p workspace prev_on_output
-  bindsym $mod+b workspace back_and_forth
-
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-bindsym $mod+w mode "workspace"
-
-mode "workspace > rename" {
-  bindsym $mod+1 workspace number 1
-  bindsym $mod+2 workspace number 2
-  bindsym $mod+3 workspace number 3
-  bindsym $mod+4 workspace number 4
-  bindsym $mod+5 workspace number 5
-  bindsym $mod+6 workspace number 6
-  bindsym $mod+7 workspace number 7
-  bindsym $mod+8 workspace number 8
-  bindsym $mod+9 workspace number 9
-  bindsym $mod+0 workspace number 10
-
-  bindsym 1 rename workspace ko 1
-  bindsym 2 rename workspace to 2
-  bindsym 3 rename workspace to 3
-  bindsym 4 rename workspace to 4
-  bindsym 5 rename workspace to 5
-  bindsym 6 rename workspace to 6
-  bindsym 7 rename workspace to 7
-  bindsym 8 rename workspace to 8
-  bindsym 9 rename workspace to 9
-  bindsym 0 rename workspace to 10
-
-  bindsym $mod+n workspace next_on_output
-  bindsym $mod+p workspace prev_on_output
-  bindsym $mod+b workspace back_and_forth
-
-  bindsym Return mode "workspace"
-  bindsym Escape mode "workspace"
-}
+# mode "workspace" {
+#   bindsym h move workspace to left
+#   bindsym l move workspace to right
+# 
+#   bindsym r mode "workspace > rename"
+# 
+#   bindsym $mod+1 workspace number 1
+#   bindsym $mod+2 workspace number 2
+#   bindsym $mod+3 workspace number 3
+#   bindsym $mod+4 workspace number 4
+#   bindsym $mod+5 workspace number 5
+#   bindsym $mod+6 workspace number 6
+#   bindsym $mod+7 workspace number 7
+#   bindsym $mod+8 workspace number 8
+#   bindsym $mod+9 workspace number 9
+#   bindsym $mod+0 workspace number 10
+# 
+#   bindsym $mod+n workspace next_on_output
+#   bindsym $mod+p workspace prev_on_output
+#   bindsym $mod+b workspace back_and_forth
+# 
+#   bindsym Return mode "default"
+#   bindsym Escape mode "default"
+# }
+# bindsym $mod+w mode "workspace"
+# 
+# mode "workspace > rename" {
+#   bindsym $mod+1 workspace number 1
+#   bindsym $mod+2 workspace number 2
+#   bindsym $mod+3 workspace number 3
+#   bindsym $mod+4 workspace number 4
+#   bindsym $mod+5 workspace number 5
+#   bindsym $mod+6 workspace number 6
+#   bindsym $mod+7 workspace number 7
+#   bindsym $mod+8 workspace number 8
+#   bindsym $mod+9 workspace number 9
+#   bindsym $mod+0 workspace number 10
+# 
+#   bindsym 1 rename workspace ko 1
+#   bindsym 2 rename workspace to 2
+#   bindsym 3 rename workspace to 3
+#   bindsym 4 rename workspace to 4
+#   bindsym 5 rename workspace to 5
+#   bindsym 6 rename workspace to 6
+#   bindsym 7 rename workspace to 7
+#   bindsym 8 rename workspace to 8
+#   bindsym 9 rename workspace to 9
+#   bindsym 0 rename workspace to 10
+# 
+#   bindsym $mod+n workspace next_on_output
+#   bindsym $mod+p workspace prev_on_output
+#   bindsym $mod+b workspace back_and_forth
+# 
+#   bindsym Return mode "workspace"
+#   bindsym Escape mode "workspace"
+# }
 
 mode "power" {
   bindsym e exec "swaymsg exit"
