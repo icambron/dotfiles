@@ -15,12 +15,16 @@ fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/code/lqbk/LBDeploy/src/main/python
 fish_add_path /opt/homebrew/bin
-#fish_add_path /Library/Java/JavaVirtualMachines/graalvm-ce-java11-22.2.0/Contents/Home/bin  
+fish_add_path /opt/homebrew/opt/ruby/bin    
 
 # OTHER ENV
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
 export GRIM_DEFAULT_DIR=$HOME/screenshots
+
+if test -e ~/.private_fish
+	source ~/.private_fish
+end
 
 # ALIASES
 alias less='less -i'
