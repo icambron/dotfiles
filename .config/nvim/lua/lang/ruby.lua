@@ -1,1 +1,1 @@
---require("lspconfig").solargraph.setup()
+require("lspconfig").solargraph.setup{}

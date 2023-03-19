@@ -16,6 +16,7 @@ fish_add_path $HOME/.local/bin
 fish_add_path $HOME/code/lqbk/LBDeploy/src/main/python
 fish_add_path /opt/homebrew/bin
 fish_add_path /opt/homebrew/opt/ruby/bin    
+fish_add_path (ruby -e 'puts Gem.dir')/bin
 
 # OTHER ENV
 export EDITOR=nvim

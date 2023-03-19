@@ -6,6 +6,7 @@ local function vmap(lhs, rhs)
   vim.api.nvim_set_keymap("v", lhs, rhs, { noremap = true, silent = true })
 end
 
+nmap("s", "<Plug>(easymotion-overwin-f)")
 nmap("K", "<cmd>Lspsaga hover_doc<cr>")
 nmap(",", "<cmd>Lspsaga preview_definition<cr>")
 nmap(";", "<cmd>Lspsaga code_action<cr>")

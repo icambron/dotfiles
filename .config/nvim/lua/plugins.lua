@@ -38,10 +38,7 @@ packer.startup(function(use)
     config = [[require("config.keys")]]
   }
 
-  use {
-		"ggandor/leap.nvim",
-		config = function() require('leap').set_default_keymaps() end
-	}
+	use "easymotion/vim-easymotion"
 
   -- outlining
   use {
@@ -54,7 +51,7 @@ packer.startup(function(use)
   -- treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
+    run = function() require("nvim-treesitter.install").update { with_sync = true } end,
     require = {
       { "p00f/nvim-ts-rainbow", after = "nvim-treesitter/nvim-treesitter" }
     },
@@ -156,12 +153,14 @@ packer.startup(function(use)
     "folke/tokyonight.nvim",
     branch = "main",
     config = function()
-      vim.g.tokyonight_style = "night"
-      vim.g.tokyonight_transparent = true
-      vim.gtokyonight_colors = {
-        background = "#08090c"
-      },
-      vim.cmd("colorscheme tokyonight")
+			require("tokyonight").setup({
+				style = "night",
+				transparent = true,
+				on_colors = function(colors)
+					colors.background = "#08090c"
+				end
+			})
+			vim.cmd[[colorscheme tokyonight]]
     end
   }
 
