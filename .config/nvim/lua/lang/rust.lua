@@ -24,6 +24,11 @@ local opts = {
                 checkOnSave = {
                     command = "clippy"
                 },
+								diagnostics = {
+									disabled = {
+										"unresolved-proc-macro"
+									}
+								}
             }
         }
     },

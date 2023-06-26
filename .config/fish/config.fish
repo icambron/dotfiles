@@ -34,6 +34,7 @@ alias exa="exa --header --git --all"
 alias ogvim=/usr/bin/vim
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias z=zoxide
+alias zel=zellij
 
 if type -q nvim
   alias vim=nvim
@@ -71,4 +72,9 @@ function scan
   set temp (mktemp)
   scanimage --device "airscan:w2:Brother ADS-2700W [000ec6eba5ad]" --format=pnm --output-file "$temp"
   gm convert $temp $argv
+end
+
+# open vi with an fzf autocomplete
+function fvi
+	vim (fzf)
 end
