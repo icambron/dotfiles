@@ -11,14 +11,12 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import any extras modules here
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
     -- { import = "lazyvim.plugins.extras.lang.typescript" },
     -- { import = "lazyvim.plugins.extras.lang.json" },
     -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
-    -- import/override with your plugins
 
     { import = "plugins" },
-
-    { "digitaltoad/vim-pug" },
 
     {
       "folke/noice.nvim",
@@ -53,15 +51,55 @@ require("lazy").setup({
       },
     },
 
-    { import = "lazyvim.plugins.extras.formatting.prettier" },
     { "echasnovski/mini.pairs", enabled = false },
 
     { "Pocco81/true-zen.nvim" },
+    { "digitaltoad/vim-pug" },
+
+    {
+      "echasnovski/mini.bufremove",
+      -- stylua: ignore
+      keys = {
+        { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+        { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
+      },
+    },
+
+    {
+      "simrat39/symbols-outline.nvim",
+      cmd = "SymbolsOutline",
+      keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
+      config = function(_, opts)
+        require("symbols-outline").setup(opts)
+      end,
+      opts = {
+        symbols = {
+          Namespace = { icon = "", hl = "@namespace" },
+          Array = { icon = "", hl = "@constant" },
+          File = { icon = "", hl = "@text.uri" },
+          Module = { icon = "", hl = "@namespace" },
+          Package = { icon = "", hl = "@namespace" },
+          Field = { icon = "", hl = "@field" },
+          Interface = { icon = "", hl = "@type" },
+          Object = { icon = "⦿", hl = "@type" },
+          Key = { icon = "", hl = "@type" },
+          Null = { icon = "󰟢", hl = "@type" },
+          Event = { icon = "", hl = "@type" },
+          Component = { icon = "", hl = "@function" },
+          Fragment = { icon = "", hl = "@constant" },
+        },
+      },
+    },
 
     {
       "folke/tokyonight.nvim",
       lazy = true,
-      opts = { style = "night" },
+      opts = {
+        style = "night",
+        on_colors = function(colors)
+          colors.bg = "#08090c"
+        end,
+      },
     },
 
     {
@@ -204,7 +242,7 @@ require("lazy").setup({
           require("telescope").load_extension("fzf")
         end,
       },
-      options = {
+      opts = {
         pickers = {
           buffers = {
             sort_lastused = true,

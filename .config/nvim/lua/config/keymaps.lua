@@ -22,8 +22,8 @@ end
 
 -- navigate
 nmap("gt", "<cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>", "Go To Type Definition")
-nmap("gn", "<cmd>vim.diagnostic.goto_next<cr>", "Go To Next Diagnostic")
-nmap("gp", "<cmd>vim.diagnostic.goto_prev<cr>", "Go To Prev Diagnostic")
+nmap("gn", "<cmd>lua vim.diagnostic.goto_next()<cr>", "Go To Next Diagnostic")
+nmap("gp", "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Go To Prev Diagnostic")
 
 -- search
 nmap("<leader>sc", "<cmd>noh<cr>", "Clear search")
@@ -31,10 +31,6 @@ nmap("<leader>S", "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Grep
 
 -- files
 nmap("<leader>F", "<cmd>lua require('telescope.builtin').find_files()<cr>", "Find Files (cwd)")
-
--- buffers
-nmap("<leader>bd", "<cmd>bd<cr>", "Close Current Buffer")
-nmap("<leader>bD", "<cmd>bd!<cr>", "Close Current Buffer!")
 
 -- toggles
 nmap("<leader>ti", "<cmd>lua Toggle_inlay_hints()<cr>", "Toggle Inlay Hints")
