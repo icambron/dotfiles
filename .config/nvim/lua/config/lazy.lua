@@ -6,20 +6,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-function Toggle_inlay_hints()
-  local buf = vim.api.nvim_get_current_buf()
-  local ft = vim.api.nvim_buf_get_option(buf, "filetype")
-
-  if ft == "rust" then
-    -- rust tools removed inlay hints for some reason
-    -- require("rust-tools.inlay_hints").toggle_inlay_hints()
-  elseif ft == "typescript" then
-    require("nvim-lsp-ts-utils").toggle_inlay_hints()
-  else
-    print("No inlay hints for", ft)
-  end
-end
-
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
@@ -31,37 +17,46 @@ require("lazy").setup({
     -- import/override with your plugins
 
     { import = "plugins" },
+
+    { "digitaltoad/vim-pug" },
+
     {
-      "folke/which-key.nvim",
-
-      keys = {
-
-        {
-          "<leader>bd",
-          "<cmd>bd<cr>",
-          desc = "Close current buffer",
-        },
-        {
-          "<leader>bD",
-          "<cmd>bd!<cr>",
-          desc = "Close current buffer for real",
-        },
-        {
-          "<leader>sc",
-          "<cmd>noh<cr>",
-          "Clear search",
-        },
-        {
-          "<leader>uh",
-          function()
-            Toggle_inlay_hints()
-          end,
-          "Toggle inlay hints",
+      "folke/noice.nvim",
+      opts = {
+        routes = {
+          {
+            filter = {
+              event = "msg_show",
+              any = {
+                { find = "E486" },
+                { find = "search hit BOTTOM" },
+                { find = "change;" },
+                { find = "line less;" },
+                { find = "fewer lines;" },
+                { find = "more lines;" },
+                { find = "more line;" },
+              },
+            },
+            opts = { skip = true },
+          },
+          {
+            filter = {
+              event = "msg_show",
+              any = {
+                { find = "Already at oldest change" },
+                { find = "overly long loop run" },
+              },
+            },
+            view = "mini",
+          },
         },
       },
     },
 
-    { "digitaltoad/vim-pug" },
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
+    { "echasnovski/mini.pairs", enabled = false },
+
+    { "Pocco81/true-zen.nvim" },
 
     {
       "folke/tokyonight.nvim",
@@ -76,11 +71,6 @@ require("lazy").setup({
         "simrat39/rust-tools.nvim",
         "jose-elias-alvarez/nvim-lsp-ts-utils",
       },
-      init = function()
-        local keys = require("lazyvim.plugins.lsp.keymaps").get()
-        keys[#keys + 1] = { "gn", vim.diagnostic.goto_next }
-        keys[#keys + 1] = { "gp", vim.diagnostic.goto_prev }
-      end,
       opts = {
         tools = {
           autoSetHints = true,
@@ -182,9 +172,6 @@ require("lazy").setup({
       },
     },
 
-    { import = "lazyvim.plugins.extras.formatting.prettier" },
-    { "echasnovski/mini.pairs", enabled = false },
-
     {
       "hrsh7th/nvim-cmp",
       opts = function(_, opts)
@@ -216,29 +203,6 @@ require("lazy").setup({
         config = function()
           require("telescope").load_extension("fzf")
         end,
-      },
-      keys = {
-      -- add a keymap to browse plugin files
-      -- stylua: ignore
-        {
-          "<leader>F",
-          function() require("telescope.builtin").find_files() end,
-          desc = "Find Files (cwd)",
-        },
-        {
-          "<leader>S",
-          function()
-            require("telescope.builtin").live_grep()
-          end,
-          desc = "Grep (cwd)",
-        },
-        {
-          "<leader>bf",
-          function()
-            require("telescope.builtin").buffers()
-          end,
-          desc = "Grep (cwd)",
-        },
       },
       options = {
         pickers = {

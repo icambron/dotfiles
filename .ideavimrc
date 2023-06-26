@@ -1,6 +1,3 @@
-" this is all copied from intellimacs. Todo - go through it and square it up
-" with neovim
-
 " <SPC> as the leader key
 let mapleader = " "
 
@@ -25,11 +22,6 @@ set smartcase
 " Emulate vim-surround. Commands: ys, cs, ds, S.
 set surround
 
-""" Settings that are not present in spacemacs defaults
-
-" Emulates vim-multiple-cursors. Commands: <A-n>, <A-x>, <A-p>, g<A-n>
-set multiple-cursors
-
 " Add text object for function arguments: aa (around argument), ia (inside argument)
 set argtextobj
 
@@ -39,38 +31,21 @@ set textobj-entire
 " Replace with register content shortcut: https://github.com/vim-scripts/ReplaceWithRegister
 set ReplaceWithRegister
 
-" Intellimacs by default uses <A-X> to execute an action, if you want to use
-" this key binding with multiple-cursors plugin add the following line
-" (without ") at the end of your ~/.ideavimrc file
-" vunmap <A-X>
-
-nnoremap <leader>pf    :action GotoFile<CR>
-vnoremap <leader>pf    :action GotoFile<CR>
+" navigation
+nnoremap <leader>F    :action GotoFile<CR>
+vnoremap <leader>F    :action GotoFile<CR>
 
 nnoremap <leader>gd    :action GotoDeclaration<CR>
 vnoremap <leader>gd    <Esc>:action GotoDeclaration<CR>
 
-nnoremap <leader>gd    :action GotoDeclaration<CR>
-vnoremap <leader>gd    <Esc>:action GotoDeclaration<CR>
 nnoremap <leader>gt    :action GotoTypeDeclaration<CR>
 vnoremap <leader>gt    <Esc>:action GotoTypeDeclaration<CR>
 
+nnoremap <leader>gr    :action FindUsages<CR>
+vnoremap <leader>gr    :action FindUsages<CR>
+
 nnoremap <C-i>    :action Forward<CR>
 nnoremap <C-o>    :action Back<CR>
-
-" tabs
-nnoremap <leader>bn    :action NextTab<CR>
-vnoremap <leader>bn    <Esc>:action NextTab<CR>
-nnoremap <leader>bp    :action PreviousTab<CR>
-vnoremap <leader>bp    <Esc>:action PreviousTab<CR>
-nnoremap <leader>bu    :action ReopenClosedTab<CR>
-vnoremap <leader>bu    <Esc>:action ReopenClosedTab<CR>
-nnoremap <leader>bd    :action CloseAllEditorsButActive<CR>
-vnoremap <leader>bd    :action CloseAllEditorsButActive<CR>
-nnoremap <leader>bc    :action CloseContent<CR>
-vnoremap <leader>bc    <Esc>:action CloseContent<CR>
-nnoremap <leader>bb    :action RecentFiles<CR>
-vnoremap <leader>bb    :action RecentFiles<CR>
 
 " management
 nnoremap <leader>mr    :source ~/.ideavimrc<CR>
@@ -90,90 +65,30 @@ nnoremap <leader>tw    :action EditorToggleShowWhitespaces<CR>
 vnoremap <leader>tw    :action EditorToggleShowWhitespaces<CR>
 
 " refactor
-nnoremap <leader>rr    :action RenameElement<CR>
-vnoremap <leader>rr    :action RenameElement<CR>
-
-nnoremap <leader>rf    :action ReformatCode<CR>
-vnoremap <leader>rf    :action ReformatCode<CR>
-
-" search 
-nnoremap <leader>sp    :action FindInPath<CR>
-vnoremap <leader>sp    :action FindInPath<CR>
-nnoremap <leader>sc    :nohlsearch<CR>
-vnoremap <leader>sc    <Esc>:nohlsearch<CR>
-nnoremap <leader>sI    :action InvalidateCaches<CR>
-vnoremap <leader>sI    :action InvalidateCaches<CR>
-nnoremap <leader>ss    :action GotoSymbol<CR>
-vnoremap <leader>ss    :action GotoSymbol<CR>
-nnoremap <leader>sC   :action GotoClass<CR>
-vnoremap <leader>sC   :action GotoClass<CR>
-
-" code
-nnoremap <leader>cr    :action FindUsages<CR>
-vnoremap <leader>cr    :action FindUsages<CR>
+nnoremap <leader>cr    :action RenameElement<CR>
+vnoremap <leader>cr    :action RenameElement<CR>
 nnoremap <leader>ca    :action ShowIntentionActions<CR>
 vnoremap <leader>ca    :action ShowIntentionActions<CR>
 
-" vi
-nnoremap <leader>vr    :reg<CR>
-vnoremap <leader>vr    <Esc>:reg<CR>
-nnoremap <leader>vm    :action ShowBookmarks<CR>
-vnoremap <leader>vm    :action ShowBookmarks<CR>
+" search
+nnoremap <leader>sp    :action FindInPath<CR>
+nnoremap <leader>S     :action FindInPath<CR>
+vnoremap <leader>sp    :action FindInPath<CR>
+nnoremap <leader>sc    :nohlsearch<CR>
+vnoremap <leader>sc    <Esc>:nohlsearch<CR>
 
 
-" THINGS I MIGHT WANT (but don't have in neovim)
-
-" files
-nnoremap <leader>rb    :action RecentFiles<CR>
-vnoremap <leader>rb    :action RecentFiles<CR>
-
-nnoremap <leader>jd    :action ActivateProjectToolWindow<CR>
-vnoremap <leader>jd    :action ActivateProjectToolWindow<CR>
-
-" Show kill ring
-nnoremap <leader>ry    :action PasteMultiple<CR>
-vnoremap <leader>ry    :action PasteMultiple<CR>
-
-" todo window
-nnoremap <leader>aot    :action ActivateTODOToolWindow<CR>
-vnoremap <leader>aot    :action ActivateTODOToolWindow<CR>
-
-" Jump to element in current file
-nnoremap <leader>je   :action FileStructurePopup<CR>
-vnoremap <leader>je   :action FileStructurePopup<CR>
-
-" Highlight current symbol. Do it again to toggle highlight.
-nnoremap <leader>sh    :action HighlightUsagesInFile<CR>
-vnoremap <leader>sh    <Esc>:action HighlightUsagesInFile<CR>
-
-" Open the terminal window
-nnoremap <leader>as    :action Terminal.OpenInTerminal<CR>
-vnoremap <leader>as    :action Terminal.OpenInTerminal<CR>
-
-" Switch among recently opened files
-nnoremap <leader>ph    :action RecentFiles<CR>
-vnoremap <leader>ph    :action RecentFiles<CR>
-nnoremap <leader>pr    :action RecentFiles<CR>
-vnoremap <leader>pr    :action RecentFiles<CR>
-
-nnoremap <leader><Space>    :action GotoAction<CR>
-vnoremap <leader><Space>    :action GotoAction<CR>
-
-" Focus last buffer
-nnoremap <leader><tab>    <C-S-6>
-vnoremap <leader><tab>    <Esc><C-S-6>
-
-" Open the terminal window (use :! for a single shell cmd)
-nnoremap <leader>!    :action Terminal.OpenInTerminal<CR>
-vnoremap <leader>!    :action Terminal.OpenInTerminal<CR>
-nnoremap <leader>'    :action Terminal.OpenInTerminal<CR>
-vnoremap <leader>'    :action Terminal.OpenInTerminal<CR>
-
-" Rename file
-nnoremap <leader>fR    :action RenameFile<CR>
-vnoremap <leader>fR    :action RenameFile<CR>
-
-" Show action list
-nnoremap <leader>ha    :actionlist<CR>
-vnoremap <leader>ha    <Esc>:actionlist<CR>
-
+" tabs
+nnoremap <leader>bn    :action NextTab<CR>
+vnoremap <leader>bn    <Esc>:action NextTab<CR>
+nnoremap <leader>bp    :action PreviousTab<CR>
+vnoremap <leader>bp    <Esc>:action PreviousTab<CR>
+nnoremap <leader>bu    :action ReopenClosedTab<CR>
+vnoremap <leader>bu    <Esc>:action ReopenClosedTab<CR>
+nnoremap <leader>bd    :action CloseAllEditorsButActive<CR>
+vnoremap <leader>bd    :action CloseAllEditorsButActive<CR>
+nnoremap <leader>bc    :action CloseContent<CR>
+vnoremap <leader>bc    <Esc>:action CloseContent<CR>
+nnoremap <leader>bb    :action RecentFiles<CR>
+vnoremap <leader>bb    :action RecentFiles<CR>
+nnoremap <leader>,    :action RecentFiles<CR>

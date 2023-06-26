@@ -4,3 +4,4 @@
 
 vim.opt.swapfile = false
 vim.opt.relativenumber = false
+vim.opt.report = 99999
