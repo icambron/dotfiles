@@ -22,7 +22,6 @@ export GRIM_DEFAULT_DIR=$HOME/screenshots
 # ALIASES
 alias less='less -i'
 alias weather='curl http://wttr.in/Boston'
-alias exa="exa --header --git --all"
 alias python=python3
 alias pip=pip3
 alias ogvim=/usr/bin/vim
@@ -39,6 +38,7 @@ end
 
 if type -q exa
   alias ls=exa
+  alias exa="exa --header --git --all"
 else
   alias ls='ls -aG --color=auto'
 end
