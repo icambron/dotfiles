@@ -35,14 +35,14 @@ set ReplaceWithRegister
 nnoremap <leader>F    :action GotoFile<CR>
 vnoremap <leader>F    :action GotoFile<CR>
 
-nnoremap <leader>gd    :action GotoDeclaration<CR>
-vnoremap <leader>gd    <Esc>:action GotoDeclaration<CR>
+nnoremap gd    :action GotoDeclaration<CR>
+vnoremap gd    <Esc>:action GotoDeclaration<CR>
 
-nnoremap <leader>gt    :action GotoTypeDeclaration<CR>
-vnoremap <leader>gt    <Esc>:action GotoTypeDeclaration<CR>
+nnoremap gt    :action GotoTypeDeclaration<CR>
+vnoremap gt    <Esc>:action GotoTypeDeclaration<CR>
 
-nnoremap <leader>gr    :action FindUsages<CR>
-vnoremap <leader>gr    :action FindUsages<CR>
+nnoremap gr    :action FindUsages<CR>
+vnoremap gr    :action FindUsages<CR>
 
 nnoremap <C-i>    :action Forward<CR>
 nnoremap <C-o>    :action Back<CR>

@@ -52,7 +52,7 @@ require("lazy").setup({
     },
 
     { "echasnovski/mini.pairs", enabled = false },
-
+    { "folke/flash.nvim", opts = { modes = { search = { enabled = false } } } },
     { "Pocco81/true-zen.nvim" },
     { "digitaltoad/vim-pug" },
 
@@ -220,8 +220,8 @@ require("lazy").setup({
           -- Add tab support
           ["<Up>"] = cmp.mapping.select_prev_item(),
           ["<Down>"] = cmp.mapping.select_next_item(),
-          ["<C-k>"] = cmp.mapping.select_prev_item(),
-          ["<C-j>"] = cmp.mapping.select_next_item(),
+          -- ["<C-k>"] = cmp.mapping.select_prev_item(),
+          -- ["<C-j>"] = cmp.mapping.select_next_item(),
           ["<C-d>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-e>"] = cmp.mapping.close(),
@@ -281,3 +281,8 @@ require("lazy").setup({
     },
   },
 })
+
+-- todo:
+-- 1. <leader>sc to clear search (need to unbind existing behavior)
+-- 2. <leader>l to show last search, move upgrade to <leader>L and unbind existing <leader>L (changelog)
+-- 3. remove <alt>k and <alt>j from moving lines - they're too easy to accidentally chord with <esc>. find some nice alternative
