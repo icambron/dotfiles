@@ -30,7 +30,10 @@ end
 # ALIASES
 alias less='less -i'
 alias weather='curl http://wttr.in/Boston'
-alias exa="exa --header --git --all"
+alias python=python3
+alias pip=pip3
+alias python=python3
+alias pip=pip3
 alias ogvim=/usr/bin/vim
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias z=zoxide
@@ -46,6 +49,7 @@ end
 
 if type -q exa
   alias ls=exa
+  alias exa="exa --header --git --all"
 else
   alias ls='ls -aG --color=auto'
 end
