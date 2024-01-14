@@ -42,7 +42,10 @@ nnoremap gt    :action GotoTypeDeclaration<CR>
 vnoremap gt    <Esc>:action GotoTypeDeclaration<CR>
 
 nnoremap gr    :action FindUsages<CR>
-vnoremap gr    :action FindUsages<CR>
+vnoremap gr    <ESC>:action FindUsages<CR>
+
+nnoremap gi    :action GotoImplementation<CR>
+vnoremap gi    <ESC>:action GotoImplementation<CR>
 
 nnoremap <C-i>    :action Forward<CR>
 nnoremap <C-o>    :action Back<CR>

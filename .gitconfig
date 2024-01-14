@@ -1,18 +1,21 @@
 [user]
-	email = isaac@isaaccambron.com
+	email = icambron@gmail.com
 	name = Isaac Cambron
+	signingkey = 021A8C4869230EC2
 
 [push]
 	default = simple
+  autoSetupRemote = true
 
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
 
 [core]
 	pager = delta
-	excludesFile = /Users/isaac/.gitignore_global
+	excludesfile = /Users/isaac/.gitignore_global
 
 [interactive]
     diffFilter = delta --color-only
@@ -31,10 +34,11 @@
 [diff]
     colorMoved = default
 
-
 # most stuff below stolen from https://github.com/mpercy/Dotfiles/blob/master/gitconfig
 [alias]
         lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s - %an %Cgreen(%cr)%Creset' -n15
         lgs = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s - %an %Cgreen(%cr)%Creset' -n5 --stat
         br = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:red)%(objectname:short)%(color:reset)   %(color:yellow)%(refname:short)%(color:reset)\t  %(contents:subject) - %(authorname) %(color:green)(%(committerdate:relative))%(color:reset)'
         oldest-ancestor = !bash -c 'diff -u <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
+[commit]
+	template = /Users/isaac/.stCommitMsg
