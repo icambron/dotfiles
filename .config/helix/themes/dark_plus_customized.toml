@@ -1,0 +1,5 @@
+inherits="dark_plus"
+"ui.background" = { bg = "black" }
+"ui.virtual.inlay-hint" = {fg = "#696969" }
+"ui.statusline" = { bg = "#000000" }
+"ui.statusline.normal" = { bg = "blue" }
