@@ -202,6 +202,7 @@ require("lazy").setup({
         suggestion = { enabled = true },
         panel = { enabled = true },
         filetypes = {
+          javascript = true,
           typescript = true,
           rust = true,
           markdown = true,

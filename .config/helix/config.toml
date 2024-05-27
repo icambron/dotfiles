@@ -1,12 +1,5 @@
 theme="dark_plus_customized"
 
-# switch to this next release and delete the custom theme
-#[theme]
-#name="dark_plus"
-#
-#[theme.overwrite]
-#"ui.virtual.inlay-hint" = {fg = "#696969" }
-
 [keys.normal]
 g = { j = "goto_next_diag", k = "goto_prev_diag" } 
 "$" = ["ensure_selections_forward", "extend_to_line_end"]
@@ -43,8 +36,10 @@ render = true
 display-inlay-hints = true
 
 # todo:
-# 3. check in on #3791 for easy motion
 # 5. watch a tutorial or something
 #    a. how to really use multiple cursors
 #    b. x vs X, etc
 # 6. virtual line stuff
+
+# PRs to track
+# #3791 easy motion

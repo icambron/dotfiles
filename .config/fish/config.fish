@@ -14,15 +14,18 @@ end
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/code/lqbk/LBDeploy/src/main/python
+fish_add_path $HOME/code/lbt
 fish_add_path /opt/homebrew/bin
 fish_add_path /opt/homebrew/opt/ruby/bin
 fish_add_path (ruby -e 'puts Gem.dir')/bin
+fish_add_path /Users/isaac/.local/bin
 
 # OTHER ENV
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
 export GRIM_DEFAULT_DIR=$HOME/screenshots
 export GPG_TTY=(tty)
+export LB_HOME=$HOME/code/lqbk
 
 if test -e ~/.private_fish
     source ~/.private_fish

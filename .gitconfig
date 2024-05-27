@@ -14,11 +14,22 @@
 	process = git-lfs filter-process
 
 [core]
-	pager = delta
 	excludesfile = /Users/isaac/.gitignore_global
 
-[interactive]
-    diffFilter = delta --color-only
+#[interactive]
+#    diffFilter = delta --color-only
+
+[diff]
+  tool = difftastic
+
+[difftool]
+        prompt = false
+
+[difftool "difftastic"]
+        cmd = difft "$LOCAL" "$REMOTE"
+
+[pager]
+        difftool = true
 
 [add.interactive]
     useBuiltin = false # required for git 2.37.0
@@ -26,10 +37,6 @@
 [delta]
     navigate = true    # use n and N to move between diff sections
     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
-
-[merge]
-    conflictstyle = diff3
-		#ff = only
 
 [diff]
     colorMoved = default
@@ -40,5 +47,10 @@
         lgs = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s - %an %Cgreen(%cr)%Creset' -n5 --stat
         br = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:red)%(objectname:short)%(color:reset)   %(color:yellow)%(refname:short)%(color:reset)\t  %(contents:subject) - %(authorname) %(color:green)(%(committerdate:relative))%(color:reset)'
         oldest-ancestor = !bash -c 'diff -u <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
+        dft = difftool
+        dm = difftool -d --no-symlinks master..HEAD
+
 [commit]
 	template = /Users/isaac/.stCommitMsg
+[rebase]
+	instructionFormat = (%an <%ae>) %s
