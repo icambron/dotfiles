@@ -42,6 +42,9 @@ alias ogvim=/usr/bin/vim
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias z=zoxide
 alias zel=zellij
+alias slark=ssh slark
+
+alias lbme="lbt logs less logic-devb52"
 
 if type -q nvim
     alias vim=nvim
