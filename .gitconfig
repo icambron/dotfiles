@@ -54,3 +54,5 @@
 	template = /Users/isaac/.stCommitMsg
 [rebase]
 	instructionFormat = (%an <%ae>) %s
+[apply]
+	whitespace = nowarn

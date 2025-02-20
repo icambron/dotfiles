@@ -14,7 +14,6 @@ end
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.local/bin
 fish_add_path $HOME/code/lqbk/LBDeploy/src/main/python
-fish_add_path $HOME/code/lbt
 fish_add_path /opt/homebrew/bin
 fish_add_path /opt/homebrew/opt/ruby/bin
 fish_add_path (ruby -e 'puts Gem.dir')/bin
@@ -35,16 +34,13 @@ end
 alias less='less -i'
 alias weather='curl http://wttr.in/lexington+ma'
 alias python=python3
-alias pip=pip3
 alias python=python3
 alias pip=pip3
 alias ogvim=/usr/bin/vim
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias z=zoxide
 alias zel=zellij
-alias slark=ssh slark
-
-alias lbme="lbt logs less logic-devb52"
+alias tw="tw --theme=argonaut"
 
 if type -q nvim
     alias vim=nvim
@@ -54,10 +50,10 @@ if type -q tre
     alias tree=tre
 end
 
-if type -q exa
-    alias lss=/bin/ls
-    alias ls=exa
-    alias exa="exa --header --git --all"
+alias lss=/bin/ls
+if type -q eza
+    alias ls=eza
+    alias eza="eza --header --git --all"
 else
     alias ls='ls -aG --color=auto'
 end
@@ -76,6 +72,12 @@ if type -q bat
 else
     export FZF_DEFAULT_OPTS='--ansi'
 end
+
+# home internet
+alias slark=ssh slark
+
+# work
+alias lbme="lbt logs less logic-devb52"
 
 # FUNCTIONS
 

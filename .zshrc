@@ -49,3 +49,7 @@ export PATH="$PATH:$HOME/.local/bin"
 # OTHER ENV
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
+
+fpath+=~/.zfunc; autoload -Uz compinit; compinit
+
+zstyle ':completion:*' menu select
