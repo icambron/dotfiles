@@ -18,11 +18,32 @@
       // "j k": ["workspace::SendKeystrokes", "escape"]
     }
   },
+
+  {
+    "context": "Outline",
+    "bindings": {
+      "escape": "outline::Toggle"
+      // "ctl+j": "outline::Next",
+      // "ctl+k": "outline::Previous"
+    }
+  },
+
   {
     "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
     "bindings": {
       "space F": "file_finder::Toggle",
-      "space S": "workspace::NewSearch"
+      "space S": "workspace::NewSearch",
+
+      "space o": "outline::Toggle",
+
+      // toggles
+      "space t l": "workspace::ToggleLeftDock",
+      "space t r": "workspace::ToggleRightDock",
+
+      // focus
+      "space f t": "project_panel::ToggleFocus",
+      "space f o": "outline_panel::ToggleFocus",
+      "space f g": "git_panel::ToggleFocus"
     }
   }
 ]
