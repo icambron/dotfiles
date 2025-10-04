@@ -173,10 +173,6 @@ require("lazy").setup({
   lazy = false,
 },
 
-{
-  "folke/trouble.nvim",
-},
-
 -- keyboard completion guide
 {
   "folke/which-key.nvim",
