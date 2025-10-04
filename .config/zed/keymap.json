@@ -7,43 +7,29 @@
 // from the command palette.
 [
   {
-    "context": "Workspace",
-    "bindings": {
-      // "shift shift": "file_finder::Toggle"
-    }
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      // "j k": ["workspace::SendKeystrokes", "escape"]
-    }
-  },
-
-  {
-    "context": "Outline",
-    "bindings": {
-      "escape": "outline::Toggle"
-      // "ctl+j": "outline::Next",
-      // "ctl+k": "outline::Previous"
-    }
-  },
-
-  {
     "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
     "bindings": {
       "space F": "file_finder::Toggle",
       "space S": "workspace::NewSearch",
-
-      "space o": "outline::Toggle",
-
-      // toggles
-      "space t l": "workspace::ToggleLeftDock",
-      "space t r": "workspace::ToggleRightDock",
-
-      // focus
+      "space s": "outline::Toggle",
+      "space e": "workspace::ToggleLeftDock",
+      "space r": "workspace::ToggleRightDock",
       "space f t": "project_panel::ToggleFocus",
       "space f o": "outline_panel::ToggleFocus",
       "space f g": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious"
+    }
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-j": "editor::ContextMenuNext",
+      "ctrl-k": "editor::ContextMenuPrevious"
     }
   }
 ]

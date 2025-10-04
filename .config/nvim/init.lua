@@ -178,8 +178,8 @@ require("lazy").setup({
   "folke/which-key.nvim",
   event = "VeryLazy",
   config = function()
-
     require("which-key").add({
+      { '<leader>k', function() vim.diagnostic.open_float() end, desc = "Show diagnostic" },
       { "<leader>c", ":noh<CR>", desc = "Clear search" },
       { "<leader>?", function() require("which-key").show({ glogal = false }) end, desc = "Key help" },
       { "<leader>F", function() require("snacks").picker.smart() end, desc = "Find files" },
@@ -197,9 +197,8 @@ require("lazy").setup({
       { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
     })
   end
-
-
 },
+
 {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
