@@ -50,7 +50,18 @@ vim.opt.splitbelow = true
 
 -- LSP
 vim.lsp.inlay_hint.enable(true)
-vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.INFO] = "",
+      [vim.diagnostic.severity.HINT] = "",
+    }
+  }
+})
+
 
 -- bootstrapping for plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -77,17 +88,33 @@ require("lazy").setup({
 
   -- theme
   {
-      "folke/tokyonight.nvim",
-      opts = {
-        style = "night",
-        on_colors = function(colors)
-          colors.bg = "#08090c"
-        end
-      }
+    "folke/tokyonight.nvim",
+    opts = {
+      style = "night",
+      on_colors = function(colors)
+        colors.bg = "#08090c"
+      end
+    }
+  },
+
+  -- leap
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("flash").setup()
+      require("flash").toggle(true)
+      vim.api.nvim_set_hl(0, 'FlashLabel', { fg = 'magenta', bg = 'black' })
+    end,
   },
 
   -- status line
-  { "nvim-lualine/lualine.nvim" },
+  {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      require("lualine").setup({})
+    end
+  },
 
   -- syntax
   {
@@ -99,100 +126,120 @@ require("lazy").setup({
         sync_install = false,
         auto_install = true,
         highlight = { enable = true, },
+        ignore_install = {},
+        modules = {}
       })
     end
   },
 
   -- LSP
   {
-    { 'mason-org/mason.nvim', opts = {} },
-    {
-      'mason-org/mason-lspconfig.nvim',
-      dependencies = { 'neovim/nvim-lspconfig' },
-      opts = {
-      }
-    },
+    { 'mason-org/mason.nvim', opts = {},
+    config = function()
+      require("mason").setup()
+    end
   },
 
-  -- niceties
   {
-    "folke/snacks.nvim",
-    priority = 1000,
-    lazy = false,
-  },
+    'mason-org/mason-lspconfig.nvim',
+    dependencies = { 'neovim/nvim-lspconfig' },
+    config=function()
 
-   -- completion
-  -- {'saghen/blink.cmp',
-  -- opts = {
-  --   completion = {
-  --     documentation = { auto_show = true }
-  --   },
-  -- },
-  -- version = "1.*",
-  -- opt_extend = { "sources_defualt" }},
+      require("mason-lspconfig").setup({
+        ensure_installed = { "ruff", "rust_analyzer", "lua_ls" },
+        automatic_enable = true,
+      })
 
-  -- keyboard completion guide
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy"
-  },
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    opts = {
-      suggestion = { enabled = false },
-      panel = { enabled = true },
-      filetypes = {
-        markdown = true,
-        help = true,
-      },
-    },
-  },
-  {
-    "saghen/blink.cmp",
-    dependencies = { "fang2hou/blink-copilot" },
-    opts = {
-      sources = {
-        default = { "copilot", "lsp" },
-        providers = {
-          copilot = {
-            name = "copilot",
-            module = "blink-copilot",
-            score_offset = 100,
-            async = true,
-            opts = {
-              max_completions = 3
-            }
+
+      vim.lsp.config['lua_ls'] = {
+        settings = {
+          Lua = {
+            diagnostics = { globals = { "vim" } },  -- <-- stop "vim is undefined"
+            workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+            telemetry = { enable = false },
           },
+        },
+      }
+
+    end
+
+  },
+},
+
+-- niceties
+{
+  "folke/snacks.nvim",
+  priority = 1000,
+  lazy = false,
+},
+
+{
+  "folke/trouble.nvim",
+},
+
+-- keyboard completion guide
+{
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  config = function()
+
+    require("which-key").add({
+      { "<leader>c", ":noh<CR>", desc = "Clear search" },
+      { "<leader>?", function() require("which-key").show({ glogal = false }) end, desc = "Key help" },
+      { "<leader>F", function() require("snacks").picker.smart() end, desc = "Find files" },
+      { "<leader>S", function() require("snacks").picker.smart() end, desc = "Search" },
+      { "<leader>s", function() require("snacks").picker.lsp_symbols() end, desc = "LSP Symbols" },
+      { "<leader>Z", function() require("snacks").zen.zoom() end, desc = "Toggle Zoom" },
+      { "<leader>e", function() require("snacks").explorer() end, desc = "File Explorer" },
+      { "<leader>d", function() require("snacks").picker.diagnostics() end, desc = "Diagnostics" },
+      { "<leader>D", function() require("snacks").picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
+      { "<leader>bd", function() require("snacks").bufdelete() end, desc = "Delete Buffer" },
+      { "gd", function() require("snacks").picker.lsp_definitions() end, desc = "Go to Definition" },
+      { "gr", function() require("snacks").picker.lsp_references() end, nowait = true, desc = "References" },
+      { "gt", function() require("snacks").picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+    })
+  end
+
+
+},
+{
+  "zbirenbaum/copilot.lua",
+  cmd = "Copilot",
+  event = "InsertEnter",
+  opts = {
+    suggestion = { enabled = false },
+    panel = { enabled = true },
+    filetypes = {
+      markdown = true,
+      help = true,
+    },
+  },
+},
+{
+  "saghen/blink.cmp",
+  dependencies = { "fang2hou/blink-copilot" },
+  opts = {
+    sources = {
+      default = { "copilot", "lsp" },
+      providers = {
+        copilot = {
+          name = "copilot",
+          module = "blink-copilot",
+          score_offset = 100,
+          async = true,
+          opts = {
+            max_completions = 3
+          }
         },
       },
     },
-    version = "1.*",
-    opt_extend = { "sources_default" },
-  }
+  },
+  version = "1.*",
+  opt_extend = { "sources_default" },
+}
 })
 
--- initialize plugins
 vim.cmd.colorscheme("tokyonight")
-require("lualine").setup()      -- the status line
-
-require("mason").setup()
-require("mason-lspconfig").setup({ ensure_installed = { "ruff", "rust_analyzer" } })
-
-require("which-key").add({
-  { "<leader>?", function() require("which-key").show({ glogal = false }) end, desc = "Key help" },
-  { "<leader>F", function() require("snacks").picker.smart() end, desc = "Find files" },
-  { "<leader>S", function() require("snacks").picker.smart() end, desc = "Search" },
-  { "<leader>s", function() require("snacks").picker.lsp_symbols() end, desc = "LSP Symbols" },
-  { "<leader>Z", function() require("snacks").zen.zoom() end, desc = "Toggle Zoom" },
-  { "<leader>e", function() require("snacks").explorer() end, desc = "File Explorer" },
-  { "<leader>d", function() require("snacks").picker.diagnostics() end, desc = "Diagnostics" },
-  { "<leader>D", function() require("snacks").picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
-  { "gd", function() require("snacks").picker.lsp_definitions() end, desc = "Go to Definition" },
-  { "gr", function() require("snacks").picker.lsp_references() end, nowait = true, desc = "References" },
-  { "gt", function() require("snacks").picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
-  { "<leader>bd", function() require("snacks").bufdelete() end, desc = "Delete Buffer" },
-  { "sc", "<cmd>lua require('snacks').picker.smart()<cr>", desc = "Clear search" }
-})
 
